@@ -1,12 +1,11 @@
 ## SINF-FEUP
 
 ### Description
-
+This project consists of a Company Dashboard, meant to visualize the situation of a company.
 
 ### Setup
-* Install node with `curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -` and `sudo apt-get install -y nodejs`
-* Install npx with `npm install -g npx`
-* Install nodemon with `npm i nodemon -g`
+* Install `npm` and `node`
+* Perform `npm install` inside the `client` and `server` folders
 
 ### Run
-* Run the app with `yarn dev`
+* Run `npm start` inside the `client` and `server` folders
