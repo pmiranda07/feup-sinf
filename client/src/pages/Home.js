@@ -27,7 +27,12 @@ class Home extends Component {
   render() {
     return (
       <div>
-        { this.state.stuff }
+        <p>{ this.state.stuff }</p>
+        <form action="uploadSAFT" method="post" enctype="multipart/form-data">
+          Select file:
+          <input type="file" name="saft" id="saft"/>
+          <input type="submit" value="Upload File" name="submit"/>
+        </form>
       </div>
     );
   }
