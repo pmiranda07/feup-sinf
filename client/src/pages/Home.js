@@ -5,13 +5,13 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      stuff: 'Hello'
+      message: 'Hello'
     };
   }
 
   componentDidMount() {
     this.callAPI()
-        .then(body => this.setState({ stuff: body.stuff }))
+        .then(body => this.setState({ message: body.message }))
         .catch(err => console.log(err));
   }
 
@@ -27,8 +27,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <p>{ this.state.stuff }</p>
-        <form action="uploadSAFT" method="post" enctype="multipart/form-data">
+        <p>{ this.state.message }</p>
+        <form action="uploadSAFT" method="post" encType="multipart/form-data">
           Select file:
           <input type="file" name="saft" id="saft"/>
           <input type="submit" value="Upload File" name="submit"/>

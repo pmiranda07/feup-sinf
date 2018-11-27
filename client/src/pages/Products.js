@@ -5,13 +5,13 @@ class Products extends Component {
     super(props);
 
     this.state = {
-      stuff: 'Hello'
+      message: 'Hello'
     };
   }
 
   componentDidMount() {
     this.callAPI()
-        .then(body => this.setState({ stuff: body.stuff }))
+        .then(body => this.setState({ message: body.message }))
         .catch(err => console.log(err));
   }
 
@@ -27,7 +27,7 @@ class Products extends Component {
   render() {
     return (
       <div>
-        { this.state.stuff }
+        { this.state.message }
       </div>
     );
   }

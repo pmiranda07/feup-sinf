@@ -12,6 +12,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
+app.use(function (req, res, next) {
+    if( data.loadDatabase(req, res) )
+        next();
+    else res.status(500).send( { message: "Please upload a SAF-T file" } );
+});
+  
 app.get('/Home', controller.getHome);
 app.get('/Overview', controller.getOverview);
 app.get('/Financial', controller.getFinancial);
