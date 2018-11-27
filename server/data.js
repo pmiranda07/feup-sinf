@@ -84,6 +84,7 @@ module.exports = {
         let parsed = json['AuditFile'];
 
         // Delete unused and conflicting keys
+        delete parsed['xmlns:doc'];
         delete parsed['xmlns:xsi'];
         delete parsed['xmlns:xsd'];
         delete parsed['xsi:schemaLocation'];

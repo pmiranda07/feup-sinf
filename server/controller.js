@@ -24,6 +24,6 @@ module.exports = {
     },
 
     getProducts(req, res) {
-        res.send({ message: 'Hello Products' });
+        res.send({ products: data.data.Product });
     }
 }
