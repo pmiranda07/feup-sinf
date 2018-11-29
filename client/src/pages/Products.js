@@ -8,19 +8,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import { ResponsivePie } from 'nivo';
 
+// TODO:
+// Make a parent component that gets token
+// Make a table with the out of stock products
+// Fix number of products from the saf-t file being bigger than the number of out of stock products...
+
 class Products extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       products: [],
-      topSelling: {}
+      topSelling: {},
+      outOfStock: []
     };
   }
 
   componentDidMount() {
     this.callAPI()
         .then((res) => this.handleResponse(res))
+        .catch(err => console.log(err));
+    this.callPrimavera()
+        .then((res) => this.handlePrimaveraResponse(res))
         .catch(err => console.log(err));
   }
 
@@ -33,6 +42,27 @@ class Products extends Component {
         products: res.data.products,
         topSelling: res.data.topSelling } );
   };
+
+  callPrimavera = async () => {
+    var query = JSON.stringify("SELECT Arm.Artigo, Art.Descricao FROM V_INV_ArtigoArmazem Arm INNER JOIN Artigo Art ON Arm.Artigo = Art.Artigo GROUP BY Arm.Artigo, Art.Descricao HAVING SUM(Arm.StkActual) <= 0");
+
+    return axios({
+      method: 'post',
+      url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+      crossdomain: true,
+      headers: {
+        'content-type': 'application/json',
+        'authorization': "Bearer W3gCKzNPx2CNIUyNkImTxgxqbVhKm1hWA6-KrAKfeFjlV90kaBRAOEEzPO_wZC-nVlqpVvkh5vQ6DSYQLqvla6PnnBXC9G0YH_2xU_ocOZ6QOm3zaLZNszXLwAyRzn8U-OiUDIeiVw_G5Lzy6I8Ngdb1jgDZKmUawu__WCbzi4bhKX4uLJUe4xImlEl_AM9zcFcNZaZGVWeu67XMI-Ae2KYiJ9OidLAQfqkvpHOgdGjuUxulaqYupivEcNiFFF_HiKe98S4FRXrJIuwbPM6vqq5IznhWBSASxP4PRAryvec6_nO8IJoqIZAHETy5g7Xo"
+      },
+      data: query
+    });
+  };
+
+  handlePrimaveraResponse(res) {
+    this.setState({ outOfStock: res.data.DataSet.Table });
+  }
+
+  
 
   render() {
     const columns = [{
@@ -49,7 +79,7 @@ class Products extends Component {
         sort: true,
         events: {
           onClick: (e, column, columnIndex, row, rowIndex) => { 
-            // TODO Navigate to product page
+            this.props.history.push('/Products/' + row.ProductCode);
           }
         },
         filter: textFilter({
