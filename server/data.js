@@ -108,6 +108,41 @@ module.exports = {
             ...TaxTable
         };
 
+        module.exports.parseSourceDocuments(parsed);
+
         return parsed;
+    },
+
+    parseSourceDocuments(parsed) {
+
+        let SalesInvoices = parsed.SourceDocuments.SalesInvoices;
+    
+        const { Invoice, NumberOfEntries, TotalDebit, TotalCredit } = SalesInvoices;
+    
+        parsed.SalesInvoicesInfo = {
+            NumberOfEntries,
+            TotalDebit,
+            TotalCredit
+        };
+    
+        parsed.SalesInvoices = Invoice;
+    
+        if(!parsed.SourceDocuments.MovementOfGoods) {
+            delete parsed.SourceDocuments;
+            return;
+        }
+    
+        let MovementOfGoods = parsed.SourceDocuments.MovementOfGoods;
+    
+        const { NumberOfMovementLines, TotalQuantityIssued, StockMovement } = MovementOfGoods;
+    
+        parsed.StockMovementsInfo = {
+            NumberOfMovementLines,
+            TotalQuantityIssued
+        };
+    
+        parsed.StockMovements = StockMovement;
+    
+        delete parsed.SourceDocuments;
     }
 }

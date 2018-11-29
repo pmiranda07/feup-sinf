@@ -24,7 +24,33 @@ module.exports = {
     },
 
     getProducts(req, res) {
-        res.send({ products: Database.data.Product });
+        res.send({ 
+            products: Database.data.Product,
+            topSelling: module.exports.getTopSellingProducts()
+        });
+    },
+
+    getTopSellingProducts() {
+        let products = {};
+    
+        let i = 0;
+        Database.data.SalesInvoices.forEach((invoice) => {
+    
+            const type = invoice.InvoiceType;
+    
+            if(invoice.Line.length && (type == 'FT' || type == 'FS' || type == 'VD' || type == 'FR'))
+                invoice.Line.forEach((line) => {
+                    
+                    const { ProductDescription, Quantity } = line;
+    
+                    if(products[ProductDescription])
+                        products[ProductDescription] +=  parseInt(Quantity);
+                    else
+                        products[ProductDescription] = parseInt(Quantity);
+                });
+        });
+    
+        return products;
     },
 
     getProduct(req, res) {
