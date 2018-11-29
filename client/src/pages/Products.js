@@ -34,15 +34,7 @@ class Products extends Component {
         dataField: 'ProductCode',
         text: 'Code',
         sort: true
-      }, {
-        dataField: 'ProductNumberCode',
-        text: 'Number Code',
-        sort: true
-      }, {
-        dataField: 'ProductType',
-        text: 'Type',
-        sort: true
-      }, {
+    }, {
         dataField: 'ProductGroup',
         text: 'Group',
         sort: true

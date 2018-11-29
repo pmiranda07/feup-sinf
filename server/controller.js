@@ -1,4 +1,4 @@
-const data = require('./data');
+const Database = require('./data');
 
 module.exports = {
     // These functions return all the data needed to build its respective page
@@ -24,6 +24,17 @@ module.exports = {
     },
 
     getProducts(req, res) {
-        res.send({ products: data.data.Product });
+        res.send({ products: Database.data.Product });
+    },
+
+    getProduct(req, res) {
+        let products = Database.data.Product;
+        for (let i = 0; i < products.length; i++) {
+            if ( products[i].ProductCode == req.params.id ) {
+                res.send( { info: products[i] } );
+                return;
+            }
+        }
+        res.status(404).send();
     }
 }

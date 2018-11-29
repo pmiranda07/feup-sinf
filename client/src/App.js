@@ -9,6 +9,8 @@ import Products from './pages/Products';
 import Purchases from './pages/Products';
 import Sales from './pages/Sales';
 
+import Product from './pages/Product';
+
 class App extends Component {
   render() {
     return (
@@ -20,6 +22,8 @@ class App extends Component {
           <Route path="/Products" exact component={Products} />
           <Route path="/Purchases" exact component={Purchases} />
           <Route path="/Sales" exact component={Sales} />
+
+          <Route path="/Products/:id" component={Product}/>
         </Switch>
       </Router>
     );

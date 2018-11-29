@@ -25,6 +25,8 @@ app.get('/Sales', controller.getSales);
 app.get('/Purchases', controller.getPurchases);
 app.get('/Products', controller.getProducts);
 
+app.get('/Products/:id', controller.getProduct);
+
 app.post('/uploadSAFT', data.uploadSAFT);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
