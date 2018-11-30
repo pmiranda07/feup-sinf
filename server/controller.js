@@ -25,7 +25,6 @@ module.exports = {
 
     getProducts(req, res) {
         res.send({ 
-            products: Database.data.Product,
             topSelling: module.exports.getTopSellingProducts()
         });
     },

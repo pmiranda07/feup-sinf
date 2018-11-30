@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
@@ -8,11 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import { ResponsivePie } from 'nivo';
 import qs from 'qs';
-
-// TODO:
-// Make a parent component that gets token
-// Make a table with the out of stock products
-// Fix number of products from the saf-t file being bigger than the number of out of stock products...
 
 class Products extends Component {
   constructor(props) {
@@ -42,7 +36,6 @@ class Products extends Component {
 
   handleResponse(res) {
       this.setState( { 
-        products: res.data.products,
         topSelling: res.data.topSelling } );
   };
 
@@ -65,7 +58,7 @@ class Products extends Component {
   };
 
   callPrimavera = async () => {
-    var query = JSON.stringify("SELECT Arm.Artigo, Art.Descricao FROM V_INV_ArtigoArmazem Arm INNER JOIN Artigo Art ON Arm.Artigo = Art.Artigo GROUP BY Arm.Artigo, Art.Descricao HAVING SUM(Arm.StkActual) <= 0");
+    var query = JSON.stringify("SELECT Artigo, Descricao, STKActual FROM Artigo");
 
     return axios({
       method: 'post',
@@ -80,7 +73,14 @@ class Products extends Component {
   };
 
   handlePrimaveraResponse(res) {
-    this.setState({ outOfStock: res.data.DataSet.Table });
+    let outOfStock = [];
+    for(let i = 0; i < res.data.DataSet.Table.length; i++)
+      if(res.data.DataSet.Table[i].STKActual <= 0)
+        outOfStock.push(res.data.DataSet.Table[i]);
+    this.setState({
+      products: res.data.DataSet.Table, 
+      outOfStock: outOfStock
+    });
   };
 
   handleTokenResponse(res) {
@@ -94,18 +94,12 @@ class Products extends Component {
   
 
   render() {
-    console.log(this.state.outOfStock);
-
     const columns = [{
-        dataField: 'ProductCode',
+        dataField: 'Artigo',
         text: 'Code',
         sort: true
     }, {
-        dataField: 'ProductGroup',
-        text: 'Group',
-        sort: true
-      }, {
-        dataField: 'ProductDescription',
+        dataField: 'Descricao',
         text: 'Description',
         sort: true,
         events: {
@@ -143,11 +137,6 @@ class Products extends Component {
     ]; 
 
     const defaultSorted = [{
-      dataField: 'ProductCode',
-      order: 'asc'
-    }];
-
-    const defaultSortedOutOfStock = [{
       dataField: 'Artigo',
       order: 'asc'
     }];
@@ -245,7 +234,7 @@ class Products extends Component {
         />
         </div>
 
-        <BootstrapTable bootstrap4 striped hover keyField='Artigo' data={ this.state.outOfStock } columns={ outOfStockColumns } defaultSorted={defaultSortedOutOfStock} pagination={paginationFactory(tableOptions)}/>
+        <BootstrapTable bootstrap4 striped hover keyField='Artigo' data={ this.state.outOfStock } columns={ outOfStockColumns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)}/>
       </div>
     );
   }
