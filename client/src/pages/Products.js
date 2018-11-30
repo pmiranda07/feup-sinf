@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import { ResponsivePie } from 'nivo';
 import qs from 'qs';
+import ReactLoading from 'react-loading';
 
 class Products extends Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class Products extends Component {
     this.state = {
       products: [],
       topSelling: {},
-      outOfStock: []
+      outOfStock: [],
+      loadingPrimavera: true,
+      loadingAPI: true
     };
 
     this.token = "";
@@ -36,7 +39,9 @@ class Products extends Component {
 
   handleResponse(res) {
       this.setState( { 
-        topSelling: res.data.topSelling } );
+        topSelling: res.data.topSelling,
+        loadingAPI: false
+      } );
   };
 
   getPrimaveraToken = async () => {
@@ -79,7 +84,8 @@ class Products extends Component {
         outOfStock.push(res.data.DataSet.Table[i]);
     this.setState({
       products: res.data.DataSet.Table, 
-      outOfStock: outOfStock
+      outOfStock: outOfStock,
+      loadingPrimavera: false
     });
   };
 
@@ -90,10 +96,33 @@ class Products extends Component {
     this.callPrimavera()
       .then((res) => this.handlePrimaveraResponse(res))
       .catch(err => console.log(err));
+  };
+
+  loading() {
+    return this.state.loadingAPI || this.state.loadingPrimavera;
   }
-  
+
+  renderLoading() {
+    return (
+      <div style={{
+        width: '8%',
+        height: '8%',
+        position: "absolute",
+        top: '50%',
+        left: '50%',
+        marginLeft: '-4%',
+        marginTop: '-4%',
+      }}>
+        <ReactLoading type={"spinningBubbles"} color={"#00ffbb"} height={'100%'} width={'100%'} />
+      </div>
+    );
+  }
+
 
   render() {
+    if( this.loading() )
+      return this.renderLoading();
+
     const columns = [{
         dataField: 'Artigo',
         text: 'Code',
@@ -104,7 +133,7 @@ class Products extends Component {
         sort: true,
         events: {
           onClick: (e, column, columnIndex, row, rowIndex) => { 
-            this.props.history.push('/Products/' + row.ProductCode);
+            this.props.history.push('/Products/' + row.Artigo);
           }
         },
         filter: textFilter({
