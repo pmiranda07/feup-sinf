@@ -205,65 +205,74 @@ class Products extends Component {
       topSellingData = topSellingData.slice(topSellingData.length - 10);
 
     return (
-      <div>
+      <div className="container">
         <h1>Products</h1>
         <input type="text" className="form-control" placeholder="Search product name" onInput={ handleSearchInput }/>
         <BootstrapTable bootstrap4 striped hover keyField='ProductCode' data={ this.state.products } columns={ columns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()}/>
       
-        <div style={{height: 500}}>
-          <ResponsivePie
-            data={topSellingData}
-            margin={{
-                "top": 40,
-                "right": 80,
-                "bottom": 80,
-                "left": 80
-            }}
-            sortByValue={true}
-            innerRadius={0.5}
-            padAngle={1}
-            cornerRadius={1}
-            colors="accent"
-            colorBy="id"
-            borderWidth={1}
-            borderColor="inherit:darker(0.2)"
-            radialLabelsSkipAngle={10}
-            radialLabelsTextXOffset={6}
-            radialLabelsTextColor="#333333"
-            radialLabelsLinkOffset={0}
-            radialLabelsLinkDiagonalLength={16}
-            radialLabelsLinkHorizontalLength={24}
-            radialLabelsLinkStrokeWidth={1}
-            radialLabelsLinkColor="inherit"
-            slicesLabelsSkipAngle={10}
-            slicesLabelsTextColor="#333333"
-            animate={true}
-            motionStiffness={90}
-            motionDamping={15}
-            legends={[
-                {
-                    "anchor": "bottom",
-                    "direction": "row",
-                    "translateY": 56,
-                    "itemWidth": 100,
-                    "itemHeight": 18,
-                    "itemTextColor": "#999",
-                    "symbolSize": 18,
-                    "symbolShape": "circle",
-                    "effects": [
-                        {
-                            "on": "hover",
-                            "style": {
-                                "itemTextColor": "#000"
-                            }
-                        }
-                    ]
-                }
-            ]}
-        />
-        </div>
 
-        <BootstrapTable bootstrap4 striped hover keyField='Artigo' data={ this.state.outOfStock } columns={ outOfStockColumns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)}/>
+        <span className="card">
+          <h5 className="card-header text-center">Most Sold Products</h5>
+          <div className="card-body" style={{height: 500}}>
+            <ResponsivePie
+              margin={{
+                  "top": 40,
+                  "right": 80,
+                  "bottom": 80,
+                  "left": 80
+              }}
+              data={topSellingData}
+              sortByValue={true}
+              innerRadius={0.5}
+              padAngle={1}
+              cornerRadius={1}
+              colors="accent"
+              colorBy="id"
+              borderWidth={1}
+              borderColor="inherit:darker(0.2)"
+              radialLabelsSkipAngle={10}
+              radialLabelsTextXOffset={6}
+              radialLabelsTextColor="#333333"
+              radialLabelsLinkOffset={0}
+              radialLabelsLinkDiagonalLength={16}
+              radialLabelsLinkHorizontalLength={24}
+              radialLabelsLinkStrokeWidth={1}
+              radialLabelsLinkColor="inherit"
+              slicesLabelsSkipAngle={10}
+              slicesLabelsTextColor="#333333"
+              animate={true}
+              motionStiffness={90}
+              motionDamping={15}
+              legends={[
+                  {
+                      "anchor": "bottom",
+                      "direction": "row",
+                      "translateY": 56,
+                      "itemWidth": 100,
+                      "itemHeight": 18,
+                      "itemTextColor": "#999",
+                      "symbolSize": 18,
+                      "symbolShape": "circle",
+                      "effects": [
+                          {
+                              "on": "hover",
+                              "style": {
+                                  "itemTextColor": "#000"
+                              }
+                          }
+                      ]
+                  }
+              ]}
+          />
+          </div>
+        </span>
+
+        <span className="card">
+          <h5 className="card-header text-center">Products Out-of-Stock</h5>
+          <div className="card-body">
+            <BootstrapTable bootstrap4 striped hover keyField='Artigo' data={ this.state.outOfStock } columns={ outOfStockColumns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)}/>
+          </div>
+        </span>
       </div>
     );
   }
