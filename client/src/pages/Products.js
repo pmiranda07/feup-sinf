@@ -6,7 +6,6 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import { ResponsivePie } from 'nivo';
-import qs from 'qs';
 import ReactLoading from 'react-loading';
 
 class Products extends Component {
@@ -20,17 +19,27 @@ class Products extends Component {
       loadingPrimavera: true,
       loadingAPI: true
     };
-
-    this.token = "";
   }
 
   componentDidMount() {
     this.callAPI()
         .then((res) => this.handleResponse(res))
         .catch(err => console.log(err));
-    this.getPrimaveraToken()
-        .then((res) => this.handleTokenResponse(res))
+    
+    if (this.props.token !== "") {
+      this.callPrimavera()
+        .then((res) => this.handlePrimaveraResponse(res))
         .catch(err => console.log(err));
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // Check if token was updated
+    if( prevProps.token === "" && this.props.token !== "" ) {
+      this.callPrimavera()
+        .then((res) => this.handlePrimaveraResponse(res))
+        .catch(err => console.log(err));
+    }
   }
 
   callAPI = async () => {
@@ -44,24 +53,6 @@ class Products extends Component {
       } );
   };
 
-  getPrimaveraToken = async () => {
-    return axios({
-      method: 'POST',
-      url: "http://localhost:2018/WebApi/token",
-      data: qs.stringify({
-        username: "FEUP",
-        password: "qualquer1",
-        company: "DEMO",
-        instance: "Default",
-        grant_type: "password",
-        line: "Professional"
-      }),
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    });
-  };
-
   callPrimavera = async () => {
     var query = JSON.stringify("SELECT Artigo, Descricao, STKActual FROM Artigo");
 
@@ -71,7 +62,7 @@ class Products extends Component {
       crossdomain: true,
       headers: {
         'content-type': 'application/json',
-        'authorization': "Bearer " + this.token
+        'authorization': "Bearer " + this.props.token
       },
       data: query
     });
@@ -89,17 +80,8 @@ class Products extends Component {
     });
   };
 
-  handleTokenResponse(res) {
-    if(res.data.access_token)
-      this.token = res.data.access_token;
-
-    this.callPrimavera()
-      .then((res) => this.handlePrimaveraResponse(res))
-      .catch(err => console.log(err));
-  };
-
   loading() {
-    return this.state.loadingAPI || this.state.loadingPrimavera;
+    return this.state.loadingAPI || this.props.token === "" || this.state.loadingPrimavera;
   }
 
   renderLoading() {

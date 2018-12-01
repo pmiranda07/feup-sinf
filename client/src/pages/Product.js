@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import qs from 'qs';
+import ReactLoading from 'react-loading';
 
 class Product extends Component {
     constructor(props) {
@@ -8,45 +8,29 @@ class Product extends Component {
         
         this.state = {
             id: props.match.params.id,
-            info: { Descricao: '' }
+            info: { },
+            loadingPrimavera: true
         }
-
-        this.token = "";
     }
 
 
     componentDidMount() {
-        this.getPrimaveraToken()
-            .then((res) => this.handleTokenResponse(res))
-            .catch(err => console.log(err));
+        if (this.props.token !== "") {
+            this.callPrimavera()
+              .then((res) => this.handlePrimaveraResponse(res))
+              .catch(err => console.log(err));
+        }
     }
 
-    getPrimaveraToken = async () => {
-        return axios({
-            method: 'POST',
-            url: "http://localhost:2018/WebApi/token",
-            data: qs.stringify({
-            username: "FEUP",
-            password: "qualquer1",
-            company: "DEMO",
-            instance: "Default",
-            grant_type: "password",
-            line: "Professional"
-            }),
-            headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        });
-    };
-
-    handleTokenResponse(res) {
-        if(res.data.access_token)
-          this.token = res.data.access_token;
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        // Check if token was updated
+        if( prevProps.token === "" && this.props.token !== "" ) {
+          this.callPrimavera()
+            .then((res) => this.handlePrimaveraResponse(res))
+            .catch(err => console.log(err));
+        }
+    }
     
-        this.callPrimavera()
-          .then((res) => this.handlePrimaveraResponse(res))
-          .catch(err => console.log(err));
-    };
     
     callPrimavera = async () => {
         var query = JSON.stringify("SELECT Artigo, Descricao, STKActual, PCMedio FROM Artigo WHERE Artigo = '" + this.state.id + "'");
@@ -57,19 +41,47 @@ class Product extends Component {
           crossdomain: true,
           headers: {
             'content-type': 'application/json',
-            'authorization': "Bearer " + this.token
+            'authorization': "Bearer " + this.props.token
           },
           data: query
         });
     };
 
     handlePrimaveraResponse(res) {
-        if ( res.status === 200 && res.data.DataSet.Table.length)
-            this.setState( { info: res.data.DataSet.Table[0] } );
+        if ( res.status === 200 && res.data.DataSet.Table.length )
+            this.setState( { 
+                info: res.data.DataSet.Table[0],
+                loadingPrimavera: false
+            } );
     };
 
 
+    loading() {
+        return this.props.token === "" || this.state.loadingPrimavera;
+    }
+
+
+    renderLoading() {
+        return (
+          <div style={{
+            width: '8%',
+            height: '8%',
+            position: "absolute",
+            top: '50%',
+            left: '50%',
+            marginLeft: '-4%',
+            marginTop: '-4%',
+          }}>
+            <ReactLoading type={"spinningBubbles"} color={"#00ffbb"} height={'100%'} width={'100%'} />
+          </div>
+        );
+    }
+
+
     render() {
+        if( this.loading() )
+            return this.renderLoading();
+
         return (
             //TODO
             <div>{this.state.info.Descricao}</div>
