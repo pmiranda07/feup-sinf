@@ -23,6 +23,20 @@ class App extends Component {
   }
 
   componentWillMount() {
+    let cachedToken = localStorage.getItem('token');
+    let cachedDate = localStorage.getItem('date');
+    
+    if (cachedToken && cachedDate) {
+      cachedToken = JSON.parse(cachedToken);
+      cachedDate = Date.parse(cachedDate);
+
+      // Get token if it has been more than 18 minutes
+      if(new Date() - cachedDate < 18 * 60000) {
+        this.setState({ token: cachedToken});
+        return;
+      }
+    }
+
     axios({
         method: 'POST',
         url: "http://localhost:2018/WebApi/token",
@@ -39,8 +53,11 @@ class App extends Component {
         }
     })
     .then((res) => {
-        if(res.status === 200) 
-            this.setState({ token: res.data.access_token});
+        if(res.status === 200) {
+          this.setState({ token: res.data.access_token});
+          localStorage.setItem('token', JSON.stringify(res.data.access_token));
+          localStorage.setItem('date',new Date());
+        }
     })
     .catch(err => console.log(err));
   }
