@@ -19,6 +19,7 @@ import TableList from "views/TableList/TableList.jsx";
 import Typography from "views/Typography/Typography.jsx";
 import Icons from "views/Icons/Icons.jsx";
 import Maps from "views/Maps/Maps.jsx";
+import FinancesView from "views/Finances/Finances.jsx";
 
 const dashboardRoutes = [
   {
@@ -40,7 +41,7 @@ const dashboardRoutes = [
     sidebarName: "Finances",
     navbarName: "Finances",
     icon: Finances,
-    component: TableList
+    component: FinancesView
   },
   {
     path: "/sales",
