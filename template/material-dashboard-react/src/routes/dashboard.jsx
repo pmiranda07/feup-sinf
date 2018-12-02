@@ -20,6 +20,7 @@ import Typography from "views/Typography/Typography.jsx";
 import Icons from "views/Icons/Icons.jsx";
 import Maps from "views/Maps/Maps.jsx";
 import FinancesView from "views/Finances/Finances.jsx";
+import ProductsView from "views/Products/Products.jsx";
 
 const dashboardRoutes = [
   {
@@ -34,7 +35,7 @@ const dashboardRoutes = [
     sidebarName: "Products",
     navbarName: "Products",
     icon: Product,
-    component: TableList
+    component: ProductsView
   },
   {
     path: "/finances",
