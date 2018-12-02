@@ -39,7 +39,7 @@ const styles = {
   }
 };
 
-function TableList(props) {
+function Products(props) {
   const { classes } = props;
   return (
     <GridContainer>
@@ -53,12 +53,60 @@ function TableList(props) {
               tableHeaderColor="primary"
               tableHead={["ID", "Product Name", "Price per unit", "Stock"]}
               tableData={[
-                [1, "Product 1", 132, 12],
-                [2, "Product 2", 654, 36],
-                [3, "Product 3", 435, 5],
-                [4, "Product 4", 23, 235],
-                [5, "Product 5", 25, 24],
-                [6, "Product 6", 267, 2]
+                ["1", "Product 1", "132", "12"],
+                ["2", "Product 2", "654", "36"],
+                ["3", "Product 3", "435", "5"],
+                ["4", "Product 4", "23", "235"],
+                ["5", "Product 5", "25", "24"],
+                ["6", "Product 6", "267", "2"]
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+
+      <GridItem xs={12} sm={6} md={6}>
+        <Card>
+          <CardHeader color="info">
+            <h4 className={classes.cardTitleWhite}>Top products</h4>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["ID", "Product Name"]}
+              tableData={[
+                ["1", "Product 1"],
+                ["2", "Product 2"],
+                ["3", "Product 3"],
+                ["4", "Product 4"],
+                ["5", "Product 5"],
+                ["6", "Product 6"],
+                ["7", "Product 7"],
+                ["8", "Product 8"],
+                ["9", "Product 9"],
+                ["10", "Product 10"]
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+
+      <GridItem xs={12} sm={6} md={6}>
+        <Card>
+          <CardHeader color="info">
+            <h4 className={classes.cardTitleWhite}>Products out of stock</h4>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["ID", "Product Name"]}
+              tableData={[
+                  ["32", "Product 32"],
+                  ["56", "Product 56"],
+                  ["77", "Product 77"],
+                  ["91", "Product 91"],
+                  ["105", "Product 105"],
+                  ["634", "Product 634"]
               ]}
             />
           </CardBody>
@@ -69,4 +117,4 @@ function TableList(props) {
   );
 }
 
-export default withStyles(styles)(TableList);
+export default withStyles(styles)(Products);

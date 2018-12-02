@@ -40,7 +40,7 @@ import {
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
-class Dashboard extends React.Component {
+class Finances extends React.Component {
   state = {
     value: 0
   };
@@ -167,8 +167,8 @@ class Dashboard extends React.Component {
   }
 }
 
-Dashboard.propTypes = {
+Finances.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(Dashboard);
+export default withStyles(dashboardStyle)(Finances);
