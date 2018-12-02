@@ -34,7 +34,8 @@ import { bugs, website, server } from "variables/general.jsx";
 import {
   dailySalesChart,
   emailsSubscriptionChart,
-  completedTasksChart
+  completedTasksChart,
+  yearSalesChart
 } from "variables/charts.jsx";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
@@ -80,7 +81,7 @@ class Dashboard extends React.Component {
                 </CardIcon>
                 <p className={classes.cardCategory}>Purchases YTD</p>
                 <h3 className={classes.cardTitle}>
-                  53363 <small>€</small>
+                  24004 <small>€</small>
                 </h3>
               </CardHeader>
             </Card>
@@ -109,10 +110,10 @@ class Dashboard extends React.Component {
                     <CardHeader color="success">
                         <ChartistGraph
                             className="ct-chart"
-                            data={dailySalesChart.data}
+                            data={yearSalesChart.data}
                             type="Line"
-                            options={dailySalesChart.options}
-                            listener={dailySalesChart.animation}
+                            options={yearSalesChart.options}
+                            listener={yearSalesChart.animation}
                         />
                     </CardHeader>
                     <CardBody>
