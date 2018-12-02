@@ -26,7 +26,7 @@ app.get('/Purchases', controller.getPurchases);
 app.get('/Products', controller.getProducts);
 
 app.get('/Products/:id', controller.getProduct);
-app.get('/Sales/:id*', controller.getSale);
+app.get('/Sales/:id(*)', controller.getSale);
 
 app.post('/uploadSAFT', data.uploadSAFT);
 

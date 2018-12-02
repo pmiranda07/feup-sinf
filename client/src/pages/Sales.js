@@ -42,7 +42,6 @@ class Sales extends Component {
     for (let index = 0; index < salesInvoices.length; index++) {
       const sale = {
         id: salesInvoices[index].InvoiceNo,
-        description: salesInvoices[index].Line.ProductDescription,
         net_total: salesInvoices[index].DocumentTotals.NetTotal,
         date: salesInvoices[index].SystemEntryDate,
         customer: salesInvoices[index].CustomerID
