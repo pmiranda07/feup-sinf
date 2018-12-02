@@ -16,7 +16,7 @@ module.exports = {
     },
 
     getSales(req, res) {
-        res.send({ message: 'Hello Sales' });
+        res.send({ sales: module.exports.getListOfSales() });
     },
 
     getPurchases(req, res) {
@@ -25,7 +25,6 @@ module.exports = {
 
     getProducts(req, res) {
         res.send({ 
-            products: Database.data.Product,
             topSelling: module.exports.getTopSellingProducts()
         });
     },
@@ -62,5 +61,22 @@ module.exports = {
             }
         }
         res.status(404).send();
+    },
+
+    getSale(req, res) {
+        res.status(200).send({message: Database.data.SalesInvoices});
+        return;
+        let products = Database.data.Product;
+        for (let i = 0; i < products.length; i++) {
+            if ( products[i].ProductCode == req.params.id ) {
+                res.send( { info: products[i] } );
+                return;
+            }
+        }
+        res.status(404).send();
+    },
+
+    getListOfSales(){
+        return Database.data.SalesInvoices; 
     }
 }

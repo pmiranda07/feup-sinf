@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import axios from 'axios';
+import qs from 'qs';
 
 import Home from './pages/Home';
 import Overview from './pages/Overview';
@@ -12,6 +14,54 @@ import Sales from './pages/Sales';
 import Product from './pages/Product';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      token: ""
+    };
+  }
+
+  componentWillMount() {
+    let cachedToken = localStorage.getItem('token');
+    let cachedDate = localStorage.getItem('date');
+
+    if (cachedToken && cachedDate) {
+      cachedToken = JSON.parse(cachedToken);
+      cachedDate = Date.parse(cachedDate);
+
+      // Get token if it has been more than 18 minutes
+      if(new Date() - cachedDate < 18 * 60000) {
+        this.setState({ token: cachedToken});
+        return;
+      }
+    }
+
+    axios({
+        method: 'POST',
+        url: "http://localhost:2018/WebApi/token",
+        data: qs.stringify({
+        username: "FEUP",
+        password: "qualquer1",
+        company: "DEMO",
+        instance: "Default",
+        grant_type: "password",
+        line: "Professional"
+        }),
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then((res) => {
+        if(res.status === 200) {
+          this.setState({ token: res.data.access_token});
+          localStorage.setItem('token', JSON.stringify(res.data.access_token));
+          localStorage.setItem('date',new Date());
+        }
+    })
+    .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Router>
@@ -19,10 +69,11 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/Overview" exact component={Overview} />
           <Route path="/Financial" exact component={Financial} />
-          <Route path="/Products" exact component={Products} />
+          <Route path="/Products" exact render={(props)=><Products token={this.state.token} {...props}/>}/>
           <Route path="/Purchases" exact component={Purchases} />
           <Route path="/Sales" exact component={Sales} />
-          <Route path="/Products/:id" component={Product}/>
+
+          <Route path="/Products/:id" render={(props)=><Product token={this.state.token} {...props}/>}/>
         </Switch>
       </Router>
     );
