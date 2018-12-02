@@ -28,7 +28,6 @@ import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardIcon from "components/Card/CardIcon.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-import CardFooter from "components/Card/CardFooter.jsx";
 
 import { bugs, website, server } from "variables/general.jsx";
 
@@ -67,16 +66,6 @@ class Dashboard extends React.Component {
                   49/50 <small>GB</small>
                 </h3>
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Danger>
-                    <Warning />
-                  </Danger>
-                  <a href="#pablo" onClick={e => e.preventDefault()}>
-                    Get more space
-                  </a>
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
@@ -88,12 +77,6 @@ class Dashboard extends React.Component {
                 <p className={classes.cardCategory}>Revenue</p>
                 <h3 className={classes.cardTitle}>$34,245</h3>
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <DateRange />
-                  Last 24 Hours
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
@@ -105,12 +88,6 @@ class Dashboard extends React.Component {
                 <p className={classes.cardCategory}>Fixed Issues</p>
                 <h3 className={classes.cardTitle}>75</h3>
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <LocalOffer />
-                  Tracked from Github
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
@@ -122,12 +99,6 @@ class Dashboard extends React.Component {
                 <p className={classes.cardCategory}>Followers</p>
                 <h3 className={classes.cardTitle}>+245</h3>
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Update />
-                  Just Updated
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
         </GridContainer>
@@ -152,11 +123,6 @@ class Dashboard extends React.Component {
                   increase in today sales.
                 </p>
               </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
@@ -177,11 +143,6 @@ class Dashboard extends React.Component {
                   Last Campaign Performance
                 </p>
               </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
@@ -201,11 +162,6 @@ class Dashboard extends React.Component {
                   Last Campaign Performance
                 </p>
               </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
-                </div>
-              </CardFooter>
             </Card>
           </GridItem>
         </GridContainer>

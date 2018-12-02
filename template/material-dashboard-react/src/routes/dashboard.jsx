@@ -1,6 +1,9 @@
 // @material-ui/icons
 import Dashboard from "@material-ui/icons/Dashboard";
 import Product from "@material-ui/icons/Store";
+import Money from "@material-ui/icons/AttachMoney";
+import MoneyOff from "@material-ui/icons/MoneyOff";
+import Finances from "@material-ui/icons/PieChart";
 
 import Person from "@material-ui/icons/Person";
 // import ContentPaste from "@material-ui/icons/ContentPaste";
@@ -16,7 +19,6 @@ import TableList from "views/TableList/TableList.jsx";
 import Typography from "views/Typography/Typography.jsx";
 import Icons from "views/Icons/Icons.jsx";
 import Maps from "views/Maps/Maps.jsx";
-import NotificationsPage from "views/Notifications/Notifications.jsx";
 
 const dashboardRoutes = [
   {
@@ -34,39 +36,25 @@ const dashboardRoutes = [
     component: TableList
   },
   {
-    path: "/table",
-    sidebarName: "Table List",
-    navbarName: "Table List",
-    icon: "content_paste",
+    path: "/finances",
+    sidebarName: "Finances",
+    navbarName: "Finances",
+    icon: Finances,
     component: TableList
   },
   {
-    path: "/typography",
-    sidebarName: "Typography",
-    navbarName: "Typography",
-    icon: LibraryBooks,
-    component: Typography
+    path: "/sales",
+    sidebarName: "Sales",
+    navbarName: "Sales",
+    icon: Money,
+    component: TableList
   },
   {
-    path: "/icons",
-    sidebarName: "Icons",
-    navbarName: "Icons",
-    icon: BubbleChart,
-    component: Icons
-  },
-  {
-    path: "/maps",
-    sidebarName: "Maps",
-    navbarName: "Map",
-    icon: LocationOn,
-    component: Maps
-  },
-  {
-    path: "/notifications",
-    sidebarName: "Notifications",
-    navbarName: "Notifications",
-    icon: Notifications,
-    component: NotificationsPage
+    path: "/purchases",
+    sidebarName: "Purchases",
+    navbarName: "Purchases",
+    icon: MoneyOff,
+    component: TableList
   },
   { redirect: true, path: "/", to: "/overview", navbarName: "Redirect" }
 ];
