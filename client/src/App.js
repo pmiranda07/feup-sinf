@@ -10,6 +10,7 @@ import Financial from './pages/Financial';
 import Products from './pages/Products';
 import Purchases from './pages/Products';
 import Sales from './pages/Sales';
+import Sale from './pages/Sale'
 
 import Product from './pages/Product';
 
@@ -67,13 +68,13 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/Overview" exact component={Overview} />
-          <Route path="/Financial" exact component={Financial} />
-          <Route path="/Products" exact render={(props)=><Products token={this.state.token} {...props}/>}/>
-          <Route path="/Purchases" exact component={Purchases} />
-          <Route path="/Sales" exact component={Sales} />
-
-          <Route path="/Products/:id" render={(props)=><Product token={this.state.token} {...props}/>}/>
+          <Route path="/overview" exact component={Overview} />
+          <Route path="/financial" exact component={Financial} />
+          <Route path="/products" exact render={(props)=><Products token={this.state.token} {...props}/>}/>
+          <Route path="/purchases" exact component={Purchases} />
+          <Route path="/sales" exact component={Sales} />
+          <Route path='/sales/:id*' component={Sale} />
+          <Route path="/products/:id" render={(props)=><Product token={this.state.token} {...props}/>}/>
         </Switch>
       </Router>
     );

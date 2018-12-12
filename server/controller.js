@@ -64,16 +64,24 @@ module.exports = {
     },
 
     getSale(req, res) {
-        res.status(200).send({message: Database.data.SalesInvoices});
-        return;
-        let products = Database.data.Product;
-        for (let i = 0; i < products.length; i++) {
-            if ( products[i].ProductCode == req.params.id ) {
-                res.send( { info: products[i] } );
-                return;
+        let sales = Database.data.SalesInvoices;
+        let sale = null;
+        for (let i = 0; i < sales.length; i++) {
+            if ( sales[i].InvoiceNo == req.params.id ) {
+                sale = sales[i]
+                res.status(200).send( { info: sale } );
+                break;
             }
         }
         res.status(404).send();
+        // let sales = Database.data.SalesInvoices;
+        // for (let i = 0; i < sales.length; i++) {
+        //     if ( sales[i].InvoiceNo == req.params.id ) {
+        //         res.status(200).send( { info: sales[i] } );
+        //         return;
+        //     }
+        // }
+        // res.status(404).send();
     },
 
     getListOfSales(){

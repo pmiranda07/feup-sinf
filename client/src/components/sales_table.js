@@ -7,11 +7,10 @@ export default class SalesTable extends React.Component {
     render() {
         return (
         <BootstrapTable data={ this.props.data }  striped hover pagination>
-            <TableHeaderColumn dataField='id' isKey ={ true } width='20%' >Product ID</TableHeaderColumn>
-            <TableHeaderColumn dataField='customer' width='20%' >Customer ID</TableHeaderColumn>
-            <TableHeaderColumn dataField='date' width='20%' >Date</TableHeaderColumn>
-            <TableHeaderColumn dataField='description' width='20%' >Description</TableHeaderColumn>
-            <TableHeaderColumn dataField='net_total' width='20%' >Net total</TableHeaderColumn>
+            <TableHeaderColumn dataField='id' isKey ={ true } width='25%' >Sales ID</TableHeaderColumn>
+            <TableHeaderColumn dataField='customer' width='25%' >Customer ID</TableHeaderColumn>
+            <TableHeaderColumn dataField='date' width='25%' >Date</TableHeaderColumn>
+            <TableHeaderColumn dataField='net_total' width='25%' >Net total</TableHeaderColumn>
         </BootstrapTable>
         );
     }

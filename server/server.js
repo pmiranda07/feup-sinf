@@ -18,15 +18,15 @@ app.use(function (req, res, next) {
     else res.status(400).send( { message: "Please upload a SAF-T file" } );
 });
   
-app.get('/Home', controller.getHome);
-app.get('/Overview', controller.getOverview);
-app.get('/Financial', controller.getFinancial);
-app.get('/Sales', controller.getSales);
-app.get('/Purchases', controller.getPurchases);
-app.get('/Products', controller.getProducts);
+app.get('/home', controller.getHome);
+app.get('/overview', controller.getOverview);
+app.get('/financial', controller.getFinancial);
+app.get('/sales', controller.getSales);
+app.get('/purchases', controller.getPurchases);
+app.get('/products', controller.getProducts);
 
-app.get('/Products/:id', controller.getProduct);
-app.get('/Sales/:id*', controller.getSale);
+app.get('/products/:id', controller.getProduct);
+app.get('/sales/:id(*)', controller.getSale);
 
 app.post('/uploadSAFT', data.uploadSAFT);
 

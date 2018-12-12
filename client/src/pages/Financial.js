@@ -16,7 +16,7 @@ class Financial extends Component {
   }
 
   callAPI = async () => {
-    const response = await fetch('/Financial');
+    const response = await fetch('/financial');
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);

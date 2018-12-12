@@ -27,7 +27,7 @@ class Sales extends Component {
   }
 
   callAPI = async () => {
-    const response = await fetch('/Sales');
+    const response = await fetch('/sales');
     const response_json = await response.json();
     let sales = this.parseSalesInvoices(response_json.sales)
     if (response.status !== 200) throw Error(response_json.message);
@@ -42,7 +42,6 @@ class Sales extends Component {
     for (let index = 0; index < salesInvoices.length; index++) {
       const sale = {
         id: salesInvoices[index].InvoiceNo,
-        description: salesInvoices[index].Line.ProductDescription,
         net_total: salesInvoices[index].DocumentTotals.NetTotal,
         date: salesInvoices[index].SystemEntryDate,
         customer: salesInvoices[index].CustomerID

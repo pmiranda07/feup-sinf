@@ -89,21 +89,21 @@
     <Product>
       <ProductType>P</ProductType>
       <ProductCode>A0001</ProductCode>
-      <ProductGroup>Sem família</ProductGroup>
+      <ProductGroup>Sem famï¿½lia</ProductGroup>
       <ProductDescription>Marcador Preto</ProductDescription>
       <ProductNumberCode>A0001</ProductNumberCode>
     </Product>
     <Product>
       <ProductType>P</ProductType>
       <ProductCode>A0002</ProductCode>
-      <ProductGroup>Sem família</ProductGroup>
+      <ProductGroup>Sem famï¿½lia</ProductGroup>
       <ProductDescription>Pencil</ProductDescription>
       <ProductNumberCode>A0002</ProductNumberCode>
     </Product>
     <Product>
       <ProductType>O</ProductType>
       <ProductCode>Especial</ProductCode>
-      <ProductGroup>Sem família</ProductGroup>
+      <ProductGroup>Sem famï¿½lia</ProductGroup>
       <ProductDescription>Linha especial</ProductDescription>
       <ProductNumberCode>Especial</ProductNumberCode>
     </Product>
@@ -147,14 +147,14 @@
         <TaxType>IVA</TaxType>
         <TaxCountryRegion>PT</TaxCountryRegion>
         <TaxCode>INT</TaxCode>
-        <Description>Intermédia</Description>
+        <Description>Intermï¿½dia</Description>
         <TaxPercentage>12.00</TaxPercentage>
       </TaxTableEntry>
       <TaxTableEntry>
         <TaxType>IVA</TaxType>
         <TaxCountryRegion>PT</TaxCountryRegion>
         <TaxCode>INT</TaxCode>
-        <Description>Intermédia</Description>
+        <Description>Intermï¿½dia</Description>
         <TaxPercentage>13.00</TaxPercentage>
       </TaxTableEntry>
       <TaxTableEntry>
@@ -203,7 +203,7 @@
         <TaxType>IVA</TaxType>
         <TaxCountryRegion>PT-AC</TaxCountryRegion>
         <TaxCode>INT</TaxCode>
-        <Description>Intermédia</Description>
+        <Description>Intermï¿½dia</Description>
         <TaxPercentage>9.00</TaxPercentage>
       </TaxTableEntry>
       <TaxTableEntry>
@@ -231,7 +231,7 @@
         <TaxType>IVA</TaxType>
         <TaxCountryRegion>PT-MA</TaxCountryRegion>
         <TaxCode>INT</TaxCode>
-        <Description>Intermédia</Description>
+        <Description>Intermï¿½dia</Description>
         <TaxPercentage>12.00</TaxPercentage>
       </TaxTableEntry>
       <TaxTableEntry>
@@ -256,13 +256,13 @@
     <TotalCredit>61.51</TotalCredit>
     <Journal>
       <JournalID>00031</JournalID>
-      <Description>Bancos - Depósitos</Description>
+      <Description>Bancos - Depï¿½sitos</Description>
       <Transaction>
         <TransactionID>2018-10-11 00031 100001</TransactionID>
         <Period>10</Period>
         <TransactionDate>2018-10-11</TransactionDate>
         <SourceID>FEUP</SourceID>
-        <Description>RE Nº 1/A</Description>
+        <Description>RE Nï¿½ 1/A</Description>
         <DocArchivalNumber>100001</DocArchivalNumber>
         <TransactionType>N</TransactionType>
         <GLPostingDate>2018-10-11</GLPostingDate>
@@ -272,7 +272,7 @@
             <AccountID>2111122</AccountID>
             <SourceDocumentID>RE A/1</SourceDocumentID>
             <SystemEntryDate>2018-10-11T15:28:48</SystemEntryDate>
-            <Description>RE Nº 1/A</Description>
+            <Description>RE Nï¿½ 1/A</Description>
             <CreditAmount>9.23</CreditAmount>
           </CreditLine>
           <DebitLine>
@@ -280,7 +280,7 @@
             <AccountID>112</AccountID>
             <SourceDocumentID>RE A/1</SourceDocumentID>
             <SystemEntryDate>2018-10-11T15:28:48</SystemEntryDate>
-            <Description>RE Nº 1/A</Description>
+            <Description>RE Nï¿½ 1/A</Description>
             <DebitAmount>9.23</DebitAmount>
           </DebitLine>
         </Lines>
@@ -290,7 +290,7 @@
         <Period>10</Period>
         <TransactionDate>2018-10-11</TransactionDate>
         <SourceID>FEUP</SourceID>
-        <Description>RE Nº 2/A</Description>
+        <Description>RE Nï¿½ 2/A</Description>
         <DocArchivalNumber>100002</DocArchivalNumber>
         <TransactionType>N</TransactionType>
         <GLPostingDate>2018-10-11</GLPostingDate>
@@ -300,7 +300,7 @@
             <AccountID>2111123</AccountID>
             <SourceDocumentID>RE A/2</SourceDocumentID>
             <SystemEntryDate>2018-10-11T17:50:21</SystemEntryDate>
-            <Description>RE Nº 2/A</Description>
+            <Description>RE Nï¿½ 2/A</Description>
             <CreditAmount>12.30</CreditAmount>
           </CreditLine>
           <DebitLine>
@@ -308,7 +308,7 @@
             <AccountID>112</AccountID>
             <SourceDocumentID>RE A/2</SourceDocumentID>
             <SystemEntryDate>2018-10-11T17:50:21</SystemEntryDate>
-            <Description>RE Nº 2/A</Description>
+            <Description>RE Nï¿½ 2/A</Description>
             <DebitAmount>12.30</DebitAmount>
           </DebitLine>
         </Lines>
@@ -322,7 +322,7 @@
         <Period>10</Period>
         <TransactionDate>2018-10-11</TransactionDate>
         <SourceID>FEUP</SourceID>
-        <Description>VFA Nº 1/A</Description>
+        <Description>VFA Nï¿½ 1/A</Description>
         <DocArchivalNumber>100001</DocArchivalNumber>
         <TransactionType>N</TransactionType>
         <GLPostingDate>2018-10-11</GLPostingDate>
@@ -332,7 +332,7 @@
             <AccountID>221111</AccountID>
             <SourceDocumentID>VFA A/1</SourceDocumentID>
             <SystemEntryDate>2018-10-11T15:12:26</SystemEntryDate>
-            <Description>VFA Nº 1/A</Description>
+            <Description>VFA Nï¿½ 1/A</Description>
             <CreditAmount>18.45</CreditAmount>
           </CreditLine>
           <DebitLine>
@@ -340,7 +340,7 @@
             <AccountID>3111</AccountID>
             <SourceDocumentID>VFA A/1</SourceDocumentID>
             <SystemEntryDate>2018-10-11T15:12:26</SystemEntryDate>
-            <Description>VFA Nº 1/A</Description>
+            <Description>VFA Nï¿½ 1/A</Description>
             <DebitAmount>15.00</DebitAmount>
           </DebitLine>
           <DebitLine>
@@ -348,7 +348,7 @@
             <AccountID>24321132311</AccountID>
             <SourceDocumentID>VFA A/1</SourceDocumentID>
             <SystemEntryDate>2018-10-11T15:12:26</SystemEntryDate>
-            <Description>VFA Nº 1/A</Description>
+            <Description>VFA Nï¿½ 1/A</Description>
             <DebitAmount>3.45</DebitAmount>
           </DebitLine>
         </Lines>
@@ -356,13 +356,13 @@
     </Journal>
     <Journal>
       <JournalID>00051</JournalID>
-      <Description>Vendas - Crédito - MN</Description>
+      <Description>Vendas - Crï¿½dito - MN</Description>
       <Transaction>
         <TransactionID>2018-10-11 00051 100001</TransactionID>
         <Period>10</Period>
         <TransactionDate>2018-10-11</TransactionDate>
         <SourceID>FEUP</SourceID>
-        <Description>FA Nº 1/A</Description>
+        <Description>FA Nï¿½ 1/A</Description>
         <DocArchivalNumber>100001</DocArchivalNumber>
         <TransactionType>N</TransactionType>
         <GLPostingDate>2018-10-11</GLPostingDate>
@@ -372,7 +372,7 @@
             <AccountID>2111122</AccountID>
             <SourceDocumentID>FA A/1</SourceDocumentID>
             <SystemEntryDate>2018-10-11T15:25:31</SystemEntryDate>
-            <Description>FA Nº 1/A</Description>
+            <Description>FA Nï¿½ 1/A</Description>
             <DebitAmount>9.23</DebitAmount>
           </DebitLine>
           <CreditLine>
@@ -380,7 +380,7 @@
             <AccountID>7111</AccountID>
             <SourceDocumentID>FA A/1</SourceDocumentID>
             <SystemEntryDate>2018-10-11T15:25:31</SystemEntryDate>
-            <Description>FA Nº 1/A</Description>
+            <Description>FA Nï¿½ 1/A</Description>
             <CreditAmount>7.50</CreditAmount>
           </CreditLine>
           <CreditLine>
@@ -388,7 +388,7 @@
             <AccountID>24331113231</AccountID>
             <SourceDocumentID>FA A/1</SourceDocumentID>
             <SystemEntryDate>2018-10-11T15:25:31</SystemEntryDate>
-            <Description>FA Nº 1/A</Description>
+            <Description>FA Nï¿½ 1/A</Description>
             <CreditAmount>1.73</CreditAmount>
           </CreditLine>
         </Lines>
@@ -398,7 +398,7 @@
         <Period>10</Period>
         <TransactionDate>2018-10-11</TransactionDate>
         <SourceID>FEUP</SourceID>
-        <Description>FA Nº 2/A</Description>
+        <Description>FA Nï¿½ 2/A</Description>
         <DocArchivalNumber>100002</DocArchivalNumber>
         <TransactionType>N</TransactionType>
         <GLPostingDate>2018-10-11</GLPostingDate>
@@ -408,7 +408,7 @@
             <AccountID>2111123</AccountID>
             <SourceDocumentID>FA A/2</SourceDocumentID>
             <SystemEntryDate>2018-10-11T17:45:27</SystemEntryDate>
-            <Description>FA Nº 2/A</Description>
+            <Description>FA Nï¿½ 2/A</Description>
             <DebitAmount>12.30</DebitAmount>
           </DebitLine>
           <CreditLine>
@@ -416,7 +416,7 @@
             <AccountID>7111</AccountID>
             <SourceDocumentID>FA A/2</SourceDocumentID>
             <SystemEntryDate>2018-10-11T17:45:27</SystemEntryDate>
-            <Description>FA Nº 2/A</Description>
+            <Description>FA Nï¿½ 2/A</Description>
             <CreditAmount>10.00</CreditAmount>
           </CreditLine>
           <CreditLine>
@@ -424,7 +424,7 @@
             <AccountID>24331113231</AccountID>
             <SourceDocumentID>FA A/2</SourceDocumentID>
             <SystemEntryDate>2018-10-11T17:45:27</SystemEntryDate>
-            <Description>FA Nº 2/A</Description>
+            <Description>FA Nï¿½ 2/A</Description>
             <CreditAmount>2.30</CreditAmount>
           </CreditLine>
         </Lines>
@@ -487,6 +487,42 @@
           <UnitPrice>1.5</UnitPrice>
           <TaxPointDate>2018-10-11</TaxPointDate>
           <Description>Marcador Preto</Description>
+          <CreditAmount>7.50</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.00</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.00</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>2</LineNumber>
+          <ProductCode>A0002</ProductCode>
+          <ProductDescription>Marcador Amarelo</ProductDescription>
+          <Quantity>5</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>1.5</UnitPrice>
+          <TaxPointDate>2018-10-11</TaxPointDate>
+          <Description>Marcador Amarelo</Description>
+          <CreditAmount>7.50</CreditAmount>
+          <Tax>
+            <TaxType>IVA</TaxType>
+            <TaxCountryRegion>PT</TaxCountryRegion>
+            <TaxCode>NOR</TaxCode>
+            <TaxPercentage>23.00</TaxPercentage>
+          </Tax>
+          <SettlementAmount>0.00</SettlementAmount>
+        </Line>
+        <Line>
+          <LineNumber>3</LineNumber>
+          <ProductCode>A0003</ProductCode>
+          <ProductDescription>Marcador Verde</ProductDescription>
+          <Quantity>5</Quantity>
+          <UnitOfMeasure>UN</UnitOfMeasure>
+          <UnitPrice>1.5</UnitPrice>
+          <TaxPointDate>2018-10-11</TaxPointDate>
+          <Description>Marcador Verde</Description>
           <CreditAmount>7.50</CreditAmount>
           <Tax>
             <TaxType>IVA</TaxType>
