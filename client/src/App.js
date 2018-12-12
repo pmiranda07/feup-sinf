@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Overview from './pages/Overview';
 import Financial from './pages/Financial';
 import Products from './pages/Products';
-import Purchases from './pages/Products';
+import Purchases from './pages/Purchases';
 import Sales from './pages/Sales';
 import Sale from './pages/Sale'
 
@@ -26,7 +26,7 @@ class App extends Component {
   componentWillMount() {
     let cachedToken = localStorage.getItem('token');
     let cachedDate = localStorage.getItem('date');
-    
+
     if (cachedToken && cachedDate) {
       cachedToken = JSON.parse(cachedToken);
       cachedDate = Date.parse(cachedDate);
@@ -71,7 +71,7 @@ class App extends Component {
           <Route path="/overview" exact component={Overview} />
           <Route path="/financial" exact component={Financial} />
           <Route path="/products" exact render={(props)=><Products token={this.state.token} {...props}/>}/>
-          <Route path="/purchases" exact component={Purchases} />
+          <Route path="/purchases" exact render={(props)=><Purchases token={this.state.token} {...props}/>}/>
           <Route path="/sales" exact component={Sales} />
           <Route path='/sales/:id*' component={Sale} />
           <Route path="/products/:id" render={(props)=><Product token={this.state.token} {...props}/>}/>
