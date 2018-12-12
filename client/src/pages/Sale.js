@@ -33,7 +33,7 @@ class Sale extends Component {
       }
     
     callAPI = async () => {
-        const response = await fetch('/Sales/' + this.state.id);
+        const response = await fetch('/sales/' + this.state.id);
         const response_json = await response.json();
         return response_json;
     };

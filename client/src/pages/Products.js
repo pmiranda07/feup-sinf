@@ -43,7 +43,7 @@ class Products extends Component {
   }
 
   callAPI = async () => {
-    return axios.get('/Products');
+    return axios.get('/products');
   };
 
   handleResponse(res) {
@@ -115,7 +115,7 @@ class Products extends Component {
         sort: true,
         events: {
           onClick: (e, column, columnIndex, row, rowIndex) => { 
-            this.props.history.push('/Products/' + row.Artigo);
+            this.props.history.push('/products/' + row.Artigo);
           }
         },
         filter: textFilter({
@@ -141,7 +141,7 @@ class Products extends Component {
         sort: true,
         events: {
           onClick: (e, column, columnIndex, row, rowIndex) => { 
-            this.props.history.push('/Products/' + row.Artigo);
+            this.props.history.push('/products/' + row.Artigo);
           }
         }
       }
