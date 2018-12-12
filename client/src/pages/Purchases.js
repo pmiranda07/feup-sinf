@@ -52,7 +52,7 @@ class Purchases extends Component {
   };
 
   callPrimavera = async () => {
-    var query = JSON.stringify("SELECT Artigo, Quantidade, TotalIliquido FROM LinhasCompras");
+    var query = JSON.stringify("SELECT Nome, TotalMerc, DataDoc FROM CabecCompras");
 
     return axios({
       method: 'post',
@@ -99,12 +99,12 @@ class Purchases extends Component {
       return this.renderLoading();
 
       const columns = [{
-          dataField: 'Artigo',
-          text: 'Code',
+          dataField: 'Nome',
+          text: 'Supplier',
           sort: true
       },{
-          dataField: 'Quantidade',
-          text: 'Quantity',
+          dataField: 'TotalMerc',
+          text: 'Purchase volume',
           sort: true,
           filter: textFilter({
             delay: 50,
@@ -118,20 +118,20 @@ class Purchases extends Component {
           })
         },
         {
-          dataField: 'TotalIliquido',
-          text: 'Total Price',
+          dataField: 'DataDoc',
+          text: 'Date',
           sort: true
         }
       ];
 
       const defaultSorted = [{
-        dataField: 'Artigo',
+        dataField: 'Nome',
         order: 'asc'
       }];
 
       const customTotal = (from, to, size) => (
         <span className="react-bootstrap-table-pagination-total">
-          Showing { from } to { to } of { size } products
+          Showing { from } to { to } of { size } purchases
         </span>
       );
 
