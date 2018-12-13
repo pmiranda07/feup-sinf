@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import { ResponsivePie } from 'nivo';
 import ReactLoading from 'react-loading';
+import './Products.css';
 
 class Products extends Component {
   constructor(props) {
@@ -187,13 +188,18 @@ class Products extends Component {
       topSellingData = topSellingData.slice(topSellingData.length - 10);
 
     return (
-      <div className="container">
+      <div id="productsPage" className="container">
         <h1>Products</h1>
-        <input type="text" className="form-control" placeholder="Search product name" onInput={ handleSearchInput }/>
-        <BootstrapTable bootstrap4 striped hover keyField='ProductCode' data={ this.state.products } columns={ columns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()}/>
-      
 
-        <span className="card">
+        <div className="card">
+          <h5 className="card-header text-center">Product List</h5>
+          <div className="card-body">
+            <input type="text" className="form-control" placeholder="Search product name" onInput={ handleSearchInput }/>
+            <BootstrapTable bootstrap4 striped hover keyField='ProductCode' data={ this.state.products } columns={ columns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()}/>
+          </div>
+        </div>
+
+        <div className="card">
           <h5 className="card-header text-center">Most Sold Products</h5>
           <div className="card-body" style={{height: 500}}>
             <ResponsivePie
@@ -247,14 +253,14 @@ class Products extends Component {
               ]}
           />
           </div>
-        </span>
+        </div>
 
-        <span className="card">
+        <div className="card">
           <h5 className="card-header text-center">Products Out-of-Stock</h5>
           <div className="card-body">
             <BootstrapTable bootstrap4 striped hover keyField='Artigo' data={ this.state.outOfStock } columns={ outOfStockColumns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)}/>
           </div>
-        </span>
+        </div>
       </div>
     );
   }

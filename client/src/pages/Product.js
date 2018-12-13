@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 import { ResponsiveLine } from 'nivo';
+import './Products.css'
 
 class Product extends Component {
     constructor(props) {
@@ -175,6 +176,7 @@ class Product extends Component {
             return this.renderLoading();
 
         return (
+          <div className="container">
             <div className="card">
                 <div className="card-header">
                     <strong>Product: </strong>{this.state.info.Descricao}
@@ -333,6 +335,7 @@ class Product extends Component {
                     </div>
                 </div>
             </div>
+          </div>
         );
     }
 

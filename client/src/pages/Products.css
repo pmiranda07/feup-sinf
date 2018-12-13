@@ -1,0 +1,17 @@
+#productsPage input {
+    margin-bottom: 1em;
+}
+
+ul.pagination.react-bootstrap-table-page-btns-ul {
+    float: right !important;
+}
+
+h1 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.card {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
