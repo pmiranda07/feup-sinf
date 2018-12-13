@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SalesTable from '../components/sales_table'
+import SalesTable from '../components/SalesTable'
 
 class Sales extends Component {
   constructor(props) {

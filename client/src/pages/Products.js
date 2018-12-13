@@ -26,7 +26,7 @@ class Products extends Component {
         .then((res) => this.handleResponse(res))
         .catch(err => console.log(err));
     
-    if (this.props.token !== "") {
+    if (this.props.token !== null) {
       this.callPrimavera()
         .then((res) => this.handlePrimaveraResponse(res))
         .catch(err => console.log(err));
@@ -35,7 +35,7 @@ class Products extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     // Check if token was updated
-    if( prevProps.token === "" && this.props.token !== "" ) {
+    if( prevProps.token === null && this.props.token !== null ) {
       this.callPrimavera()
         .then((res) => this.handlePrimaveraResponse(res))
         .catch(err => console.log(err));
@@ -81,7 +81,7 @@ class Products extends Component {
   };
 
   loading() {
-    return this.state.loadingAPI || this.props.token === "" || this.state.loadingPrimavera;
+    return this.state.loadingAPI || this.props.token === null || this.state.loadingPrimavera;
   }
 
   renderLoading() {

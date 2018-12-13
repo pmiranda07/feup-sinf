@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SaleTable from '../components/sale_table';
+import SaleTable from '../components/SaleTable';
 // import Box from 'react-styled-box';
 import { Container, Row, Col } from 'react-grid-system';
 

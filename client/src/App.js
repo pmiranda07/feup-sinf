@@ -13,14 +13,17 @@ import Sales from './pages/Sales';
 import Sale from './pages/Sale'
 
 import Product from './pages/Product';
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      token: ""
+      token: null
     };
+
+    this.getToken = this.getToken.bind(this);
   }
 
   componentWillMount() {
@@ -31,27 +34,29 @@ class App extends Component {
       cachedToken = JSON.parse(cachedToken);
       cachedDate = Date.parse(cachedDate);
 
-      // Get token if it has been more than 18 minutes
+      // Get if token has less than 18 minutes
       if(new Date() - cachedDate < 18 * 60000) {
         this.setState({ token: cachedToken});
         return;
       }
     }
+  }
 
+  getToken(username, password, company) {
     axios({
-        method: 'POST',
-        url: "http://localhost:2018/WebApi/token",
-        data: qs.stringify({
-        username: "FEUP",
-        password: "qualquer1",
-        company: "DEMO",
-        instance: "Default",
-        grant_type: "password",
-        line: "Professional"
-        }),
-        headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-        }
+      method: 'POST',
+      url: "http://localhost:2018/WebApi/token",
+      data: qs.stringify({
+      username: username,
+      password: password,
+      company: company,
+      instance: "Default",
+      grant_type: "password",
+      line: "Professional"
+      }),
+      headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+      }
     })
     .then((res) => {
         if(res.status === 200) {
@@ -64,6 +69,16 @@ class App extends Component {
   }
 
   render() {
+    if(this.state.token === null) {
+      return ( 
+        <Router>
+          <Switch>
+           <Route path='*' render={() => <LoginForm getToken={this.getToken} />} />
+          </Switch>
+        </Router>
+      )
+    }
+
     return (
       <Router>
         <Switch>

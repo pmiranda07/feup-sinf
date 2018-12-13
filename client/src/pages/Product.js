@@ -19,7 +19,7 @@ class Product extends Component {
 
 
     componentDidMount() {
-        if (this.props.token !== "") {
+        if (this.props.token !== null) {
             this.requestProductDetails()
               .then((res) => this.handleDetailsResponse(res))
               .catch(err => console.log(err));
@@ -31,7 +31,7 @@ class Product extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         // Check if token was updated
-        if( prevProps.token === "" && this.props.token !== "" ) {
+        if( prevProps.token === null && this.props.token !== null ) {
           this.requestProductDetails()
             .then((res) => this.handleDetailsResponse(res))
             .catch(err => console.log(err));
@@ -149,7 +149,7 @@ class Product extends Component {
     
 
     loading() {
-        return this.props.token === "" || this.state.loadingPrimaveraDetails || this.state.loadingPrimaveraDocuments;
+        return this.props.token === null || this.state.loadingPrimaveraDetails || this.state.loadingPrimaveraDocuments;
     }
 
 
