@@ -3,11 +3,6 @@ import './LoginForm.css';
 
 class LoginForm extends Component {
 
-
-  constructor(props) {
-    super(props);
-  }
-
   handleSignIn(e) {
     e.preventDefault();
     let username = this.refs.username.value;

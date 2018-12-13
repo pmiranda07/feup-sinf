@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { Component, Fragment } from 'react';
+import { Route, Switch } from "react-router-dom";
 import './App.css';
 import axios from 'axios';
 import qs from 'qs';
@@ -14,6 +14,7 @@ import Sale from './pages/Sale'
 
 import Product from './pages/Product';
 import LoginForm from './components/LoginForm';
+import Navbar from './components/Navbar';
 
 class App extends Component {
   constructor(props) {
@@ -71,16 +72,15 @@ class App extends Component {
   render() {
     if(this.state.token === null) {
       return ( 
-        <Router>
-          <Switch>
-           <Route path='*' render={() => <LoginForm getToken={this.getToken} />} />
-          </Switch>
-        </Router>
+        <Switch>
+          <Route path='*' render={() => <LoginForm getToken={this.getToken} />} />
+        </Switch>
       )
     }
 
     return (
-      <Router>
+      <Fragment>
+        <Navbar/>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/overview" exact component={Overview} />
@@ -91,7 +91,7 @@ class App extends Component {
           <Route path='/sales/:id*' component={Sale} />
           <Route path="/products/:id" render={(props)=><Product token={this.state.token} {...props}/>}/>
         </Switch>
-      </Router>
+      </Fragment>
     );
   }
 }
