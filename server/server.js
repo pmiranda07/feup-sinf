@@ -18,7 +18,6 @@ app.use(function (req, res, next) {
     else res.status(400).send( { message: "Please upload a SAF-T file" } );
 });
   
-app.get('/home', controller.getHome);
 app.get('/overview', controller.getOverview);
 app.get('/financial', controller.getFinancial);
 app.get('/sales', controller.getSales);

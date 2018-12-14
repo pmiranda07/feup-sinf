@@ -4,7 +4,6 @@ import './App.css';
 import axios from 'axios';
 import qs from 'qs';
 
-import Home from './pages/Home';
 import Overview from './pages/Overview';
 import Financial from './pages/Financial';
 import Products from './pages/Products';
@@ -82,8 +81,7 @@ class App extends Component {
       <Fragment>
         <Navbar/>
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/overview" exact component={Overview} />
+          <Route path="/" exact component={Overview} />
           <Route path="/financial" exact component={Financial} />
           <Route path="/products" exact render={(props)=><Products token={this.state.token} {...props}/>}/>
           <Route path="/purchases" exact render={(props)=><Purchases token={this.state.token} {...props}/>}/>

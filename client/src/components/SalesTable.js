@@ -48,7 +48,8 @@ export default class SalesTable extends React.Component {
             hidePageListOnlyOnePage: true,
             showTotal: true,
             paginationTotalRenderer: customTotal
-        };    }
+        };    
+    }
 
     render() {
         return (

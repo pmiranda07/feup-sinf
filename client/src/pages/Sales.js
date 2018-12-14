@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SalesTable from '../components/SalesTable';
 import axios from 'axios';
+import Loading from '../components/Loading';
 import './Pages.css';
 
 class Sales extends Component {
@@ -54,15 +55,19 @@ class Sales extends Component {
   }
 
   render() {
-    if (!this.state.loading) {
-      return (
-        <div id="salesPage">
-          <SalesTable data={this.state.sales} history={this.props.history}/>
-        </div>
-      );
-    }
+    if (this.state.loading) 
+      return <Loading/>
 
-    return <div></div>
+    return (
+      <div id="salesPage" className="container">
+        <div className="card">
+          <h5 className="card-header text-center">Sales List</h5>
+          <div className="card-body">
+            <SalesTable data={this.state.sales} history={this.props.history}/>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 

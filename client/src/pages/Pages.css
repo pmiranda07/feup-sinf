@@ -23,3 +23,12 @@ h1 {
 #salesPage .react-bootstrap-table td:first-child {
     cursor: pointer;
 }
+
+#salePage .react-bootstrap-table td:nth-child(1),
+#salePage .react-bootstrap-table td:nth-child(2) {
+    cursor: pointer;
+}  
+
+.small-gap {
+    width: 48% !important;
+}

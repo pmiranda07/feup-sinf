@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import SaleTable from '../components/SaleTable';
-// import Box from 'react-styled-box';
-import { Container, Row, Col } from 'react-grid-system';
+import './Pages.css';
 
 class Sale extends Component {
     constructor(props) {
         super(props);
         this.state = {
             id: props.match.params.id,
-            message: "Please upload a saf-t file",
             ship_to_date: "",
             ship_to_address: {},
             ship_from_date: "",
@@ -48,7 +46,6 @@ class Sale extends Component {
             ship_from_date: res.info.ShipFrom.DeliveryDate,
             ship_from_address: res.info.ShipFrom.Address,
             sale_id: res.info.InvoiceNo,
-            message: '',
             sale_totals: res.info.DocumentTotals,
             sale: s
         } );
@@ -83,61 +80,54 @@ class Sale extends Component {
     render() {
         return (
             //TODO
-            <div>
-                {this.state.message}
-                <Container> 
-                    <Row debug> 
-                        <Col style={{textAlign:'center'}}>
-                            <h3>{this.state.sale_id}</h3>   
-                        </Col>
-                        <Col  style={{textAlign:'center'}}>
-                            <h3>{this.state.sale_totals.GrossTotal + "€"}</h3>
-                        </Col>
-                    </Row>
-                </Container>
-                 <SaleTable data = {this.state.sale}> </SaleTable>  
-                 <Container>
-                    <Row debug>
-                        <Col debug>
-                            <Row> 
-                                <Col style={{textAlign:'center'}}>
-                                    FROM 
-                                </Col>
-                            </Row>
-                            <Row> 
-                                <Col style={{textAlign:'center'}}>
-                                    {this.state.ship_from_address.AddressDetail + " " + this.state.ship_from_address.PostalCode + " " + this.state.ship_from_address.City}  
-                                </Col>
-                            </Row>    
-                            <Row>
-                                <Col style={{textAlign:'center'}}>
-                                    {this.state.ship_from_date}
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col debug>
-                            <Row>
-                                <Col style={{textAlign:'center'}}>
-                                    TO 
-                                </Col>
-                            </Row>
-                            <Row> 
-                                <Col style={{textAlign:'center'}}>
-                                    {this.state.ship_to_address.AddressDetail + " " + this.state.ship_to_address.PostalCode + " " + this.state.ship_to_address.City} 
-                                </Col>
-                            </Row>
-                            <Row> 
-                                <Col style={{textAlign:'center'}}>
-                                    {this.state.ship_to_date}   
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Container>
+            <div id="salePage" className="container">
+                <div className="d-flex flex-row justify-content-between">
+                    <span className="card small-gap">
+                        <div className="card-header">ID</div>
+                        <div className="card-body">{this.state.sale_id}</div>
+                    </span>
+
+                    <span className="card small-gap">
+                        <div className="card-header">Net total</div>
+                        <div className="card-body">{this.state.sale_totals.NetTotal + "€"}</div>
+                    </span>
+                </div>
+
+                <div className="card">
+                    <h5 className="card-header text-center">Products Sold</h5>
+                    <div className="card-body">
+                        <SaleTable data={this.state.sale} history={this.props.history}> </SaleTable>  
+                    </div>
+                </div>
+
+
+                <div className="d-flex flex-row justify-content-between">
+                    <span className="card small-gap">
+                        <div className="card-body text-center">
+                            <p>From</p>
+                            <p>{this.getAddressText(this.state.ship_from_address.AddressDetail + ", " + this.state.ship_from_address.PostalCode + ", " + this.state.ship_from_address.City)}</p>
+                            <p>{this.state.ship_from_date}</p>
+                        </div>
+                    </span>
+
+                    <span className="card small-gap">
+                        <div className="card-body text-center">
+                            <p>To</p>
+                            <p>{this.getAddressText(this.state.ship_to_address.AddressDetail + ", " + this.state.ship_to_address.PostalCode + ", " + this.state.ship_to_address.City)}</p>
+                            <p>{this.state.ship_to_date}</p>
+                        </div>
+                    </span>
+                </div>
             </div>
         );
     }
 
+
+    getAddressText(full_address) {
+        if(full_address.includes('Desconhecido'))
+            return 'Unknown address';
+        return full_address;
+    }
 }
 
 export default Sale;
