@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 import { ResponsiveLine } from 'nivo';
-import './Products.css'
+import './Pages.css'
 
 class Product extends Component {
     constructor(props) {

@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import { ResponsivePie } from 'nivo';
 import ReactLoading from 'react-loading';
-import './Products.css';
+import './Pages.css';
 
 class Products extends Component {
   constructor(props) {
@@ -109,7 +109,12 @@ class Products extends Component {
     const columns = [{
         dataField: 'Artigo',
         text: 'Code',
-        sort: true
+        sort: true,
+        events: {
+          onClick: (e, column, columnIndex, row, rowIndex) => { 
+            this.props.history.push('/products/' + row.Artigo);
+          }
+        }
     }, {
         dataField: 'Descricao',
         text: 'Description',
@@ -135,7 +140,12 @@ class Products extends Component {
     const outOfStockColumns = [{
         dataField: 'Artigo',
         text: 'Code',
-        sort: true
+        sort: true,
+        events: {
+          onClick: (e, column, columnIndex, row, rowIndex) => { 
+            this.props.history.push('/products/' + row.Artigo);
+          }
+        }
       }, {
         dataField: 'Descricao',
         text: 'Description',
@@ -195,7 +205,7 @@ class Products extends Component {
           <h5 className="card-header text-center">Product List</h5>
           <div className="card-body">
             <input type="text" className="form-control" placeholder="Search product name" onInput={ handleSearchInput }/>
-            <BootstrapTable bootstrap4 striped hover keyField='ProductCode' data={ this.state.products } columns={ columns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()}/>
+            <BootstrapTable bootstrap4 striped hover keyField='Artigo' data={ this.state.products } columns={ columns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()}/>
           </div>
         </div>
 

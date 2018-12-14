@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import SalesTable from '../components/SalesTable'
+import SalesTable from '../components/SalesTable';
+import axios from 'axios';
+import './Pages.css';
 
 class Sales extends Component {
   constructor(props) {
@@ -8,56 +10,59 @@ class Sales extends Component {
       message: 'Sales: Please upload a SAF-T file',
       sales: [{
         id: null,
-        description: null,
         net_total: null,
         date: null,
         customer: null
-      }]
+      }],
+      loading: true
     };  
   }
 
   componentDidMount() {
     this.callAPI()
-        .then(test => this.setState(
-          { 
-            message: '',
-            sales: test.sales
-          }))
+        .then((res) => this.handleResponse(res))
         .catch(err => console.log(err));
   }
 
   callAPI = async () => {
-    const response = await fetch('/sales');
-    const response_json = await response.json();
-    let sales = this.parseSalesInvoices(response_json.sales)
-    if (response.status !== 200) throw Error(response_json.message);
-    return { 
-      body : response_json,
-      sales : sales
-    };
+    return axios.get('/sales');
+  };
+
+  handleResponse(res) {
+    this.setState( { 
+      sales: this.parseSalesInvoices(res.data.sales),
+      loading: false
+    } );
   };
 
   parseSalesInvoices(salesInvoices){
+    const types = ['FT', 'FR', 'FS', 'VD', 'NC'];
     let sales = [];
     for (let index = 0; index < salesInvoices.length; index++) {
-      const sale = {
-        id: salesInvoices[index].InvoiceNo,
-        net_total: salesInvoices[index].DocumentTotals.NetTotal,
-        date: salesInvoices[index].SystemEntryDate,
-        customer: salesInvoices[index].CustomerID
+      const type = salesInvoices[index].InvoiceType;
+      if( types.includes(type) ) {
+        const sale = {
+          id: salesInvoices[index].InvoiceNo,
+          customer: salesInvoices[index].CustomerID,
+          date: salesInvoices[index].InvoiceDate,
+          net_total: salesInvoices[index].DocumentTotals.NetTotal,
+        }
+        sales.push(sale);
       }
-      sales.push(sale);
     }
-    return sales
+    return sales;
   }
 
   render() {
-    return (
-      <div>
-        { this.state.message }
-        <SalesTable data = {this.state.sales}> </SalesTable>
-      </div>
-    );
+    if (!this.state.loading) {
+      return (
+        <div id="salesPage">
+          <SalesTable data={this.state.sales} history={this.props.history}/>
+        </div>
+      );
+    }
+
+    return <div></div>
   }
 }
 

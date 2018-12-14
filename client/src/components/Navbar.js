@@ -44,40 +44,40 @@ class Navbar extends Component {
 
   render() {
     return (
-        <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav id="navbar" className="navbar navbar-expand-lg navbar-light">
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                    <li className="nav-item">
                         <NavLink activeClassName="active" className="nav-link" exact to="/">Overview</NavLink>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <NavLink activeClassName="active" className="nav-link" exact to="/financial">Financial</NavLink>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <NavLink activeClassName="active" className="nav-link" to="/products">Products</NavLink>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <NavLink activeClassName="active" className="nav-link" to="/sales">Sales</NavLink>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <NavLink activeClassName="active" className="nav-link" to="/purchases">Purchases</NavLink>
                     </li>
                 </ul>
             </div>
-            <div class="navbar-collapse collapse order-3">
-                <div class="navbar-nav ml-auto">
-                    <ul class="navbar-nav">
-                        <li class="nav-item mx-2">
-                            <div class="custom-file">
-                                <input onChange={this.onChange} type="file" class="custom-file-input" id="customFile"/>
-                                <label class="custom-file-label" for="customFile">{this.getLabel()}</label>
+            <div className="navbar-collapse collapse order-3">
+                <div className="navbar-nav ml-auto">
+                    <ul className="navbar-nav">
+                        <li className="nav-item mx-2">
+                            <div className="custom-file">
+                                <input onChange={this.onChange} type="file" className="custom-file-input" id="customFile"/>
+                                <label className="custom-file-label" htmlFor="customFile">{this.getLabel()}</label>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <button class="btn btn-primary" type="button" onClick={this.onFormSubmit}>Upload File</button>
+                        <li className="nav-item">
+                            <button className="btn btn-primary" type="button" onClick={this.onFormSubmit}>Upload File</button>
                         </li>
                     </ul>
                 </div>
