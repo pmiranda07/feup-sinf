@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ReactLoading from 'react-loading';
 import { ResponsiveLine } from 'nivo';
+
+import Loading from '../components/Loading';
 import './Pages.css'
 
 class Product extends Component {
@@ -153,27 +154,9 @@ class Product extends Component {
         return this.props.token === null || this.state.loadingPrimaveraDetails || this.state.loadingPrimaveraDocuments;
     }
 
-
-    renderLoading() {
-        return (
-          <div style={{
-            width: '8%',
-            height: '8%',
-            position: "absolute",
-            top: '50%',
-            left: '50%',
-            marginLeft: '-4%',
-            marginTop: '-4%',
-          }}>
-            <ReactLoading type={"spinningBubbles"} color={"#00ffbb"} height={'100%'} width={'100%'} />
-          </div>
-        );
-    }
-
-
     render() {
         if( this.loading() )
-            return this.renderLoading();
+            return <Loading/>
 
         return (
           <div className="container">
