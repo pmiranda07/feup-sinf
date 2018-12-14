@@ -5,7 +5,6 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
-import { ResponsivePie } from 'nivo';
 import ReactLoading from 'react-loading';
 
 class Purchases extends Component {
@@ -43,7 +42,6 @@ class Purchases extends Component {
   callAPI = async () => {
 
     const response = await fetch('/purchases');
-    const body = await response.json();
   };
   handleResponse(res) {
       this.setState( {
@@ -52,7 +50,7 @@ class Purchases extends Component {
   };
 
   callPrimavera = async () => {
-    var query = JSON.stringify("SELECT Nome, TotalMerc, DataDoc FROM CabecCompras");
+    var query = JSON.stringify("SELECT NumDoc,TipoDoc, Nome, Abs(TotalMerc) AS TotalMerc, CONVERT(Varchar(10),DataDoc,103) AS DataDoc FROM CabecCompras WHERE TipoDoc='VFA' OR TipoDoc='VNC'");
 
     return axios({
       method: 'post',
@@ -99,22 +97,43 @@ class Purchases extends Component {
       return this.renderLoading();
 
       const columns = [{
-          dataField: 'Nome',
-          text: 'Supplier',
-          sort: true
-      },{
-          dataField: 'TotalMerc',
-          text: 'Purchase volume',
+        dataField: 'TipoDoc',
+        text: 'Document',
+        sort: true
+    },{
+        
+          dataField: 'NumDoc',
+          text: 'IdDoc',
           sort: true,
           filter: textFilter({
             delay: 50,
             style: {
               display: 'none'
             },
-            placeholder: 'Search product',
+          })
+        },{
+          dataField: 'Nome',
+          text: 'Supplier',
+          sort: true,
+          filter: textFilter({
+            delay: 50,
+            style: {
+              display: 'none'
+            },
+            placeholder: 'Search supplier',
             getFilter: (filter) => {
               this.nameFilter = filter;
             }
+          })
+      },{
+          dataField: 'TotalMerc',
+          text: 'Value',
+          sort: true,
+          filter: textFilter({
+            delay: 50,
+            style: {
+              display: 'none'
+            },
           })
         },
         {
@@ -125,7 +144,7 @@ class Purchases extends Component {
       ];
 
       const defaultSorted = [{
-        dataField: 'Nome',
+        dataField: 'NumDoc',
         order: 'asc'
       }];
 
@@ -149,7 +168,7 @@ class Purchases extends Component {
       return (
         <div className="container">
           <h1>Purchases</h1>
-          <input type="text" className="form-control" placeholder="Search product" onInput={ handleSearchInput }/>
+          <input type="text" className="form-control" placeholder="Search Supplier" onInput={ handleSearchInput }/>
           <BootstrapTable bootstrap4 striped hover keyField='PurchaseCode' data={ this.state.purchases } columns={ columns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()}/>
         </div>
       );
