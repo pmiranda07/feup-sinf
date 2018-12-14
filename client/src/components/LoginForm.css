@@ -44,3 +44,10 @@
   line-height: 50px;
   padding: 0;
 }
+
+.alert-top{
+  position: fixed;
+  top: 10px; 
+  left:2%;
+  width: 96%;
+}

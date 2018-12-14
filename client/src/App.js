@@ -20,7 +20,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      token: null
+      token: null,
+      gettingToken: false,
+      loginError: null
     };
 
     this.getToken = this.getToken.bind(this);
@@ -43,6 +45,7 @@ class App extends Component {
   }
 
   getToken(username, password, company) {
+    this.setState({ gettingToken: true });
     axios({
       method: 'POST',
       url: "http://localhost:2018/WebApi/token",
@@ -60,19 +63,22 @@ class App extends Component {
     })
     .then((res) => {
         if(res.status === 200) {
-          this.setState({ token: res.data.access_token});
+          this.setState({ token: res.data.access_token, gettingToken: false, loginError: null });
           localStorage.setItem('token', JSON.stringify(res.data.access_token));
           localStorage.setItem('date',new Date());
         }
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      this.setState( { gettingToken: false, loginError: err.response } )
+    });
   }
 
   render() {
     if(this.state.token === null) {
       return ( 
         <Switch>
-          <Route path='*' render={() => <LoginForm getToken={this.getToken} />} />
+          <Route path='*' render={() => <LoginForm getToken={this.getToken} gettingToken={this.state.gettingToken} loginError={this.state.loginError}/>} />
         </Switch>
       )
     }
