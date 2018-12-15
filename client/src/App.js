@@ -87,12 +87,12 @@ class App extends Component {
       <Fragment>
         <Navbar/>
         <Switch>
-          <Route path="/" exact component={Overview} />
-          <Route path="/financial" exact component={Financial} />
+          <Route path="/" exact render={(props)=><Overview token={this.state.token} {...props}/>} />
+          <Route path="/financial" exact render={(props)=><Financial token={this.state.token} {...props}/>} />
           <Route path="/products" exact render={(props)=><Products token={this.state.token} {...props}/>}/>
           <Route path="/purchases" exact render={(props)=><Purchases token={this.state.token} {...props}/>}/>
-          <Route path="/sales" exact component={Sales} />
-          <Route path='/sales/:id*' component={Sale} />
+          <Route path="/sales" exact render={(props)=><Sales token={this.state.token} {...props}/>} />
+          <Route path='/sales/:id*' render={(props)=><Sale token={this.state.token} {...props}/>} />
           <Route path="/products/:id" render={(props)=><Product token={this.state.token} {...props}/>}/>
         </Switch>
       </Fragment>
