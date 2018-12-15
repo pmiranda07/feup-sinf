@@ -1,4 +1,5 @@
 const Database = require('./data');
+const BalanceSheet = require('./balanceSheet');
 
 module.exports = {
     // These functions return all the data needed to build its respective page
@@ -10,7 +11,14 @@ module.exports = {
     },
 
     getFinancial(req, res) {
-        res.send({ message: 'Hello Financial' });
+        let month = parseInt(req.query.month);
+        res.send({ 
+            cash: BalanceSheet.getCash(month),
+            ebitda: BalanceSheet.getEBITDA(month),
+            bank: BalanceSheet.getBank(month),
+            ap: BalanceSheet.getAP(month),
+            ar: BalanceSheet.getAR(month)
+        });
     },
 
     getSales(req, res) {
