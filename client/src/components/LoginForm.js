@@ -16,6 +16,9 @@ class LoginForm extends Component {
     let error_alert = this.props.loginError ? 
         (<div class="alert alert-danger alert-top" role="alert">
             <strong>Login Error!</strong> Check your login credentials.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>) 
         : null;
 

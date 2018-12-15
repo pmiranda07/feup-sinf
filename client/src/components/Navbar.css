@@ -1,3 +1,11 @@
 #navbar {
     background-color: #ebebeb;
 }
+
+.alert-top{
+    position: fixed;
+    top: 10px; 
+    left:2%;
+    width: 96%;
+    z-index: 100;
+}

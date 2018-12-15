@@ -9,7 +9,8 @@ class Navbar extends Component {
         super(props);
 
         this.state = {
-            files: []
+            files: [],
+            uploadError: false,
         }
 
         this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -23,7 +24,10 @@ class Navbar extends Component {
         .then((response) => {
             window.location.reload();
         })
-        .catch((err) =>  console.log(err) );
+        .catch((err) =>  {
+            console.log(err);
+            this.setState({uploadError:true});
+        });
     }
     
     onChange(e) {
@@ -42,9 +46,23 @@ class Navbar extends Component {
         return axios.post(url, formData,config);
     }
 
+    resetUploadError() {
+        this.setState({uploadError: false});
+    }
+
   render() {
+    let alert_error = this.state.uploadError ? 
+        (<div class="alert alert-danger alert-top" role="alert">
+            <strong>Upload Error!</strong> Check your SAF-T file.
+            <button type="button" class="close" aria-label="Close" onClick={this.resetUploadError.bind(this)}>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>) 
+        : null;
+
     return (
         <nav id="navbar" className="navbar navbar-expand-lg navbar-light">
+            {alert_error}
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
