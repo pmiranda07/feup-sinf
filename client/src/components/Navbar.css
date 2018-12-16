@@ -24,6 +24,10 @@
     background-color: white;
 }
 
+#saft-upload{
+    display: none;
+}
+
 .alert-top{
     position: fixed;
     top: 10px;

@@ -33,6 +33,7 @@ class Navbar extends Component {
 
     onChange(e) {
         this.setState( { files: e.target.files } )
+        document.getElementById("uploadCustomFile").click();
     }
 
     fileUpload(files){
@@ -49,6 +50,12 @@ class Navbar extends Component {
 
     resetUploadError() {
         this.setState({uploadError: false});
+    }
+
+    testFunction(e) {
+        e.preventDefault();
+        document.getElementById("customFile").click();
+
     }
 
   render() {
@@ -89,22 +96,15 @@ class Navbar extends Component {
                     <li className="nav-item">
                         <NavLink activeClassName="active" className="nav-link" to="/purchases">Purchases</NavLink>
                     </li>
+                    <li className="nav-item">
+                        <button className="btn btn-primary" type="button" onClick={this.testFunction}>Try</button>
+                    </li>
                 </ul>
             </div>
-            <div className="navbar-collapse collapse order-3">
-                <div className="navbar-nav ml-auto">
-                    <ul className="navbar-nav">
-                        <li className="nav-item mx-2">
-                            <div className="custom-file">
-                                <input onChange={this.onChange} type="file" className="custom-file-input" id="customFile"/>
-                                <label className="custom-file-label" htmlFor="customFile">{this.getLabel()}</label>
-                            </div>
-                        </li>
-                        <li className="nav-item">
-                            <button className="btn btn-primary" type="button" onClick={this.onFormSubmit}>Upload File</button>
-                        </li>
-                    </ul>
-                </div>
+
+            <div id="saft-upload">
+                <input onChange={this.onChange} type="file" className="custom-file-input" id="customFile"/>
+                <button className="btn btn-primary" type="button" onClick={this.onFormSubmit} id="uploadCustomFile">Upload File</button>
             </div>
         </nav>
     );
