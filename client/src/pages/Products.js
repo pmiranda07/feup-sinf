@@ -24,7 +24,7 @@ class Products extends Component {
     this.callAPI()
         .then((res) => this.handleResponse(res))
         .catch(err => console.log(err));
-    
+
     if (this.props.token !== null) {
       this.callPrimavera()
         .then((res) => this.handlePrimaveraResponse(res))
@@ -46,7 +46,7 @@ class Products extends Component {
   };
 
   handleResponse(res) {
-      this.setState( { 
+      this.setState( {
         topSelling: res.data.topSelling,
         loadingAPI: false
       } );
@@ -73,7 +73,7 @@ class Products extends Component {
       if(res.data.DataSet.Table[i].STKActual <= 0)
         outOfStock.push(res.data.DataSet.Table[i]);
     this.setState({
-      products: res.data.DataSet.Table, 
+      products: res.data.DataSet.Table,
       outOfStock: outOfStock,
       loadingPrimavera: false
     });
@@ -97,7 +97,7 @@ class Products extends Component {
             <ListProducts products={this.state.products} history={this.props.history}/>
           </div>
         </div>
-        
+
         <div className="card">
           <h5 className="card-header text-center">Most Sold Products</h5>
           <div className="card-body" style={{height: 500}}>

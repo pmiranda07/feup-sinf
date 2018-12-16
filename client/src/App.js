@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import './App.css';
 import axios from 'axios';
 import qs from 'qs';
@@ -14,6 +14,7 @@ import Sale from './pages/Sale'
 import Product from './pages/Product';
 import LoginForm from './components/LoginForm';
 import Navbar from './components/Navbar';
+import Loading from './components/Loading';
 
 class App extends Component {
   constructor(props) {
@@ -22,13 +23,22 @@ class App extends Component {
     this.state = {
       token: null,
       gettingToken: false,
-      loginError: null
+      loginError: null,
+      cachedCredentials: false
     };
 
     this.getToken = this.getToken.bind(this);
+
+    this.props.history.listen((location, action) => {
+      this.verifyToken();
+    });
   }
 
   componentWillMount() {
+    this.verifyToken();
+  }
+
+  verifyToken() {
     let cachedToken = localStorage.getItem('token');
     let cachedDate = localStorage.getItem('date');
 
@@ -39,6 +49,22 @@ class App extends Component {
       // Get if token has less than 18 minutes
       if(new Date() - cachedDate < 18 * 60000) {
         this.setState({ token: cachedToken});
+        return;
+      }
+      
+      this.setState({ token: null });
+
+      let username = localStorage.getItem('username');
+      let password = localStorage.getItem('password');
+      let company = localStorage.getItem('company');
+
+      if(username && password && company) {
+        username = JSON.parse(username); 
+        password = JSON.parse(password);
+        company = JSON.parse(company);
+  
+        this.setState({ cachedCredentials: true});
+        this.getToken(username, password, company);
         return;
       }
     }
@@ -64,18 +90,32 @@ class App extends Component {
     .then((res) => {
         if(res.status === 200) {
           this.setState({ token: res.data.access_token, gettingToken: false, loginError: null });
+          localStorage.setItem('username', JSON.stringify(username));
+          localStorage.setItem('password', JSON.stringify(password));
+          localStorage.setItem('company', JSON.stringify(company));
+
           localStorage.setItem('token', JSON.stringify(res.data.access_token));
           localStorage.setItem('date',new Date());
         }
     })
     .catch((err) => {
       console.log(err);
-      this.setState( { gettingToken: false, loginError: err.response } )
+      this.setState( { gettingToken: false, loginError: err.response } );
+      if (this.state.cachedCredentials) {
+        localStorage.clear();
+        this.setState( { cachedCredentials: false });
+      }
     });
   }
 
   render() {
     if(this.state.token === null) {
+      if(this.state.cachedCredentials) {
+        return (
+          <Loading/>
+        )
+      }
+
       return ( 
         <Switch>
           <Route path='*' render={() => <LoginForm getToken={this.getToken} gettingToken={this.state.gettingToken} loginError={this.state.loginError}/>} />
@@ -100,4 +140,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

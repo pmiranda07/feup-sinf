@@ -1,9 +1,12 @@
-#root > .container{
-    margin-top: 80px;
+:root {
+    --green-darker: #094329;
+    --green-medium: #467D32;
+    --green-brighter: #74B959;
+
 }
 
-#productsPage input {
-    margin-bottom: 1em;
+#root > .container{
+    margin-top: 80px;
 }
 
 ul.pagination.react-bootstrap-table-page-btns-ul {
@@ -20,9 +23,70 @@ h1 {
     margin-bottom: 1em;
 }
 
+/*
+################################################################################
+                            Products Page
+################################################################################
+*/
+#productsPage input {
+    margin-bottom: 1em;
+}
+
+
+#productsPage .card-header{
+    color: white;
+}
+
+#productsPage .card:nth-child(2) > .card-header{
+    background-color: var(--green-darker);
+}
+
+#productsPage .card:nth-child(3) > .card-header{
+    background-color: var(--green-medium);
+}
+
+#productsPage .card:nth-child(4) > .card-header{
+    background-color: var(--green-brighter);
+}
+
 #productsPage .react-bootstrap-table td {
     cursor: pointer;
 }
+
+
+/*
+################################################################################
+                            Product Page
+################################################################################
+*/
+
+#productPage > .card > .card-header{
+    background-color: black;
+    color: white;
+}
+
+#productPage .product-infos span:nth-child(1) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+}
+
+#productPage .product-infos span:nth-child(2) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#productPage .product-infos span:nth-child(3) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+
+
+
+
+
+
+
 
 #salesPage .react-bootstrap-table td:first-child {
     cursor: pointer;

@@ -8,7 +8,7 @@ import './Pages.css'
 class Product extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             id: props.match.params.id,
             info: { },
@@ -42,8 +42,8 @@ class Product extends Component {
             .catch(err => console.log(err));
         }
     }
-    
-    
+
+
     requestProductDetails = async () => {
         var query = JSON.stringify("SELECT Artigo, Descricao, STKActual, PCMedio FROM Artigo WHERE Artigo = '" + this.state.id + "'");
 
@@ -61,7 +61,7 @@ class Product extends Component {
 
     handleDetailsResponse(res) {
         if ( res.status === 200 && res.data.DataSet.Table.length )
-            this.setState( { 
+            this.setState( {
                 info: res.data.DataSet.Table[0],
                 loadingPrimaveraDetails: false
             } );
@@ -69,12 +69,12 @@ class Product extends Component {
 
     requestDocuments = async () => {
       var query = JSON.stringify(
-        "SELECT LinhasCompras.DataDoc as Date, LinhasCompras.PrecoLiquido as Value, 'Compras' as Type " + 
-        "FROM LinhasCompras INNER JOIN CabecCompras ON LinhasCompras.IdCabecCompras = CabecCompras.Id INNER JOIN DocumentosCompra ON DocumentosCompra.Documento = CabecCompras.TipoDoc " + 
-        "WHERE DocumentosCompra.Documento IN ('VFA', 'VNC') AND LinhasCompras.Artigo = '" + this.state.id + "' " + 
+        "SELECT LinhasCompras.DataDoc as Date, LinhasCompras.PrecoLiquido as Value, 'Compras' as Type " +
+        "FROM LinhasCompras INNER JOIN CabecCompras ON LinhasCompras.IdCabecCompras = CabecCompras.Id INNER JOIN DocumentosCompra ON DocumentosCompra.Documento = CabecCompras.TipoDoc " +
+        "WHERE DocumentosCompra.Documento IN ('VFA', 'VNC') AND LinhasCompras.Artigo = '" + this.state.id + "' " +
         "UNION " +
-        "SELECT LinhasDoc.Data as Data, LinhasDoc.PrecoLiquido as Value, 'Vendas' as Type " + 
-        "FROM LinhasDoc INNER JOIN CabecDoc ON LinhasDoc.IdCabecDoc = CabecDoc.Id INNER JOIN DocumentosVenda ON CabecDoc.TipoDoc = DocumentosVenda.Documento " + 
+        "SELECT LinhasDoc.Data as Data, LinhasDoc.PrecoLiquido as Value, 'Vendas' as Type " +
+        "FROM LinhasDoc INNER JOIN CabecDoc ON LinhasDoc.IdCabecDoc = CabecDoc.Id INNER JOIN DocumentosVenda ON CabecDoc.TipoDoc = DocumentosVenda.Documento " +
         "WHERE CabecDoc.TipoDoc IN ('FA','FS','FR','VD', 'NC') AND LinhasDoc.Artigo = '" + this.state.id + "'"
       );
 
@@ -95,7 +95,7 @@ class Product extends Component {
           let docs = this.processDocs(res.data.DataSet.Table);
           this.setState( {
             sales: docs.sales,
-            purchases: docs.purchases, 
+            purchases: docs.purchases,
             loadingPrimaveraDocuments: false
           } );
         }
@@ -137,7 +137,7 @@ class Product extends Component {
             purchases[2018] += line.Value;
         }
       }
-      
+
       sales[2016] = parseFloat(sales[2016].toFixed(2));
       sales[2017] = parseFloat(sales[2017].toFixed(2));
       sales[2018] = parseFloat(sales[2018].toFixed(2));
@@ -148,7 +148,7 @@ class Product extends Component {
 
       return { sales: sales, purchases: purchases };
     }
-    
+
 
     loading() {
         return this.props.token === null || this.state.loadingPrimaveraDetails || this.state.loadingPrimaveraDocuments;
@@ -157,15 +157,14 @@ class Product extends Component {
     render() {
         if( this.loading() )
             return <Loading/>
-
         return (
-          <div className="container">
+          <div id="productPage" className="container">
             <div className="card">
                 <div className="card-header">
                     <strong>Product: </strong>{this.state.info.Descricao}
                 </div>
                 <div className="card-body">
-                    <div className="d-flex flex-row justify-content-around">
+                    <div className="d-flex flex-row justify-content-around product-infos">
                         <span className="card w-25">
                             <div className="card-header">ID</div>
                             <div className="card-body">{this.state.info.Artigo}</div>
@@ -241,7 +240,7 @@ class Product extends Component {
                                 }
                               ]
                             }
-                          ] 
+                          ]
                         }
                         margin={{
                             "top": 50,

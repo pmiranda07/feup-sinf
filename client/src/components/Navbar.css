@@ -15,9 +15,20 @@
     color: green;
 }
 
+#navbar a.logo{
+    padding: 0;
+
+}
+
 #navbar a.logo img{
-    height: 28px;
-    padding-bottom: 2px;
+    height: 40px;
+    padding-bottom: 4px;
+}
+
+@media (max-width: 991px) {
+    #navbar a.logo img{
+        display: none;
+    }
 }
 
 .navbar-toggler{
@@ -30,8 +41,8 @@
 
 #navbarNav li:last-child {
     position: fixed;
-    right: 10px;
-    top: 10px;
+    right: 20px;
+    top: 9px;
 }
 
 #navbarNav li:last-child button {
