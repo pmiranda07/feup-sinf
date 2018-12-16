@@ -20,6 +20,9 @@
     padding-bottom: 2px;
 }
 
+.navbar-toggler{
+    background-color: white;
+}
 
 .alert-top{
     position: fixed;
