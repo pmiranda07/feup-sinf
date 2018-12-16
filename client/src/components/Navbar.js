@@ -77,7 +77,7 @@ class Navbar extends Component {
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <NavLink activeClassName="active" className="nav-link logo" exact to="/">
-                            <img src={process.env.PUBLIC_URL + 'logo.png'} alt="logo" />
+                            <img src={'/logo.png'} alt="logo" />
                         </NavLink>
                     </li>
                     <li className="nav-item">
