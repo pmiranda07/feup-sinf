@@ -20,19 +20,19 @@ class Sales extends Component {
       }],
       bar_vars : [],
       loadingPrimavera: true
-    };  
+    };
   }
 
   componentDidMount() {
     this.callAPI()
         .then((res) => this.handleResponse(res))
         .catch(err => console.log(err));
-        
+
     if (this.props.token !== null) {
       this.callPrimavera()
         .then((res) => this.handlePrimaveraResponse(res))
         .catch(err => console.log(err));
-    }    
+    }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -49,7 +49,7 @@ class Sales extends Component {
   };
 
   handleResponse(res) {
-    this.setState( { 
+    this.setState( {
       sales: this.parseSalesInvoices(res.data.sales)
     } );
   };
@@ -77,8 +77,8 @@ class Sales extends Component {
       let month = date[1];
       let totalMerc = res.data.DataSet.Table[i].TotalMerc
       if(!(year in aux)){
-        aux[year] = { 
-          [month]: totalMerc 
+        aux[year] = {
+          [month]: totalMerc
         };
       }
       else if(!(month in aux[year])){
@@ -88,7 +88,7 @@ class Sales extends Component {
         aux[year][month] += totalMerc;
       }
     }
-    this.setState({ 
+    this.setState({
       salesTotal: aux,
       loadingPrimavera: false
     });
@@ -133,21 +133,22 @@ class Sales extends Component {
   }
 
   render() {
-    if (this.loading()) 
+    if (this.loading())
       return <Loading/>
 
     return (
       <div id="salesPage" className="container">
+        <h1>Sales</h1>
         <div className="card">
           <h5 className="card-header text-center">Uploaded SAF-T Sales List</h5>
           <div className="card-body">
             <SalesTable data={this.state.sales} history={this.props.history}/>
-          </div>                                                                                                                                                                                
+          </div>
         </div>
-        <div className="card">                                        
+        <div className="card">
           <h5 className="card-header text-center"> Net earnings per year</h5>
             <div className="card-body" style={{ height: 400 }}>
-              <ResponsiveBar                                                                                                                                                                                                                                                                                                                                                                                                                                      
+              <ResponsiveBar
               data={this.state.bar_vars}
               keys={[
                 "01",

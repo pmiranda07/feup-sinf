@@ -1,3 +1,11 @@
+:root {
+    --green-darker: #094329;
+    --green-medium: #467D32;
+    --green-brighter: #74B959;
+
+}
+
+
 #root > .container{
     margin-top: 80px;
 }
@@ -5,6 +13,25 @@
 #productsPage input {
     margin-bottom: 1em;
 }
+
+
+#productsPage .card-header{
+    color: white;
+}
+
+#productsPage .card:nth-child(2) > .card-header{
+    background-color: var(--green-darker);
+}
+
+#productsPage .card:nth-child(3) > .card-header{
+    background-color: var(--green-medium);
+}
+
+#productsPage .card:nth-child(4) > .card-header{
+    background-color: var(--green-brighter);
+}
+
+
 
 ul.pagination.react-bootstrap-table-page-btns-ul {
     float: right !important;

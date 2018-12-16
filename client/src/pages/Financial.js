@@ -61,6 +61,7 @@ class Financial extends Component {
 
     return (
       <div id="financialPage" className="container">
+        <h1>Financial</h1>
         <div className="card">
           <div className="card-header">
             <div className="d-flex flex-row justify-content-between">
