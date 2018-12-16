@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import {DropdownButton} from 'react';
 import axios from 'axios';
 import './Navbar.css';
 
@@ -32,8 +31,10 @@ class Navbar extends Component {
     }
 
     onChange(e) {
-        this.state.files = e.target.files;
-        document.getElementById("uploadCustomFile").click();
+        this.setState({files: e.target.files}, function () {
+            document.getElementById("uploadCustomFile").click();
+        });
+
     }
 
     fileUpload(files){
@@ -76,7 +77,7 @@ class Navbar extends Component {
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <NavLink activeClassName="active" className="nav-link logo" exact to="/">
-                            <img src={process.env.PUBLIC_URL + 'logo.png'} />
+                            <img src={process.env.PUBLIC_URL + 'logo.png'} alt="logo" />
                         </NavLink>
                     </li>
                     <li className="nav-item">

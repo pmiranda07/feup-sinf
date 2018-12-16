@@ -40,8 +40,7 @@ class Purchases extends Component {
   }
 
   callAPI = async () => {
-
-    const response = await fetch('/purchases');
+    return axios.get('/purchases');
   };
   handleResponse(res) {
       this.setState( {
@@ -101,7 +100,7 @@ class Purchases extends Component {
         text: 'Document',
         sort: true
     },{
-        
+
           dataField: 'NumDoc',
           text: 'IdDoc',
           sort: true,
