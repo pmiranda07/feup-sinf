@@ -49,9 +49,6 @@ export default class PurchasesGraph extends Component {
           }
           ret.push(obj)
         }
-        // purchasesPerYear.sort(function(a, b) {
-        //     return a.value - b.value;
-        // }); 
         this.state = {
             purchasespY: ret
         };
