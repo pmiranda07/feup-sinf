@@ -32,7 +32,7 @@ class Navbar extends Component {
     }
 
     onChange(e) {
-        this.setState( { files: e.target.files } )
+        this.state.files = e.target.files;
         document.getElementById("uploadCustomFile").click();
     }
 
@@ -52,17 +52,15 @@ class Navbar extends Component {
         this.setState({uploadError: false});
     }
 
-    testFunction(e) {
-        e.preventDefault();
+    saftFunction() {
         document.getElementById("customFile").click();
-
     }
 
   render() {
     let alert_error = this.state.uploadError ?
-        (<div class="alert alert-danger alert-top" role="alert">
+        (<div className="alert alert-danger alert-top" role="alert">
             <strong>Upload Error!</strong> Check your SAF-T file.
-            <button type="button" class="close" aria-label="Close" onClick={this.resetUploadError.bind(this)}>
+            <button type="button" className="close" aria-label="Close" onClick={this.resetUploadError.bind(this)}>
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>)
@@ -97,7 +95,7 @@ class Navbar extends Component {
                         <NavLink activeClassName="active" className="nav-link" to="/purchases">Purchases</NavLink>
                     </li>
                     <li className="nav-item">
-                        <button className="btn btn-primary" type="button" onClick={this.testFunction}>Try</button>
+                        <button className="btn" type="button" onClick={this.saftFunction}>Upload SAF-T</button>
                     </li>
                 </ul>
             </div>

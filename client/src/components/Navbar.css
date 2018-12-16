@@ -28,6 +28,22 @@
     display: none;
 }
 
+#navbarNav li:last-child {
+    position: fixed;
+    right: 10px;
+}
+
+#navbarNav li:last-child button {
+    color: white;
+    background-color: green;
+}
+
+#navbarNav li:last-child button:hover {
+    color: white;
+    background-color: black;
+    border: 1px solid green;
+}
+
 .alert-top{
     position: fixed;
     top: 10px;
