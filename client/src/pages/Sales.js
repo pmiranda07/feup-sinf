@@ -4,6 +4,7 @@ import axios from 'axios';
 import Loading from '../components/Loading';
 import './Pages.css';
 import { ResponsiveBar } from '@nivo/bar'
+import Select from 'react-select';
 
 
 class Sales extends Component {
@@ -11,6 +12,9 @@ class Sales extends Component {
     super(props);
     this.state = {
       message: 'Sales: Please upload a SAF-T file',
+      sales_ytd : 0,
+      select_options: [],
+      selected_option: null,
       salesTotal : {},
       sales: [{
         id: null,
@@ -51,7 +55,7 @@ class Sales extends Component {
   handleResponse(res) {
     this.setState( { 
       sales: this.parseSalesInvoices(res.data.sales)
-    } );
+    });
   };
 
   callPrimavera = async () => {
@@ -115,18 +119,45 @@ class Sales extends Component {
 
   parseSalesTotal(){
     let ret = []
+    let options = [];
     for (let index in this.state.salesTotal){
       let obj = {};
       obj["year"] = index;
+      options.push({
+        value: index, label:index
+      });
       for(let key in this.state.salesTotal[index]){
         obj[key] = this.state.salesTotal[index][key];
       }
       ret.push(obj)
     }
     this.setState({
-      bar_vars: ret
+      bar_vars: ret,
+      select_options: options,
+      selected_option: options[0]
+    }, () => {
+      this.update_sum()
     })
   }
+
+  update_sum(){
+    let sum = 0;
+    for(let i in this.state.salesTotal[this.state.selected_option['value']]){
+      sum+= this.state.salesTotal[this.state.selected_option['value']][i]
+    }
+    this.setState({
+      sales_ytd: sum
+    })
+  }
+
+  handleChange(selectedOption){
+    this.setState({
+      selected_option: selectedOption
+    },() => {
+      this.update_sum()
+    })
+  }
+
 
   loading(){
     return this.state.loadingPrimavera || this.props.token === null
@@ -136,14 +167,19 @@ class Sales extends Component {
     if (this.loading()) 
       return <Loading/>
 
-    return (
+    else return (
       <div id="salesPage" className="container">
-        <div className="card">
-          <h5 className="card-header text-center">Uploaded SAF-T Sales List</h5>
-          <div className="card-body">
-            <SalesTable data={this.state.sales} history={this.props.history}/>
-          </div>                                                                                                                                                                                
+      <div className="card">
+        <div className="d-flex"> 
+          <Select
+            className="w-25"
+            value={this.state.selected_option}
+            onChange={this.handleChange.bind(this)}
+            options={this.state.select_options}
+          />
+          <h5 className="w-75" style={{textAlign:'center', verticalAlign:'center'}}>{this.state.sales_ytd}€</h5>
         </div>
+      </div>
         <div className="card">                                        
           <h5 className="card-header text-center"> Net earnings per year</h5>
             <div className="card-body" style={{ height: 400 }}>
@@ -259,7 +295,12 @@ class Sales extends Component {
             />
           </div>
         </div>
-
+        <div className="card">
+          <h5 className="card-header text-center">Uploaded SAF-T Sales List</h5>
+          <div className="card-body">
+            <SalesTable data={this.state.sales} history={this.props.history}/>
+          </div>                                                                                                                                                                                
+        </div>
       </div>
     );
   }
