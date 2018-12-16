@@ -131,10 +131,11 @@ class Sales extends Component {
       }
       ret.push(obj)
     }
+    let last = options.length -1;
     this.setState({
       bar_vars: ret,
       select_options: options,
-      selected_option: options[0]
+      selected_option: options[last]
     }, () => {
       this.update_sum()
     })

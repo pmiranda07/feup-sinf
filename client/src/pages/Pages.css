@@ -94,24 +94,49 @@ h1 {
     height: 400px;
 }
 
-
-
-
-
-
-
+/*
+################################################################################
+                              Sales Page
+################################################################################
+*/
 
 #salesPage .react-bootstrap-table td:first-child {
     cursor: pointer;
 }
 
+#salesPage .card:nth-child(1){
+    background-color: black;
+}
+
+#salesPage .card:nth-child(1) h5{
+    color: white;
+    margin: auto;
+}
+
+#salesPage .card:nth-child(2) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+}
+
+#salesPage .card:nth-child(3) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+
+
+/*
+################################################################################
+                              Sale Page
+################################################################################
+*/
+.small-gap {
+    width: 48% !important;
+}
+
 #salePage .react-bootstrap-table td:nth-child(1),
 #salePage .react-bootstrap-table td:nth-child(2) {
     cursor: pointer;
-}
-
-.small-gap {
-    width: 48% !important;
 }
 
 #financialPage .details {
