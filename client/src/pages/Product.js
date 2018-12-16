@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ReactLoading from 'react-loading';
 import { ResponsiveLine } from 'nivo';
+
+import Loading from '../components/Loading';
+import './Pages.css'
 
 class Product extends Component {
     constructor(props) {
@@ -12,13 +14,14 @@ class Product extends Component {
             info: { },
             loadingPrimaveraDetails: true,
             loadingPrimaveraDocuments: true,
-            sales: {}
+            sales: {},
+            purchases: {}
         }
     }
 
 
     componentDidMount() {
-        if (this.props.token !== "") {
+        if (this.props.token !== null) {
             this.requestProductDetails()
               .then((res) => this.handleDetailsResponse(res))
               .catch(err => console.log(err));
@@ -30,7 +33,7 @@ class Product extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         // Check if token was updated
-        if( prevProps.token === "" && this.props.token !== "" ) {
+        if( prevProps.token === null && this.props.token !== null ) {
           this.requestProductDetails()
             .then((res) => this.handleDetailsResponse(res))
             .catch(err => console.log(err));
@@ -66,8 +69,14 @@ class Product extends Component {
 
     requestDocuments = async () => {
       var query = JSON.stringify(
-          "SELECT * FROM LinhasDoc INNER JOIN CabecDoc ON LinhasDoc.IdCabecDoc = CabecDoc.Id INNER JOIN DocumentosVenda ON CabecDoc.TipoDoc = DocumentosVenda.Documento " + 
-          "WHERE CabecDoc.TipoDoc IN ('FA','FS','FR','VD') AND LinhasDoc.Artigo = '" + this.state.id + "'");
+        "SELECT LinhasCompras.DataDoc as Date, LinhasCompras.PrecoLiquido as Value, 'Compras' as Type " + 
+        "FROM LinhasCompras INNER JOIN CabecCompras ON LinhasCompras.IdCabecCompras = CabecCompras.Id INNER JOIN DocumentosCompra ON DocumentosCompra.Documento = CabecCompras.TipoDoc " + 
+        "WHERE DocumentosCompra.Documento IN ('VFA', 'VNC') AND LinhasCompras.Artigo = '" + this.state.id + "' " + 
+        "UNION " +
+        "SELECT LinhasDoc.Data as Data, LinhasDoc.PrecoLiquido as Value, 'Vendas' as Type " + 
+        "FROM LinhasDoc INNER JOIN CabecDoc ON LinhasDoc.IdCabecDoc = CabecDoc.Id INNER JOIN DocumentosVenda ON CabecDoc.TipoDoc = DocumentosVenda.Documento " + 
+        "WHERE CabecDoc.TipoDoc IN ('FA','FS','FR','VD', 'NC') AND LinhasDoc.Artigo = '" + this.state.id + "'"
+      );
 
       return axios({
         method: 'post',
@@ -83,8 +92,10 @@ class Product extends Component {
 
     handleDocumentsResponse(res) {
         if ( res.status === 200 && res.data.DataSet.Table.length ) {
+          let docs = this.processDocs(res.data.DataSet.Table);
           this.setState( {
-            sales: this.processDocs(res.data.DataSet.Table), 
+            sales: docs.sales,
+            purchases: docs.purchases, 
             loadingPrimaveraDocuments: false
           } );
         }
@@ -98,49 +109,57 @@ class Product extends Component {
         2018: 0
       };
 
+      let purchases = {
+        2016: 0,
+        2017: 0,
+        2018: 0
+      };
+
       for(let i = 0; i < docs.length; i++) {
         let line = docs[i];
-        if(line.Data < "2016-01-01T00:00:00")
-          continue;
-        if(line.Data < "2017-01-01T00:00:00")
-          sales[2016] += line.PrecoLiquido;
-        else if(line.Data < "2018-01-01T00:00:00")
-          sales[2017] += line.PrecoLiquido;
-        else if(line.Data < "2019-01-01T00:00:00")
-          sales[2018] += line.PrecoLiquido;
+        if(line.Type === 'Vendas') {
+          if(line.Date < "2016-01-01T00:00:00")
+            continue;
+          if(line.Date < "2017-01-01T00:00:00")
+            sales[2016] += line.Value;
+          else if(line.Date < "2018-01-01T00:00:00")
+            sales[2017] += line.Value;
+          else if(line.Date < "2019-01-01T00:00:00")
+            sales[2018] += line.Value;
+        } else if (line.Type === 'Compras') {
+          if(line.Date < "2016-01-01T00:00:00")
+            continue;
+          if(line.Date < "2017-01-01T00:00:00")
+            purchases[2016] += line.Value;
+          else if(line.Date < "2018-01-01T00:00:00")
+            purchases[2017] += line.Value;
+          else if(line.Date < "2019-01-01T00:00:00")
+            purchases[2018] += line.Value;
+        }
       }
+      
+      sales[2016] = parseFloat(sales[2016].toFixed(2));
+      sales[2017] = parseFloat(sales[2017].toFixed(2));
+      sales[2018] = parseFloat(sales[2018].toFixed(2));
 
-      return sales;
+      purchases[2016] = -parseFloat(purchases[2016].toFixed(2));
+      purchases[2017] = -parseFloat(purchases[2017].toFixed(2));
+      purchases[2018] = -parseFloat(purchases[2018].toFixed(2));
+
+      return { sales: sales, purchases: purchases };
     }
     
 
     loading() {
-        return this.props.token === "" || this.state.loadingPrimaveraDetails || this.state.loadingPrimaveraDocuments;
+        return this.props.token === null || this.state.loadingPrimaveraDetails || this.state.loadingPrimaveraDocuments;
     }
-
-
-    renderLoading() {
-        return (
-          <div style={{
-            width: '8%',
-            height: '8%',
-            position: "absolute",
-            top: '50%',
-            left: '50%',
-            marginLeft: '-4%',
-            marginTop: '-4%',
-          }}>
-            <ReactLoading type={"spinningBubbles"} color={"#00ffbb"} height={'100%'} width={'100%'} />
-          </div>
-        );
-    }
-
 
     render() {
         if( this.loading() )
-            return this.renderLoading();
+            return <Loading/>
 
         return (
+          <div className="container">
             <div className="card">
                 <div className="card-header">
                     <strong>Product: </strong>{this.state.info.Descricao}
@@ -174,15 +193,15 @@ class Product extends Component {
                               "data": [
                                 {
                                   "x": "2016",
-                                  "y": 0
+                                  "y": this.state.purchases[2016]
                                 },
                                 {
                                   "x": "2017",
-                                  "y": 0
+                                  "y": this.state.purchases[2017]
                                 },
                                 {
                                   "x": "2018",
-                                  "y": 0
+                                  "y": this.state.purchases[2018]
                                 }
                               ]
                             },
@@ -210,15 +229,15 @@ class Product extends Component {
                               "data": [
                                 {
                                   "x": "2016",
-                                  "y": 0
+                                  "y": this.state.sales[2016] - this.state.purchases[2016]
                                 },
                                 {
                                   "x": "2017",
-                                  "y": 0
+                                  "y": this.state.sales[2017] - this.state.purchases[2017]
                                 },
                                 {
                                   "x": "2018",
-                                  "y": 0
+                                  "y": this.state.sales[2018] - this.state.purchases[2018]
                                 }
                               ]
                             }
@@ -299,6 +318,7 @@ class Product extends Component {
                     </div>
                 </div>
             </div>
+          </div>
         );
     }
 

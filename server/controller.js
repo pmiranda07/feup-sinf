@@ -1,18 +1,24 @@
 const Database = require('./data');
+const BalanceSheet = require('./balanceSheet');
 
 module.exports = {
     // These functions return all the data needed to build its respective page
     
-    getHome(req, res) {
-        res.send({ message: 'Hello Home' });
-    },
-    
     getOverview(req, res) {
-        res.send({ message: 'Hello Overview' });
+        res.send({ 
+            topSelling: module.exports.getTopSellingProducts()
+        });
     },
 
     getFinancial(req, res) {
-        res.send({ message: 'Hello Financial' });
+        let month = parseInt(req.query.month);
+        res.send({ 
+            cash: BalanceSheet.getCash(month),
+            ebitda: BalanceSheet.getEBITDA(month),
+            bank: BalanceSheet.getBank(month),
+            ap: BalanceSheet.getAP(month),
+            ar: BalanceSheet.getAR(month)
+        });
     },
 
     getSales(req, res) {
@@ -70,7 +76,7 @@ module.exports = {
             if ( sales[i].InvoiceNo == req.params.id ) {
                 sale = sales[i]
                 res.status(200).send( { info: sale } );
-                break;
+                return;
             }
         }
         res.status(404).send();

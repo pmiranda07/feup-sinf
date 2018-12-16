@@ -1,26 +1,31 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { Component, Fragment } from 'react';
+import { Route, Switch } from "react-router-dom";
 import './App.css';
 import axios from 'axios';
 import qs from 'qs';
 
-import Home from './pages/Home';
 import Overview from './pages/Overview';
 import Financial from './pages/Financial';
 import Products from './pages/Products';
-import Purchases from './pages/Products';
+import Purchases from './pages/Purchases';
 import Sales from './pages/Sales';
 import Sale from './pages/Sale'
 
 import Product from './pages/Product';
+import LoginForm from './components/LoginForm';
+import Navbar from './components/Navbar';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      token: ""
+      token: null,
+      gettingToken: false,
+      loginError: null
     };
+
+    this.getToken = this.getToken.bind(this);
   }
 
   componentWillMount() {
@@ -31,52 +36,66 @@ class App extends Component {
       cachedToken = JSON.parse(cachedToken);
       cachedDate = Date.parse(cachedDate);
 
-      // Get token if it has been more than 18 minutes
+      // Get if token has less than 18 minutes
       if(new Date() - cachedDate < 18 * 60000) {
         this.setState({ token: cachedToken});
         return;
       }
     }
+  }
 
+  getToken(username, password, company) {
+    this.setState({ gettingToken: true });
     axios({
-        method: 'POST',
-        url: "http://localhost:2018/WebApi/token",
-        data: qs.stringify({
-        username: "FEUP",
-        password: "qualquer1",
-        company: "DEMO",
-        instance: "Default",
-        grant_type: "password",
-        line: "Professional"
-        }),
-        headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-        }
+      method: 'POST',
+      url: "http://localhost:2018/WebApi/token",
+      data: qs.stringify({
+      username: username,
+      password: password,
+      company: company,
+      instance: "Default",
+      grant_type: "password",
+      line: "Professional"
+      }),
+      headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+      }
     })
     .then((res) => {
         if(res.status === 200) {
-          this.setState({ token: res.data.access_token});
+          this.setState({ token: res.data.access_token, gettingToken: false, loginError: null });
           localStorage.setItem('token', JSON.stringify(res.data.access_token));
           localStorage.setItem('date',new Date());
         }
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      this.setState( { gettingToken: false, loginError: err.response } )
+    });
   }
 
   render() {
-    return (
-      <Router>
+    if(this.state.token === null) {
+      return ( 
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/overview" exact component={Overview} />
-          <Route path="/financial" exact component={Financial} />
+          <Route path='*' render={() => <LoginForm getToken={this.getToken} gettingToken={this.state.gettingToken} loginError={this.state.loginError}/>} />
+        </Switch>
+      )
+    }
+
+    return (
+      <Fragment>
+        <Navbar/>
+        <Switch>
+          <Route path="/" exact render={(props)=><Overview token={this.state.token} {...props}/>} />
+          <Route path="/financial" exact render={(props)=><Financial token={this.state.token} {...props}/>} />
           <Route path="/products" exact render={(props)=><Products token={this.state.token} {...props}/>}/>
-          <Route path="/purchases" exact component={Purchases} />
-          <Route path="/sales" exact component={Sales} />
-          <Route path='/sales/:id*' component={Sale} />
+          <Route path="/purchases" exact render={(props)=><Purchases token={this.state.token} {...props}/>}/>
+          <Route path="/sales" exact render={(props)=><Sales token={this.state.token} {...props}/>} />
+          <Route path='/sales/:id*' render={(props)=><Sale token={this.state.token} {...props}/>} />
           <Route path="/products/:id" render={(props)=><Product token={this.state.token} {...props}/>}/>
         </Switch>
-      </Router>
+      </Fragment>
     );
   }
 }

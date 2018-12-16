@@ -1,33 +1,57 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
+import TopProducts from '../components/TopProducts';
+import Loading from '../components/Loading';
+import './Pages.css';
+
 
 class Overview extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      message: 'Hello'
+      topSelling: {},
+      loadingAPI: true  
     };
   }
 
   componentDidMount() {
     this.callAPI()
-        .then(body => this.setState({ message: body.message }))
+        .then((res) => this.handleResponse(res))
         .catch(err => console.log(err));
   }
 
   callAPI = async () => {
-    const response = await fetch('/overview');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
+    return axios.get('/overview');
   };
 
+  handleResponse(res) {
+    this.setState( { 
+      topSelling: res.data.topSelling,
+      loadingAPI: false
+    } );
+  };
+
+  loading() {
+    return this.state.loadingAPI;
+  }
+
   render() {
+    if( this.loading() )
+      return <Loading/>
+
     return (
-      <div>
-        { this.state.message }
+      <div id="overviewPage" className="container">
+        <h1>Overview</h1>
+        
+        <div className="card">
+          <h5 className="card-header text-center">Most Sold Products</h5>
+          <div className="card-body" style={{height: 500}}>
+            <TopProducts topSelling={this.state.topSelling}/>
+          </div>
+        </div>
+
       </div>
     );
   }
