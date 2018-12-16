@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import './App.css';
 import axios from 'axios';
 import qs from 'qs';
@@ -28,9 +28,17 @@ class App extends Component {
     };
 
     this.getToken = this.getToken.bind(this);
+
+    this.props.history.listen((location, action) => {
+      this.verifyToken();
+    });
   }
 
   componentWillMount() {
+    this.verifyToken();
+  }
+
+  verifyToken() {
     let cachedToken = localStorage.getItem('token');
     let cachedDate = localStorage.getItem('date');
 
@@ -42,7 +50,9 @@ class App extends Component {
       if(new Date() - cachedDate < 18 * 60000) {
         this.setState({ token: cachedToken});
         return;
-      } 
+      }
+      
+      this.setState({ token: null });
 
       let username = localStorage.getItem('username');
       let password = localStorage.getItem('password');
@@ -57,7 +67,6 @@ class App extends Component {
         this.getToken(username, password, company);
         return;
       }
-
     }
   }
 
@@ -131,4 +140,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
