@@ -80,6 +80,19 @@ h1 {
     color: white;
 }
 
+.prod-overview > .card-header{
+    text-align: center;
+    color: white;
+    background: green;
+    font-size: 18px;
+}
+
+.prod-overview > .card-body > div{
+    align-items: center;
+    margin-left: auto;
+    width: 108%;
+    height: 400px;
+}
 
 
 
