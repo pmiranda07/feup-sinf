@@ -3,12 +3,8 @@ import SalesTable from '../components/SalesTable';
 import axios from 'axios';
 import Loading from '../components/Loading';
 import './Pages.css';
-<<<<<<< HEAD
 import { ResponsiveBar } from '@nivo/bar'
 import Select from 'react-select';
-=======
-import { ResponsiveBar } from 'nivo'
->>>>>>> 7ef2f46252615ce196fe8c0b96dd014cec40a6ec
 
 
 class Sales extends Component {
@@ -174,7 +170,7 @@ class Sales extends Component {
     else return (
       <div id="salesPage" className="container">
       <div className="card">
-        <div className="d-flex"> 
+        <div className="d-flex">
           <Select
             className="w-25"
             value={this.state.selected_option}
@@ -184,7 +180,7 @@ class Sales extends Component {
           <h5 className="w-75" style={{textAlign:'center', verticalAlign:'center'}}>{this.state.sales_ytd}€</h5>
         </div>
       </div>
-        <div className="card">                                        
+        <div className="card">
           <h5 className="card-header text-center"> Net earnings per year</h5>
             <div className="card-body" style={{ height: 400 }}>
               <ResponsiveBar
@@ -303,7 +299,7 @@ class Sales extends Component {
           <h5 className="card-header text-center">Uploaded SAF-T Sales List</h5>
           <div className="card-body">
             <SalesTable data={this.state.sales} history={this.props.history}/>
-          </div>                                                                                                                                                                                
+          </div>
         </div>
       </div>
     );
