@@ -2,6 +2,7 @@ var parser = require('xml2json');
 var fs = require("fs");
 var read = require('read-file');
 var write = require('write');
+var balanceSheet = require('./balanceSheet.js');
 
 module.exports = {
     /* 
@@ -18,11 +19,12 @@ module.exports = {
             try {
                 let jsonString = fs.readFileSync('storage/saft.json');
                 module.exports.data = JSON.parse(jsonString);
-                module.exports.dataChanged = false;
+                balanceSheet.updateBalance(module.exports.data);
                 console.log("Database loaded");
                 return true;
             } catch (error) {
-                console.log("Error loading database");
+                //console.log("Error loading database");
+                console.log(error);
                 return false;
             }
         }
