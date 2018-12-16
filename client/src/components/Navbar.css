@@ -15,9 +15,16 @@
     color: green;
 }
 
+#navbar a.logo{
+    padding: 0;
+
+}
+
+
 #navbar a.logo img{
-    height: 28px;
+    height: 40px;
     padding-bottom: 4px;
+
 }
 
 .navbar-toggler{
