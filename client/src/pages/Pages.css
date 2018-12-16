@@ -60,10 +60,27 @@ h1 {
 ################################################################################
 */
 
-#soloProductPage{
-    background-color: red;
-
+#productPage > .card > .card-header{
+    background-color: black;
+    color: white;
 }
+
+#productPage .product-infos span:nth-child(1) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+}
+
+#productPage .product-infos span:nth-child(2) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#productPage .product-infos span:nth-child(3) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+
 
 
 

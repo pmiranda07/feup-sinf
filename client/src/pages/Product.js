@@ -158,13 +158,13 @@ class Product extends Component {
         if( this.loading() )
             return <Loading/>
         return (
-          <div className="container soloProductPage">
+          <div id="productPage" className="container">
             <div className="card">
                 <div className="card-header">
                     <strong>Product: </strong>{this.state.info.Descricao}
                 </div>
                 <div className="card-body">
-                    <div className="d-flex flex-row justify-content-around">
+                    <div className="d-flex flex-row justify-content-around product-infos">
                         <span className="card w-25">
                             <div className="card-header">ID</div>
                             <div className="card-body">{this.state.info.Artigo}</div>

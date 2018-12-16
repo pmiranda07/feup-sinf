@@ -90,7 +90,7 @@ class Products extends Component {
     return (
       <div id="productsPage" className="container">
         <h1>Products</h1>
-        
+
         <div className="card">
           <h5 className="card-header text-center">Product List</h5>
           <div className="card-body">
