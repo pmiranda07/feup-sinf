@@ -11,12 +11,13 @@ module.exports = {
 
 var accountIDs = [11,12,21,22,24,31,32,61,62,63,71,72,9];
 
-var balance = resetBalance();
+var balance;
+resetBalance();
 
 var saft = null;
 
 function resetBalance() {
-    let initialBalance = [];
+    balance = [];
 
     for(let month = 0; month < 12; month++) {
         let month_balance = {};
@@ -26,21 +27,37 @@ function resetBalance() {
             month_balance[id] = { debit: 0.0, credit: 0.0 };
         }
 
-        initialBalance.push(month_balance);
+        balance.push(month_balance);
     }
-    
-    return initialBalance;
 }
 
-//console.log(balance);
+function accumulateBalance() {
+    for(let month = 1; month < balance.length; month++) {
+        let month_balance = balance[month];
+        let past_month_balance = balance[month - 1];
+        for(let account_index = 0; account_index < accountIDs.length; account_index++) {
+            let account_id = accountIDs[account_index];
+            month_balance[account_id].credit += past_month_balance[account_id].credit;
+            month_balance[account_id].debit += past_month_balance[account_id].debit;
+        }
+        balance[month] = month_balance;
+    }
+}
 
 function updateBalance(data) {
+    resetBalance();
+    //console.log(balance);
+
     saft = data;
     let generalLedgerEntries = saft.GeneralLedgerEntries.Journal;
 
     for (entry in generalLedgerEntries) {
         handleEntry(generalLedgerEntries[entry]);
     }
+
+    //console.log(balance);
+
+    accumulateBalance();
 
     //console.log(balance);
 }

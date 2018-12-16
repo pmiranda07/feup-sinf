@@ -3,7 +3,7 @@ import SalesTable from '../components/SalesTable';
 import axios from 'axios';
 import Loading from '../components/Loading';
 import './Pages.css';
-import { ResponsiveBar } from '@nivo/bar'
+import { ResponsiveBar } from 'nivo'
 
 
 class Sales extends Component {

@@ -7,16 +7,17 @@
     <TaxAccountingBasis>I</TaxAccountingBasis>
     <CompanyName>Empresa de demonstração (PRIVA)</CompanyName>
     <CompanyAddress>
-      <AddressDetail />
-      <City />
-      <PostalCode />
+      <StreetName>Rua das Flores</StreetName>
+      <AddressDetail>Rua das Flores</AddressDetail>
+      <City>Porto</City>
+      <PostalCode>4345-123</PostalCode>
       <Country>PT</Country>
     </CompanyAddress>
     <FiscalYear>2018</FiscalYear>
     <StartDate>2018-01-01</StartDate>
     <EndDate>2018-12-31</EndDate>
     <CurrencyCode>EUR</CurrencyCode>
-    <DateCreated>2018-11-30</DateCreated>
+    <DateCreated>2018-12-12</DateCreated>
     <TaxEntity>Sede</TaxEntity>
     <ProductCompanyTaxID>503140600</ProductCompanyTaxID>
     <SoftwareCertificateNumber>0030</SoftwareCertificateNumber>
@@ -24,6 +25,930 @@
     <ProductVersion>10.0002.1014</ProductVersion>
   </Header>
   <MasterFiles>
+    <GeneralLedgerAccounts>
+      <TaxonomyReference>M</TaxonomyReference>
+      <Account>
+        <AccountID>11</AccountID>
+        <AccountDescription>Caixa</AccountDescription>
+        <OpeningDebitBalance>8823.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>9960.37</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>111</AccountID>
+        <AccountDescription>Caixa Fixo</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>8842.92</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>9402.92</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>11</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>112</AccountID>
+        <AccountDescription>Caixa Recebimentos</AccountDescription>
+        <OpeningDebitBalance>17665.92</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>19363.29</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>11</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>12</AccountID>
+        <AccountDescription>Depósitos à Ordem</AccountDescription>
+        <OpeningDebitBalance>8592.92</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>7592.92</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>1201</AccountID>
+        <AccountDescription>Banco.......</AccountDescription>
+        <OpeningDebitBalance>8592.92</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>7592.92</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>12</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>21</AccountID>
+        <AccountDescription>Clientes</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>9710.12</OpeningCreditBalance>
+        <ClosingDebitBalance>15946.45</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>211</AccountID>
+        <AccountDescription>Clientes - c/c</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>2050.89</OpeningCreditBalance>
+        <ClosingDebitBalance>23605.68</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>21</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2111</AccountID>
+        <AccountDescription>Clientes - c/c - M. Nacional</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>3384.43</OpeningCreditBalance>
+        <ClosingDebitBalance>9256.14</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>211</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>21111001</AccountID>
+        <AccountDescription>Sofrio, Lda</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>3384.43</OpeningCreditBalance>
+        <ClosingDebitBalance>1549.60</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2111</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>21111003</AccountID>
+        <AccountDescription>José Maria Fernandes &amp; Filhos, Lda.</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>2511.98</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2111</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>21113001</AccountID>
+        <AccountDescription>Inforshow, Informática Comunicação</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1781.70</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2111</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>21113006</AccountID>
+        <AccountDescription>Maria José da Silva</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3412.86</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2111</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>2112</AccountID>
+        <AccountDescription>Clientes - c/c - M. Intrac.</AccountDescription>
+        <OpeningDebitBalance>1333.54</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>14349.54</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>211</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>21122001</AccountID>
+        <AccountDescription>Soluciones Cad de Madrid, SA</AccountDescription>
+        <OpeningDebitBalance>1333.54</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1333.54</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2112</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>21123004</AccountID>
+        <AccountDescription>Soluciones Cad de Madrid, SA</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>13016.00</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2112</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>212</AccountID>
+        <AccountDescription>Clientes - Títulos a Receber</AccountDescription>
+        <OpeningDebitBalance>1176.37</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1176.37</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>21</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2121</AccountID>
+        <AccountDescription>Clientes - Tít. - Mercado Nacional</AccountDescription>
+        <OpeningDebitBalance>1176.37</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1176.37</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>212</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>21211001</AccountID>
+        <AccountDescription>Sofrio, Lda</AccountDescription>
+        <OpeningDebitBalance>1176.37</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1176.37</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2121</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>219</AccountID>
+        <AccountDescription>Adiantamentos de Clientes</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>8835.60</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>8835.60</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>21</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2191</AccountID>
+        <AccountDescription>Clientes - Adt. -Mercado Nacional</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>8835.60</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>8835.60</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>219</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>21911001</AccountID>
+        <AccountDescription>Sofrio, Lda</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>8800.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>8800.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2191</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>21911003</AccountID>
+        <AccountDescription>José Maria Fernandes &amp; Filhos, Lda.</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>35.60</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>35.60</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2191</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>22</AccountID>
+        <AccountDescription>Fornecedores</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>6812.30</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>33066.08</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>221</AccountID>
+        <AccountDescription>Fornecedores - c/c</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>6812.30</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>33066.08</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>22</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2211</AccountID>
+        <AccountDescription>Fornecedores - c/c - M.Nacional</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>6812.30</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>33066.08</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>221</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>22111001</AccountID>
+        <AccountDescription>Sociedade de Fornecimentos, Lda.</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>6812.30</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>26334.52</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2211</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>22111002</AccountID>
+        <AccountDescription>Publicidade &amp; Marrketing</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>6693.81</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2211</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>22111005</AccountID>
+        <AccountDescription>Distribuidora X, SA.</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>37.75</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2211</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>24</AccountID>
+        <AccountDescription>Estados e Outros Entes Públicos</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1688.52</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>1882.10</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>243</AccountID>
+        <AccountDescription>Imposto S/Valor Acrescentado - Iva</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1688.52</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>1882.10</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>24</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2432</AccountID>
+        <AccountDescription>Iva - Dedutível</AccountDescription>
+        <OpeningDebitBalance>1182.30</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3939.08</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>243</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24321</AccountID>
+        <AccountDescription>Existências</AccountDescription>
+        <OpeningDebitBalance>1182.30</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3939.08</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>2432</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>243211</AccountID>
+        <AccountDescription>Existências Continente</AccountDescription>
+        <OpeningDebitBalance>1182.30</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3939.08</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>24321</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2432113</AccountID>
+        <AccountDescription>Ex. - Taxa Normal</AccountDescription>
+        <OpeningDebitBalance>1182.30</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3939.08</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>243211</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>243211320</AccountID>
+        <AccountDescription>Ex. - Taxa Normal-Tx.20%</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>29.93</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>2432113</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2432113201</AccountID>
+        <AccountDescription>Ex. Tx. Nm. - Mercado Nacional</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>29.93</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>243211320</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24321132011</AccountID>
+        <AccountDescription>Ex. Tx. Nm..- MN-TT/Dedutível</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>29.93</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2432113201</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>243211321</AccountID>
+        <AccountDescription>Ex. - Taxa Normal-Tx.21%</AccountDescription>
+        <OpeningDebitBalance>1182.30</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3909.15</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>2432113</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2432113211</AccountID>
+        <AccountDescription>Ex. Tx. Nm. - Mercado Nacional</AccountDescription>
+        <OpeningDebitBalance>1182.30</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3909.15</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>243211321</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24321132111</AccountID>
+        <AccountDescription>Ex. Tx. Nm..- MN-TT/Dedutível</AccountDescription>
+        <OpeningDebitBalance>1182.30</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3909.15</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2432113211</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>2433</AccountID>
+        <AccountDescription>Iva - Liquidado</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>2870.82</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>7555.26</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>243</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24331</AccountID>
+        <AccountDescription>Operacoes Gerais</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1015.34</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>5699.78</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>2433</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>243311</AccountID>
+        <AccountDescription>Iva Liq. - Vendas</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1015.34</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>5585.84</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>24331</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2433111</AccountID>
+        <AccountDescription>Iva Liq. - Vendas-Continente</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1015.34</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>5585.84</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>243311</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24331113</AccountID>
+        <AccountDescription>Iva Liq. - Taxa Normal</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1015.34</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>5585.84</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>2433111</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2433111320</AccountID>
+        <AccountDescription>Iva Liq. - Taxa Normal-Tx.20%</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>101.34</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>24331113</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24331113201</AccountID>
+        <AccountDescription>Iva Liq.- Tx. Nm.- Mercado Nacional</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>101.34</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2433111320</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>2433111321</AccountID>
+        <AccountDescription>Iva Liq. - Taxa Normal-Tx.21%</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1015.34</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>5484.50</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>24331113</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24331113211</AccountID>
+        <AccountDescription>Iva Liq.- Tx. Nm.- Mercado Nacional</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1015.34</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>5484.50</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2433111321</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>243312</AccountID>
+        <AccountDescription>Iva Liq. - Prestações de Serviços</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>113.94</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>24331</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2433121</AccountID>
+        <AccountDescription>Iva Liq. - Prest. de Serviços-Continente</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>113.94</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>243312</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24331213</AccountID>
+        <AccountDescription>Iva Liq. - Ps - Taxa Normal</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>113.94</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>2433121</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2433121321</AccountID>
+        <AccountDescription>Iva Liq. - Ps - Taxa Normal-Tx.21%</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>113.94</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>24331213</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24331213211</AccountID>
+        <AccountDescription>Iva Liq. - Ps - Tx. Nm. Merc. Nac.</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>113.94</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2433121321</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>24339</AccountID>
+        <AccountDescription>Iva Liq - Adiantamentos</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1855.48</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>1855.48</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>2433</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>243391</AccountID>
+        <AccountDescription>Iva Liq - Ad - Vendas</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1855.48</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>1855.48</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>24339</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2433911</AccountID>
+        <AccountDescription>Iva Liq - Ad - Vendas-Continente</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1855.48</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>1855.48</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>243391</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24339113</AccountID>
+        <AccountDescription>Iva Liq - Ad - Vd - Taxa Normal</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1855.48</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>1855.48</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>2433911</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>2433911321</AccountID>
+        <AccountDescription>Iva Liq - Ad - Vd - Taxa Normal-Tx.21%</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1855.48</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>1855.48</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>24339113</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>24339113211</AccountID>
+        <AccountDescription>Iva Liq - Ad - Vd - Tx.Nm. - Mn</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>1855.48</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>1855.48</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>2433911321</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>2435</AccountID>
+        <AccountDescription>Iva - Apuramento</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>243</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>2437</AccountID>
+        <AccountDescription>Iva - A Recuperar</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>734.08</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>243</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>2438</AccountID>
+        <AccountDescription>Iva - Reembolsos Pedidos</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1000.00</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>243</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>31</AccountID>
+        <AccountDescription>Compras</AccountDescription>
+        <OpeningDebitBalance>5630.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>23484.40</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>312</AccountID>
+        <AccountDescription>Compras-Mercadorias</AccountDescription>
+        <OpeningDebitBalance>5630.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>23484.40</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>31</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>3121</AccountID>
+        <AccountDescription>Compras-Merc-Mercado Nacional</AccountDescription>
+        <OpeningDebitBalance>5630.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>23484.40</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>312</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>316</AccountID>
+        <AccountDescription>Compras-Mat. Primas,Subsid.,Consumo</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3844.08</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>31</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>3161</AccountID>
+        <AccountDescription>Compras-Matérias Primas</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3844.08</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>316</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>31611</AccountID>
+        <AccountDescription>Compras-Mat.Prim.-Mercado Nac.</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>3844.08</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>3161</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>319</AccountID>
+        <AccountDescription>Imputação de Compras</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>3844.08</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>31</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>3196</AccountID>
+        <AccountDescription>Mat. Primas Subs. e Cons. Imput.</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>3844.08</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>319</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>31961</AccountID>
+        <AccountDescription>Mat. Primas Imput.</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>3844.08</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>3196</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>36</AccountID>
+        <AccountDescription>Matérias-Primas, Subs. e de Consumo</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>2585.04</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>361</AccountID>
+        <AccountDescription>Matérias-Primas</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>2585.04</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>36</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>3612</AccountID>
+        <AccountDescription>Matérias-Primas - CEVC</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>2585.04</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>361</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>61</AccountID>
+        <AccountDescription>Custo das Merc. Vend. e Mat. Cons.</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1259.04</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>616</AccountID>
+        <AccountDescription>Custo-Mat.Prima, Subs. e de Consumo</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1259.04</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>61</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>6161</AccountID>
+        <AccountDescription>Matérias Primas</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1259.04</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>616</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>61611</AccountID>
+        <AccountDescription>Matérias Primas - CMPVC</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>1259.04</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>6161</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>62</AccountID>
+        <AccountDescription>Fornecimentos e Serviços Externos</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>560.00</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>622</AccountID>
+        <AccountDescription>Fornecimentos e Serviços</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>560.00</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>62</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>62212</AccountID>
+        <AccountDescription>Combustíveis</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>560.00</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>622</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>622122</AccountID>
+        <AccountDescription>Combustíveis - Gasolina</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>560.00</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>62212</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>6221222</AccountID>
+        <AccountDescription>Gasolina - N/Aceite pela totalidade</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>560.00</ClosingDebitBalance>
+        <ClosingCreditBalance>0.00</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>622122</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>71</AccountID>
+        <AccountDescription>Vendas</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>22062.47</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>711</AccountID>
+        <AccountDescription>Vendas-Mercadorias</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>22062.47</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>71</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>7111</AccountID>
+        <AccountDescription>Vendas-Merc.-Mercado Nacional</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>22062.47</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>711</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+      <Account>
+        <AccountID>72</AccountID>
+        <AccountDescription>Prestações de Serviços</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>542.59</ClosingCreditBalance>
+        <GroupingCategory>GR</GroupingCategory>
+      </Account>
+      <Account>
+        <AccountID>721</AccountID>
+        <AccountDescription>Serviço A</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>542.59</ClosingCreditBalance>
+        <GroupingCategory>GA</GroupingCategory>
+        <GroupingCode>72</GroupingCode>
+      </Account>
+      <Account>
+        <AccountID>7211</AccountID>
+        <AccountDescription>Serviço A - Mercado Nacional</AccountDescription>
+        <OpeningDebitBalance>0.00</OpeningDebitBalance>
+        <OpeningCreditBalance>0.00</OpeningCreditBalance>
+        <ClosingDebitBalance>0.00</ClosingDebitBalance>
+        <ClosingCreditBalance>542.59</ClosingCreditBalance>
+        <GroupingCategory>GM</GroupingCategory>
+        <GroupingCode>721</GroupingCode>
+        <TaxonomyCode />
+      </Account>
+    </GeneralLedgerAccounts>
     <Customer>
       <CustomerID>Consumidor final</CustomerID>
       <AccountID>Desconhecido</AccountID>
@@ -421,9 +1346,9 @@
     </TaxTable>
   </MasterFiles>
   <GeneralLedgerEntries>
-    <NumberOfEntries>26</NumberOfEntries>
-    <TotalDebit>65226.91</TotalDebit>
-    <TotalCredit>66226.91</TotalCredit>
+    <NumberOfEntries>27</NumberOfEntries>
+    <TotalDebit>65240.01</TotalDebit>
+    <TotalCredit>66240.01</TotalCredit>
     <Journal>
       <JournalID>00021</JournalID>
       <Description>Caixa A</Description>
@@ -1345,6 +2270,50 @@
           </DebitLine>
         </Lines>
       </Transaction>
+      <Transaction>
+        <TransactionID>2018-11-30 00062 110001</TransactionID>
+        <Period>11</Period>
+        <TransactionDate>2018-11-30</TransactionDate>
+        <SourceID>FEUP</SourceID>
+        <Description>Apur. IVA: Novembro - 1</Description>
+        <DocArchivalNumber>110001</DocArchivalNumber>
+        <TransactionType>N</TransactionType>
+        <GLPostingDate>2018-12-02</GLPostingDate>
+        <Lines>
+          <CreditLine>
+            <RecordID>1</RecordID>
+            <AccountID>24321132111</AccountID>
+            <SourceDocumentID>621 2018/2</SourceDocumentID>
+            <SystemEntryDate>2018-12-02T09:14:24</SystemEntryDate>
+            <Description>Apur. IVA: Novembro - 1</Description>
+            <CreditAmount>6.55</CreditAmount>
+          </CreditLine>
+          <DebitLine>
+            <RecordID>2</RecordID>
+            <AccountID>2435</AccountID>
+            <SourceDocumentID>621 2018/2</SourceDocumentID>
+            <SystemEntryDate>2018-12-02T09:14:24</SystemEntryDate>
+            <Description>Apur. IVA: Novembro - 1</Description>
+            <DebitAmount>6.55</DebitAmount>
+          </DebitLine>
+          <CreditLine>
+            <RecordID>3</RecordID>
+            <AccountID>2435</AccountID>
+            <SourceDocumentID>621 2018/2</SourceDocumentID>
+            <SystemEntryDate>2018-12-02T09:14:24</SystemEntryDate>
+            <Description>Apur. IVA: Novembro - 1</Description>
+            <CreditAmount>6.55</CreditAmount>
+          </CreditLine>
+          <DebitLine>
+            <RecordID>4</RecordID>
+            <AccountID>2437</AccountID>
+            <SourceDocumentID>621 2018/2</SourceDocumentID>
+            <SystemEntryDate>2018-12-02T09:14:24</SystemEntryDate>
+            <Description>Apur. IVA: Novembro - 1</Description>
+            <DebitAmount>6.55</DebitAmount>
+          </DebitLine>
+        </Lines>
+      </Transaction>
     </Journal>
     <Journal>
       <JournalID>00092</JournalID>
@@ -1460,6 +2429,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>LUCIA.RIBEIRO</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-01-19T00:00:00</SystemEntryDate>
         <TransactionID>2018-01-19 00051 10001</TransactionID>
         <CustomerID>ES989922456_C</CustomerID>
@@ -1552,6 +2522,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>LUCIA.RIBEIRO</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-01-20T00:00:00</SystemEntryDate>
         <TransactionID>2018-01-20 00051 10002</TransactionID>
         <CustomerID>Consumidor final</CustomerID>
@@ -1621,6 +2592,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>LUCIA.RIBEIRO</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-01-25T00:00:00</SystemEntryDate>
         <TransactionID>2018-01-25 00051 10003</TransactionID>
         <CustomerID>PT505678900_C</CustomerID>
@@ -1708,6 +2680,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>TESTE</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-01-30T00:00:00</SystemEntryDate>
         <TransactionID>2018-01-30 00051 10004</TransactionID>
         <CustomerID>Consumidor final</CustomerID>
@@ -1795,6 +2768,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>LUCIA.RIBEIRO</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-02-10T00:00:00</SystemEntryDate>
         <TransactionID>2018-02-10 00051 20001</TransactionID>
         <CustomerID>Consumidor final</CustomerID>
@@ -1882,6 +2856,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>LUCIA.RIBEIRO</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-02-24T00:00:00</SystemEntryDate>
         <TransactionID>2018-02-24 00051 20002</TransactionID>
         <CustomerID>AO823892388_C</CustomerID>
@@ -1987,6 +2962,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>LUCIA.RIBEIRO</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-03-10T00:00:00</SystemEntryDate>
         <TransactionID>2018-03-10 00051 30001</TransactionID>
         <CustomerID>PT123456789_C</CustomerID>
@@ -2074,6 +3050,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>Administrador</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-01-26T18:42:34</SystemEntryDate>
         <TransactionID>2018-04-30 00051 40001</TransactionID>
         <CustomerID>Consumidor final</CustomerID>
@@ -2188,6 +3165,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>LUCIA.RIBEIRO</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-01-04T00:00:00</SystemEntryDate>
         <TransactionID>2018-01-04 00056 10001</TransactionID>
         <CustomerID>GB9393878719-A_C</CustomerID>
@@ -2275,6 +3253,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>SERGIO.LOPES</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-01-29T00:00:00</SystemEntryDate>
         <CustomerID>Consumidor final</CustomerID>
         <ShipTo>
@@ -2397,6 +3376,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>EUGENIO.VEIGA</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-01-30T00:00:00</SystemEntryDate>
         <CustomerID>Consumidor final</CustomerID>
         <ShipTo>
@@ -2501,6 +3481,7 @@
           <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
         </SpecialRegimes>
         <SourceID>EUGENIO.VEIGA</SourceID>
+        <EACCode>74100</EACCode>
         <SystemEntryDate>2018-01-30T00:00:00</SystemEntryDate>
         <CustomerID>Consumidor final</CustomerID>
         <ShipTo>
@@ -2588,6 +3569,7 @@
         <SystemEntryDate>2018-01-26T18:39:19</SystemEntryDate>
         <CustomerID>Consumidor final</CustomerID>
         <SourceID>Administrador</SourceID>
+        <EACCode>74100</EACCode>
         <ShipTo>
           <DeliveryDate>1899-12-30</DeliveryDate>
           <Address>

@@ -63,7 +63,7 @@ class Financial extends Component {
       <div id="financialPage" className="container">
         <div className="card">
           <div className="card-header">
-            <div className="d-flex flex-row justify-content-between">
+            <div className="d-flex flex-row justify-content-between align-items-center">
               <h4 className="m-0">Financial details</h4>
               <Select className="w-50" options={this.months} onChange={this.onMonthChange.bind(this)}/>
             </div>
@@ -71,27 +71,27 @@ class Financial extends Component {
           <div className="card-body d-flex flex-row justify-content-around ">
             <span className="card details">
                 <div className="card-header">Cash</div>
-                <div className="card-body">{this.state.details.cash}</div>
+                <div className="card-body">{this.state.details.cash}€</div>
             </span>
 
             <span className="card details">
                 <div className="card-header">Bank</div>
-                <div className="card-body">{this.state.details.bank}</div>
+                <div className="card-body">{this.state.details.bank}€</div>
             </span>
 
             <span className="card details">
                 <div className="card-header">EBITDA</div>
-                <div className="card-body">{this.state.details.ebitda}</div>
+                <div className="card-body">{this.state.details.ebitda}€</div>
             </span>
 
             <span className="card details">
                 <div className="card-header">Accounts Payable</div>
-                <div className="card-body">{this.state.details.ap}</div>
+                <div className="card-body">{this.state.details.ap}€</div>
             </span>
 
             <span className="card details">
                 <div className="card-header">Accounts Receivable</div>
-                <div className="card-body">{this.state.details.ar}</div>
+                <div className="card-body">{this.state.details.ar}€</div>
             </span>
           </div>
         </div>
