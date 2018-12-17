@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ResponsiveBar } from '@nivo/bar'
+import { ResponsiveBar } from 'nivo'
 
 export default class PurchasesGraph extends Component {
     constructor(props) {

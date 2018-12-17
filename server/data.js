@@ -32,6 +32,11 @@ module.exports = {
     },
 
 
+    verifySAFT(req, res) {
+        res.status(200).send({ valid: module.exports.data !== null });
+    },
+
+
     /*
         Handles the upload of a SAF-T file, parses it to JSON, stores it in a .json file and in the data variable
     */
