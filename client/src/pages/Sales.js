@@ -165,6 +165,7 @@ class Sales extends Component {
   }
 
   render() {
+    console.log(this.state.bar_vars)
     if (this.loading())
       return <Loading/>
 

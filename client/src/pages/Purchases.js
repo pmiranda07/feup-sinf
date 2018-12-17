@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import ReactLoading from 'react-loading';
 
+import PurchasesGraph from '../components/PurchasesGraph';
+
 class Purchases extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +51,7 @@ class Purchases extends Component {
   };
 
   callPrimavera = async () => {
-    var query = JSON.stringify("SELECT NumDoc,TipoDoc, Nome, Abs(TotalMerc) AS TotalMerc, CONVERT(Varchar(10),DataDoc,103) AS DataDoc FROM CabecCompras WHERE TipoDoc='VFA' OR TipoDoc='VNC'");
+    var query = JSON.stringify("SELECT NumDoc,Id,TipoDoc, Nome, Abs(TotalMerc) AS TotalMerc, CONVERT(Varchar(10),DataDoc,103) AS DataDoc FROM CabecCompras WHERE TipoDoc='VFA' OR TipoDoc='VNC'");
 
     return axios({
       method: 'post',
@@ -109,7 +111,7 @@ class Purchases extends Component {
             style: {
               display: 'none'
             },
-          })
+          }),
         },{
           dataField: 'Nome',
           text: 'Supplier',
@@ -165,10 +167,24 @@ class Purchases extends Component {
       };
 
       return (
-        <div className="container">
-          <h1>Purchases</h1>
-          <input type="text" className="form-control" placeholder="Search Supplier" onInput={ handleSearchInput }/>
-          <BootstrapTable bootstrap4 striped hover keyField='PurchaseCode' data={ this.state.purchases } columns={ columns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()}/>
+        <div id="purchasesPage" className="container">
+        <h1>Purchases</h1>
+
+        <div className="card">
+          <h5 className="card-header text-center">Purchases per year</h5>
+          <div className="card-body" style={{height: 500}}>
+            <PurchasesGraph purchases={this.state.purchases}/>
+          </div>
+        </div>
+
+        <div className="card">
+          <h5 className="card-header text-center">List of Purchases</h5>
+          <div className="card-body">
+            <input type="text" className="form-control" placeholder="Search Supplier" onInput={ handleSearchInput }/>
+            <BootstrapTable bootstrap4 striped hover keyField='PurchaseCode' data={ this.state.purchases } columns={ columns } defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()}/>
+          </div>
+         </div>
+
         </div>
       );
 
