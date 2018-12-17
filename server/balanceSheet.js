@@ -46,7 +46,6 @@ function accumulateBalance() {
 
 function updateBalance(data) {
     resetBalance();
-    //console.log(balance);
 
     saft = data;
     let generalLedgerEntries = saft.GeneralLedgerEntries.Journal;
@@ -55,11 +54,7 @@ function updateBalance(data) {
         handleEntry(generalLedgerEntries[entry]);
     }
 
-    //console.log(balance);
-
     accumulateBalance();
-
-    //console.log(balance);
 }
 
 function handleEntry(entry) {

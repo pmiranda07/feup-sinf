@@ -96,7 +96,7 @@ class Navbar extends Component {
     ) : (
         <ul className="navbar-nav">
             <li className="nav-item">
-                <a className="nav-link logo active">
+                <a className="nav-link logo active" href="/">
                     <img src={"/logo.png"} alt="logo" />
                 </a>
             </li>
