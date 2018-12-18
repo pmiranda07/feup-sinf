@@ -171,17 +171,19 @@ class Sales extends Component {
       <div id="salesPage" className="container">
       <h1>Sales</h1>
       <div className="card">
-        <div className="d-flex">
-        <h6> Sales on year </h6>
-          <Select
-            className="w-25 m-3"
-            value={this.state.selected_option}
-            onChange={this.handleChange.bind(this)}
-            options={this.state.select_options}
-          />
-          <h5 className="w-75" style={{textAlign:'center', verticalAlign:'center', margin: "auto"}}>{this.state.sales_ytd}€</h5>
+        <div className="card-header text-center">
+            <h6> Sales on year </h6>
+            <Select
+                className="salesSelect"
+                value={this.state.selected_option}
+                onChange={this.handleChange.bind(this)}
+                options={this.state.select_options}
+            />
         </div>
-      </div>
+        <div className="d-flex card-body text-center">
+            <h5 className="w-75" style={{textAlign:'center', verticalAlign:'center', margin: "auto"}}>{this.state.sales_ytd}€</h5>
+        </div>
+     </div>
         <div className="card">
           <h5 className="card-header text-center"> Net earnings per year</h5>
             <div className="card-body" style={{ height: 400 }}>

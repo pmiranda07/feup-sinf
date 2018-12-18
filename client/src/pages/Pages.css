@@ -104,29 +104,28 @@ h1 {
     cursor: pointer;
 }
 
-#salesPage .card:nth-child(1){
-    background-color: black;
-}
-
-#salesPage .card:nth-child(1) h5{
-    color: white;
-    margin: auto;
-}
-
-#salesPage .card:nth-child(1) h6{
-    color: white;
-    margin: auto;
-    padding-left: 20px;
-    width: 160px;
-}
-
 #salesPage .card:nth-child(2) > .card-header{
     background-color: var(--green-darker);
     color: white;
+    position: relative;
+    height: 56px;
 }
 
-#purchasesPage input {
-    margin-bottom: 1em;
+#salesPage .card:nth-child(2) > .card-header h6{
+    position: absolute;
+    font-size: 22px;
+    left: 50%;
+    top: 13px;
+    transform: translateX(-50%);
+}
+
+
+#salesPage .card:nth-child(2) > .card-header .salesSelect{
+    width: 100px;
+    color: black;
+    position: absolute;
+    right: 7px;
+    top: 7px;
 }
 
 #salesPage .card:nth-child(3) > .card-header{
@@ -134,15 +133,10 @@ h1 {
     color: white;
 }
 
-.select-drop > .css-vj8t7z{
-    background-color: black;
-    border: none;
+#salesPage .card:nth-child(4) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
 }
-
-.select-drop > .css-1hwfws3{
-    text-align: right;
-}
-
 
 
 /*
@@ -161,4 +155,8 @@ h1 {
 
 #financialPage .details {
     width: 18%;
+}
+
+#purchasesPage input {
+    margin-bottom: 1em;
 }
