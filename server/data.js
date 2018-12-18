@@ -33,7 +33,10 @@ module.exports = {
 
 
     verifySAFT(req, res) {
-        res.status(200).send({ valid: module.exports.data !== null });
+        res.status(200).send({ 
+            valid: module.exports.data !== null,
+            fiscalYear: module.exports.data === null ? null : module.exports.data.Header.FiscalYear
+        });
     },
 
 

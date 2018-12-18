@@ -28,7 +28,8 @@ class App extends Component {
       loginError: null,
       cachedCredentials: false,
       checkingSAFT: true,
-      validSAFT: false
+      validSAFT: false,
+      fiscalYear: null
     };
 
     this.getToken = this.getToken.bind(this);
@@ -46,7 +47,7 @@ class App extends Component {
   verifySAFT() {
     axios.get('/saft')
     .then((res) => {
-      this.setState({ checkingSAFT: false, validSAFT: res.data.valid });
+      this.setState({ checkingSAFT: false, validSAFT: res.data.valid, fiscalYear: res.data.fiscalYear });
     })
     .catch((err) => {
       this.setState({ checkingSAFT: false, validSAFT: false });
@@ -149,7 +150,7 @@ class App extends Component {
 
     return (
       <Fragment>
-        <Navbar/>
+        <Navbar fiscalYear={this.state.fiscalYear}/>
         <Switch>
           <Route path="/" exact render={(props)=><Overview token={this.state.token} {...props}/>} />
           <Route path="/financial" exact render={(props)=><Financial token={this.state.token} {...props}/>} />

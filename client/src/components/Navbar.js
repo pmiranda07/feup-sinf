@@ -67,6 +67,12 @@ class Navbar extends Component {
         </div>)
         : null;
 
+    let fiscalYear = this.props.fiscalYear ? (
+        <li id="fiscal-year" className="nav-item">
+            <h5>{this.props.fiscalYear}</h5>
+        </li>  
+    ) : null;
+
     let links = !this.props.invalidSAFT ? (
         <ul className="navbar-nav text-center">
             <li className="nav-item">
@@ -89,6 +95,7 @@ class Navbar extends Component {
             <li className="nav-item">
                 <NavLink activeClassName="active" className="nav-link" to="/purchases">Purchases</NavLink>
             </li>
+            {fiscalYear}
             <li className="nav-item">
                 <button className="btn" type="button" onClick={this.saftFunction}>Upload SAF-T</button>
             </li>
@@ -124,18 +131,6 @@ class Navbar extends Component {
         </nav>
     );
   }
-
-  getLabel() {
-    let label = "";
-    for(let i = 0; i < this.state.files.length; i++)
-        label += this.state.files[i].name + " ";
-
-    if(label === "")
-        label = "Choose a file";
-
-    return label;
-  }
-
 }
 
 export default Navbar;
