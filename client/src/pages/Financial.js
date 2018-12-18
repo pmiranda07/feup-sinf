@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Select from 'react-select'
 
+import FinancialChart from '../components/FinancialChart';
 import Loading from '../components/Loading';
 import './Pages.css';
 
@@ -96,6 +97,8 @@ class Financial extends Component {
             </span>
           </div>
         </div>
+
+        <FinancialChart sales={this.state.details.sales} revenue={this.state.details.revenue}/>
       </div>
     );
   }
