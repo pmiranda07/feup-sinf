@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import PurchasesGraph from '../components/PurchasesGraph';
 import FinancialChart from '../components/FinancialChart';
 import TopProducts from '../components/TopProducts';
 import Loading from '../components/Loading';
@@ -15,31 +16,54 @@ class Overview extends Component {
       topSelling: {},
       sales: [],
       revenue: [],
-      loadingAPI: true  
+      purchases: [],
+      loadingAPI: true,
+      loadingPurchases: true
     };
   }
 
   componentDidMount() {
-    this.callAPI()
-        .then((res) => this.handleResponse(res))
-        .catch(err => console.log(err));
+    this.callAPI();
+    this.getPurchases();
   }
 
-  callAPI = async () => {
-    return axios.get('/overview');
+  callAPI() {
+    axios.get('/overview')
+    .then((res) => {
+      this.setState( { 
+        topSelling: res.data.topSelling,
+        sales: res.data.sales,
+        revenue: res.data.revenue,
+        loadingAPI: false
+      } );
+    })
+    .catch(err => console.log(err));
   };
 
-  handleResponse(res) {
-    this.setState( { 
-      topSelling: res.data.topSelling,
-      sales: res.data.sales,
-      revenue: res.data.revenue,
-      loadingAPI: false
-    } );
-  };
+  getPurchases() {
+    var query = JSON.stringify("SELECT NumDoc,Id,TipoDoc, Nome, Abs(TotalMerc) AS TotalMerc, CONVERT(Varchar(10),DataDoc,103) AS DataDoc FROM CabecCompras WHERE TipoDoc='VFA' OR TipoDoc='VNC'");
+
+    axios({
+      method: 'post',
+      url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+      crossdomain: true,
+      headers: {
+        'content-type': 'application/json',
+        'authorization': "Bearer " + this.props.token
+      },
+      data: query
+    })
+    .then((res) => {
+      this.setState({
+        purchases: res.data.DataSet.Table,
+        loadingPurchases: false
+      });
+    })
+    .catch(err => console.log(err));
+  }
 
   loading() {
-    return this.state.loadingAPI;
+    return this.state.loadingAPI || this.state.loadingPurchases;
   }
 
   render() {
@@ -61,6 +85,13 @@ class Overview extends Component {
           <h4 className="card-header text-center">Sales and Revenue</h4>
           <div className="card-body" style={{height: 500}}>
             <FinancialChart sales={this.state.sales} revenue={this.state.revenue}/>
+          </div>
+        </div>
+
+        <div className="card">
+          <h5 className="card-header text-center">Purchases per year</h5>
+          <div className="card-body" style={{height: 500}}>
+            <PurchasesGraph purchases={this.state.purchases}/>
           </div>
         </div>
 

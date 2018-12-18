@@ -11,7 +11,6 @@ class Sales extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: 'Sales: Please upload a SAF-T file',
       sales_ytd : 0,
       select_options: [],
       selected_option: null,
