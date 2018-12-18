@@ -6,7 +6,9 @@ module.exports = {
     getBank: getBank,
     getAP: getAP,
     getAR: getAR,
-    getCOGS: getCOGS
+    getCOGS: getCOGS,
+    getSales: getSales,
+    getRevenue: getRevenue
 }
 
 var accountIDs = [11,12,21,22,24,31,32,61,62,63,71,72,9];
@@ -14,7 +16,7 @@ var accountIDs = [11,12,21,22,24,31,32,61,62,63,71,72,9];
 var balance;
 resetBalance();
 
-var saft = null;
+var revenue;
 
 function resetBalance() {
     balance = [];
@@ -46,20 +48,14 @@ function accumulateBalance() {
 
 function updateBalance(data) {
     resetBalance();
-    //console.log(balance);
 
-    saft = data;
-    let generalLedgerEntries = saft.GeneralLedgerEntries.Journal;
+    let generalLedgerEntries = data.GeneralLedgerEntries.Journal;
 
     for (entry in generalLedgerEntries) {
         handleEntry(generalLedgerEntries[entry]);
     }
 
-    //console.log(balance);
-
     accumulateBalance();
-
-    //console.log(balance);
 }
 
 function handleEntry(entry) {
@@ -132,7 +128,7 @@ function handleDebitLine(line, date) {
 }
 
 
-/*
+
 function handleJournalEntry(entry) {
     let transaction = entry.Transaction;
     if (transaction == null) {
@@ -175,7 +171,6 @@ function handleCreditLines(line, month) {
         return creditAmount;
     }
 }
-*/
 
 
 function getCash(month) {
@@ -215,26 +210,25 @@ function getCOGS(month) {
     return cogs.toFixed(2);
 }
 
-/*
-app.get('/getSalesVolume', (req, res) => {
 
-    let salesInvoices = saft.SourceDocuments.SalesInvoices.Invoice;
+function getSales(data) {
+    let salesInvoices = data.SalesInvoices;
     let salesVolume = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     for (let i = 0; i < salesInvoices.length; i++) {
         let invoiceMonth = salesInvoices[i].InvoiceDate.split('-')[1];
-        salesVolume[invoiceMonth - 1] += salesInvoices[i].DocumentTotals.NetTotal;
+        salesVolume[invoiceMonth - 1] += parseFloat(salesInvoices[i].DocumentTotals.NetTotal);
     }
-    return res.status(200).send(salesVolume);
-});
 
-app.get('/getRevenue', (req, res) => {
+    return salesVolume;
+};
+
+function getRevenue(data) {
     revenue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let journalEntries = saft.GeneralLedgerEntries.Journal;
+    let journalEntries = data.GeneralLedgerEntries.Journal;
     let rev = 0;
     for (let i = 0; i < journalEntries.length; i++) {
         rev += handleJournalEntry(journalEntries[i]);
     }
 
-    return res.status(200).send(revenue);
-});
-*/
+    return revenue;
+};

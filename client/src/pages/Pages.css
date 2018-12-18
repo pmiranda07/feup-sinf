@@ -125,6 +125,10 @@ h1 {
     color: white;
 }
 
+#purchasesPage input {
+    margin-bottom: 1em;
+}
+
 #salesPage .card:nth-child(3) > .card-header{
     background-color: var(--green-medium);
     color: white;

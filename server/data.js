@@ -3,6 +3,7 @@ var fs = require("fs");
 var read = require('read-file');
 var write = require('write');
 var balanceSheet = require('./balanceSheet.js');
+const { exec } = require('child_process');
 
 module.exports = {
     /* 
@@ -23,12 +24,16 @@ module.exports = {
                 console.log("Database loaded");
                 return true;
             } catch (error) {
-                //console.log("Error loading database");
-                console.log(error);
+                console.log("Error loading database");
                 return false;
             }
         }
         return true;
+    },
+
+
+    verifySAFT(req, res) {
+        res.status(200).send({ valid: module.exports.data !== null });
     },
 
 
@@ -54,28 +59,37 @@ module.exports = {
                 return;
             }
 
-            read("storage/saft.xml", "utf8", (err, xmlBuffer) => {
+
+            exec('xmllint --noout --schema storage/saft.xsd storage/saft.xml', (err, stdout, stderr) => {
                 if( err ) {
-                    res.status(500).send( { message: "Failed to parse SAF-T" } );
+                    res.status(500).send( { message: "Failed to validate SAF-T" } );
                     return false;
                 }
-                
-                let jsonString = parser.toJson(xmlBuffer);
-                let json = JSON.parse(jsonString);
-                
-                json = module.exports.fixFile(json);
-                jsonString = JSON.stringify(json);
-    
-                module.exports.data = json;
-    
-                write('storage/saft.json', jsonString, (err) => {
+
+
+                read("storage/saft.xml", "utf8", (err, xmlBuffer) => {
                     if( err ) {
                         res.status(500).send( { message: "Failed to parse SAF-T" } );
                         return false;
                     }
+
+                    let jsonString = parser.toJson(xmlBuffer);
+                    let json = JSON.parse(jsonString);
                     
-                    module.exports.data = null;
-                    res.send( { message: "File Uploaded" });
+                    json = module.exports.fixFile(json);
+                    jsonString = JSON.stringify(json);
+        
+                    module.exports.data = json;
+        
+                    write('storage/saft.json', jsonString, (err) => {
+                        if( err ) {
+                            res.status(500).send( { message: "Failed to parse SAF-T" } );
+                            return false;
+                        }
+                        
+                        module.exports.data = null;
+                        res.send( { message: "File Uploaded" });
+                    });
                 });
             });
         });

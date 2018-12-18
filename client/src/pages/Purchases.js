@@ -5,9 +5,9 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
-import ReactLoading from 'react-loading';
 
 import PurchasesGraph from '../components/PurchasesGraph';
+import Loading from '../components/Loading';
 
 class Purchases extends Component {
   constructor(props) {
@@ -76,26 +76,10 @@ class Purchases extends Component {
     return this.state.loadingAPI || this.props.token === null || this.state.loadingPrimavera;
   }
 
-  renderLoading() {
-    return (
-      <div style={{
-        width: '8%',
-        height: '8%',
-        position: "absolute",
-        top: '50%',
-        left: '50%',
-        marginLeft: '-4%',
-        marginTop: '-4%',
-      }}>
-        <ReactLoading type={"spinningBubbles"} color={"#00ffbb"} height={'100%'} width={'100%'} />
-      </div>
-    );
-  }
-
 
   render() {
     if( this.loading() )
-      return this.renderLoading();
+      return <Loading/>
 
       const columns = [{
         dataField: 'TipoDoc',
@@ -128,7 +112,7 @@ class Purchases extends Component {
           })
       },{
           dataField: 'TotalMerc',
-          text: 'Value',
+          text: 'Value (€)',
           sort: true,
           filter: textFilter({
             delay: 50,
