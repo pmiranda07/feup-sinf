@@ -157,6 +157,60 @@ h1 {
     width: 18%;
 }
 
-#purchasesPage input {
-    margin-bottom: 1em;
+/*
+################################################################################
+                              Purchases Page
+################################################################################
+*/
+#purchasePage > .card > .card-header {
+    background-color: black;
+    color: white;
+}
+
+#purchasePage > .card > .card-body .card:nth-child(1) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+}
+
+#purchasePage > .card > .card-body .card:nth-child(1) > .card-body{
+    margin: auto;
+}
+
+#purchasePage > .card > .card-body .card:nth-child(2) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#purchasePage > .card > .card-body .card:nth-child(3) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+.purchaseOverview > h5{
+    background-color: green !important;
+    color: white;
+}
+
+.purchaseOverview td, .purchaseOverview th{
+    text-align: center;
+}
+
+.purchaseOverview td:nth-child(3){
+    text-align: center;
+}
+
+.purchaseOverview td:nth-child(4){
+    text-align: right;
+}
+
+.purchaseOverview td:nth-child(4)::after{
+    content: " €";
+}
+
+.purchaseOverview td:nth-child(5){
+    text-align: right;
+}
+
+.purchaseOverview td:nth-child(5)::after{
+    content: " €";
 }

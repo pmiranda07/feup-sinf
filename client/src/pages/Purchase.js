@@ -139,27 +139,27 @@ class Purchase extends Component {
             <div id="purchasePage" className="container">
                 <div className="card">
                     <div className="card-header">
-                        <strong>Purchase: </strong>{this.state.purchaseId}
+                        <strong>Purchase: </strong>{this.state.id}
                     </div>
                     <div className="card-body">
                         <div className="d-flex flex-row justify-content-around product-infos">
                             <span className="card w-25">
-                                <div className="card-header">Supplier</div>
-                                <div className="card-body">{this.state.info.Nome}</div>
+                                <div className="card-header text-center">Supplier</div>
+                                <div className="card-body text-center">{this.state.info.Nome}</div>
                             </span>
 
                             <span className="card w-25">
-                                <div className="card-header">Total</div>
-                                <div className="card-body">{this.state.info.TotalMerc}</div>
+                                <div className="card-header text-center">Total</div>
+                                <div className="card-body text-center">{this.state.info.TotalMerc} €</div>
                             </span>
 
                             <span className="card w-25">
-                                <div className="card-header">Date</div>
-                                <div className="card-body">{this.state.info.DataDoc}</div>
+                                <div className="card-header text-center">Date</div>
+                                <div className="card-body text-center">{this.state.info.DataDoc}</div>
                             </span>
                         </div>
 
-                        <div className="card">
+                        <div className="card purchaseOverview">
                             <h5 className="card-header text-center">List of Products</h5>
                             <div className="card-body">
                                 <input type="text" className="form-control" placeholder="Search product" onInput={handleSearchInput} />
