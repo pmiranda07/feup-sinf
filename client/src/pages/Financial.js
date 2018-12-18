@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Select from 'react-select'
 
+import FinancialChart from '../components/FinancialChart';
 import Loading from '../components/Loading';
 import './Pages.css';
 
@@ -66,7 +67,7 @@ class Financial extends Component {
           <div className="card-header">
             <div className="d-flex flex-row justify-content-between align-items-center">
               <h4 className="m-0">Financial details</h4>
-              <Select className="w-50" options={this.months} onChange={this.onMonthChange.bind(this)}/>
+              <Select value={this.months[this.state.month]} className="w-50" options={this.months} onChange={this.onMonthChange.bind(this)}/>
             </div>
             </div>
           <div className="card-body d-flex flex-row justify-content-around ">
@@ -94,6 +95,13 @@ class Financial extends Component {
                 <div className="card-header">Accounts Receivable</div>
                 <div className="card-body">{this.state.details.ar}€</div>
             </span>
+          </div>
+        </div>
+
+        <div className="card">
+          <h4 className="card-header text-center">Sales and Revenue</h4>
+          <div className="card-body" style={{height: 500}}>
+            <FinancialChart sales={this.state.details.sales} revenue={this.state.details.revenue}/>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ export default class SalesTable extends React.Component {
                 sort: true
             }, {
                 dataField: 'net_total',
-                text: 'Net total',
+                text: 'Net total (€)',
                 sort: true
             } 
         ];

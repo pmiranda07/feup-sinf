@@ -96,9 +96,9 @@ h1 {
 
 
 
-
-
-
+#purchasesPage input {
+    margin-bottom: 1em;
+}
 
 
 #salesPage .react-bootstrap-table td:first-child {

@@ -16,6 +16,7 @@ import Product from './pages/Product';
 import LoginForm from './components/LoginForm';
 import Navbar from './components/Navbar';
 import Loading from './components/Loading';
+import InvalidSAFT from './components/InvalidSAFT';
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +26,9 @@ class App extends Component {
       token: null,
       gettingToken: false,
       loginError: null,
-      cachedCredentials: false
+      cachedCredentials: false,
+      checkingSAFT: true,
+      validSAFT: false
     };
 
     this.getToken = this.getToken.bind(this);
@@ -37,6 +40,17 @@ class App extends Component {
 
   componentWillMount() {
     this.verifyToken();
+    this.verifySAFT();
+  }
+
+  verifySAFT() {
+    axios.get('/saft')
+    .then((res) => {
+      this.setState({ checkingSAFT: false, validSAFT: res.data.valid });
+    })
+    .catch((err) => {
+      this.setState({ checkingSAFT: false, validSAFT: false });
+    })
   }
 
   verifyToken() {
@@ -110,8 +124,8 @@ class App extends Component {
   }
 
   render() {
-    if(this.state.token === null) {
-      if(this.state.cachedCredentials) {
+    if(this.state.token === null || this.state.checkingSAFT) {
+      if(this.state.cachedCredentials || this.state.checkingSAFT) {
         return (
           <Loading/>
         )
@@ -121,6 +135,15 @@ class App extends Component {
         <Switch>
           <Route path='*' render={() => <LoginForm getToken={this.getToken} gettingToken={this.state.gettingToken} loginError={this.state.loginError}/>} />
         </Switch>
+      )
+    }
+
+    if(!this.state.validSAFT) {
+      return (
+        <Fragment>
+          <Navbar invalidSAFT={true}/>
+          <Route path='*' render={() => <InvalidSAFT />}/>
+        </Fragment>
       )
     }
 

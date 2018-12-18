@@ -38,7 +38,7 @@ class Navbar extends Component {
     }
 
     fileUpload(files){
-        const url = '/uploadSAFT';
+        const url = '/saft';
         const formData = new FormData();
         formData.append('saft', files[0])
         const config = {
@@ -67,6 +67,46 @@ class Navbar extends Component {
         </div>)
         : null;
 
+    let links = !this.props.invalidSAFT ? (
+        <ul className="navbar-nav">
+            <li className="nav-item">
+                <NavLink activeClassName="active" className="nav-link logo" exact to="/">
+                    <img src={"/logo.png"} alt="logo" />
+                </NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink activeClassName="active" className="nav-link" exact to="/">Overview</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink activeClassName="active" className="nav-link" exact to="/financial">Financial</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink activeClassName="active" className="nav-link" to="/products">Products</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink activeClassName="active" className="nav-link" to="/sales">Sales</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink activeClassName="active" className="nav-link" to="/purchases">Purchases</NavLink>
+            </li>
+            <li className="nav-item">
+                <button className="btn" type="button" onClick={this.saftFunction}>Upload SAF-T</button>
+            </li>
+        </ul>
+    ) : (
+        <ul className="navbar-nav">
+            <li className="nav-item">
+                <a className="nav-link logo active" href="/">
+                    <img src={"/logo.png"} alt="logo" />
+                </a>
+            </li>
+            <li className="nav-item">
+                <button className="btn" type="button" onClick={this.saftFunction}>Upload SAF-T</button>
+            </li>
+        </ul>
+    )
+
+
     return (
         <nav id="navbar" className="navbar navbar-expand-lg navbar-light">
             {alert_error}
@@ -74,31 +114,7 @@ class Navbar extends Component {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <NavLink activeClassName="active" className="nav-link logo" exact to="/">
-                            <img src={"/logo.png"} alt="logo" />
-                        </NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink activeClassName="active" className="nav-link" exact to="/">Overview</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink activeClassName="active" className="nav-link" exact to="/financial">Financial</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink activeClassName="active" className="nav-link" to="/products">Products</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink activeClassName="active" className="nav-link" to="/sales">Sales</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink activeClassName="active" className="nav-link" to="/purchases">Purchases</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <button className="btn" type="button" onClick={this.saftFunction}>Upload SAF-T</button>
-                    </li>
-                </ul>
+                {links}
             </div>
 
             <div id="saft-upload">
