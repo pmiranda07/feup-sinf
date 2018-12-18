@@ -123,7 +123,7 @@ export default class PurchasesGraph extends Component {
                   "tickSize": 5,
                   "tickPadding": 5,
                   "tickRotation": 0,
-                  "legend": "year",
+                  "legend": "Year",
                   "legendPosition": "center",
                   "legendOffset": 32
               }}
@@ -131,7 +131,7 @@ export default class PurchasesGraph extends Component {
                   "tickSize": 5,
                   "tickPadding": 5,
                   "tickRotation": 0,
-                  "legend": "Total",
+                  "legend": "Total (€)",
                   "legendPosition": "center",
                   "legendOffset": -50
               }}

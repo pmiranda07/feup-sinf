@@ -128,7 +128,7 @@ class Purchases extends Component {
           })
       },{
           dataField: 'TotalMerc',
-          text: 'Value',
+          text: 'Value (€)',
           sort: true,
           filter: textFilter({
             delay: 50,

@@ -169,15 +169,16 @@ class Sales extends Component {
 
     else return (
       <div id="salesPage" className="container">
+      <h1>Sales</h1>
       <div className="card">
         <div className="d-flex">
           <Select
-            className="w-25"
+            className="w-25 m-3"
             value={this.state.selected_option}
             onChange={this.handleChange.bind(this)}
             options={this.state.select_options}
           />
-          <h5 className="w-75" style={{textAlign:'center', verticalAlign:'center'}}>{this.state.sales_ytd}€</h5>
+          <h5 className="w-75" style={{textAlign:'center', verticalAlign:'center', margin: "auto"}}>{this.state.sales_ytd}€</h5>
         </div>
       </div>
         <div className="card">
@@ -250,7 +251,7 @@ class Sales extends Component {
                   "tickSize": 5,
                   "tickPadding": 5,
                   "tickRotation": 0,
-                  "legend": "year",
+                  "legend": "Year",
                   "legendPosition": "center",
                   "legendOffset": 32
               }}
@@ -258,7 +259,7 @@ class Sales extends Component {
                   "tickSize": 5,
                   "tickPadding": 5,
                   "tickRotation": 0,
-                  "legend": "Net Total",
+                  "legend": "Net Total (€)",
                   "legendPosition": "center",
                   "legendOffset": -50
               }}
@@ -296,7 +297,7 @@ class Sales extends Component {
           </div>
         </div>
         <div className="card">
-          <h5 className="card-header text-center">Uploaded SAF-T Sales List</h5>
+          <h5 className="card-header text-center">Sales List</h5>
           <div className="card-body">
             <SalesTable data={this.state.sales} history={this.props.history}/>
           </div>

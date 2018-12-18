@@ -172,12 +172,12 @@ class Product extends Component {
 
                         <span className="card w-25">
                             <div className="card-header">Stock</div>
-                            <div className="card-body">{this.state.info.STKActual}</div>
+                            <div className="card-body">{this.state.info.STKActual} Units</div>
                         </span>
 
                         <span className="card w-25">
                             <div className="card-header">Price</div>
-                            <div className="card-body">{this.state.info.PCMedio}</div>
+                            <div className="card-body">{this.state.info.PCMedio} €</div>
                         </span>
                     </div>
 
@@ -276,7 +276,7 @@ class Product extends Component {
                                 "tickSize": 5,
                                 "tickPadding": 5,
                                 "tickRotation": 0,
-                                "legend": "Value",
+                                "legend": "Value (€)",
                                 "legendOffset": -40,
                                 "legendPosition": "center"
                             }}

@@ -58,7 +58,7 @@ class Overview extends Component {
         </div>
 
         <div className="card">
-          <h4 className="card-header">Sales and Revenue</h4>
+          <h4 className="card-header text-center">Sales and Revenue</h4>
           <div className="card-body" style={{height: 500}}>
             <FinancialChart sales={this.state.sales} revenue={this.state.revenue}/>
           </div>

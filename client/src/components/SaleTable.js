@@ -38,7 +38,7 @@ export default class SaleTable extends React.Component {
             },
             {
                 dataField: 'price_unit',
-                text: 'Unit price',
+                text: 'Unit price (€)',
                 sort: true
             }
         ];

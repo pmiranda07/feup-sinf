@@ -69,8 +69,8 @@ export default class FinancialChart extends Component {
                     "tickSize": 5,
                     "tickPadding": 5,
                     "tickRotation": 0,
-                    "legend": "Value",
-                    "legendOffset": -40,
+                    "legend": "Value (€)",
+                    "legendOffset": -50,
                     "legendPosition": "center"
                 }}
                 dotSize={10}
