@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import FinancialChart from '../components/FinancialChart';
 import TopProducts from '../components/TopProducts';
 import Loading from '../components/Loading';
 import './Pages.css';
@@ -12,6 +13,8 @@ class Overview extends Component {
 
     this.state = {
       topSelling: {},
+      sales: [],
+      revenue: [],
       loadingAPI: true  
     };
   }
@@ -29,6 +32,8 @@ class Overview extends Component {
   handleResponse(res) {
     this.setState( { 
       topSelling: res.data.topSelling,
+      sales: res.data.sales,
+      revenue: res.data.revenue,
       loadingAPI: false
     } );
   };
@@ -49,6 +54,13 @@ class Overview extends Component {
           <h5 className="card-header text-center">Most Sold Products</h5>
           <div className="card-body" style={{height: 500}}>
             <TopProducts topSelling={this.state.topSelling}/>
+          </div>
+        </div>
+
+        <div className="card">
+          <h4 className="card-header">Sales and Revenue</h4>
+          <div className="card-body" style={{height: 500}}>
+            <FinancialChart sales={this.state.sales} revenue={this.state.revenue}/>
           </div>
         </div>
 

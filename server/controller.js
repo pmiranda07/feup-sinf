@@ -6,7 +6,9 @@ module.exports = {
     
     getOverview(req, res) {
         res.send({ 
-            topSelling: module.exports.getTopSellingProducts()
+            topSelling: module.exports.getTopSellingProducts(),
+            sales: BalanceSheet.getSales(Database.data),
+            revenue: BalanceSheet.getRevenue(Database.data)
         });
     },
 

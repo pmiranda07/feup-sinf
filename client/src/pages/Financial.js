@@ -98,7 +98,12 @@ class Financial extends Component {
           </div>
         </div>
 
-        <FinancialChart sales={this.state.details.sales} revenue={this.state.details.revenue}/>
+        <div className="card">
+          <h4 className="card-header">Sales and Revenue</h4>
+          <div className="card-body" style={{height: 500}}>
+            <FinancialChart sales={this.state.details.sales} revenue={this.state.details.revenue}/>
+          </div>
+        </div>
       </div>
     );
   }
