@@ -13,44 +13,35 @@ class Purchase extends Component {
         super(props);
 
         this.state = {
-            purchaseId: props.match.params.NumDoc,
-            id: props.match.params.Id,
-            value: props.match.params.DataDoc,
-            supplier: props.match.params.Nome,
-            date: props.match.params.DataDoc,
+            id: props.match.params.id,
             info: {},
             loadingPrimaveraDetails: true,
-            loadingPrimaveraDocuments: true,
         }
     }
 
-
     componentDidMount() {
         if (this.props.token !== null) {
-            this.requestProductDetails()
-                .then((res) => this.handleDetailsResponse(res))
-                .catch(err => console.log(err));
-            this.requestDocuments()
-                .then((res) => this.handleDocumentsResponse(res))
-                .catch(err => console.log(err));
+            this.requestPurchaseDetails()
+              .then((res) => this.handleDetailsResponse(res))
+              .catch(err => console.log(err));
         }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         // Check if token was updated
-        if (prevProps.token === null && this.props.token !== null) {
-            this.requestProductDetails()
-                .then((res) => this.handleDetailsResponse(res))
-                .catch(err => console.log(err));
-            this.requestDocuments()
-                .then((res) => this.handleDocumentsResponse(res))
-                .catch(err => console.log(err));
+        if( prevProps.token === null && this.props.token !== null ) {
+          this.requestPurchaseDetails()
+            .then((res) => this.handleDetailsResponse(res))
+            .catch(err => console.log(err));
         }
     }
 
     requestPurchaseDetails = async () => {
-        var query = JSON.stringify("SELECT Artigo,Quantidade,PrecUnit,Descricao, Quantidade * PrecUnit AS Preco  FROM LinhasCompras WHERE IdCabecCompras = '" + this.state.id + "'");
-
+        var filial = this.state.id.split('/')[0];
+        var tipoDoc =this.state.id.split('/')[1];
+        var serie= this.state.id.split('/')[2];
+        var numDoc=this.state.id.split('/')[3];
+        var query = JSON.stringify("SELECT Abs(CabecCompras.TotalMerc) AS TotalMerc, CabecCompras.Nome, CONVERT(Varchar(10),CabecCompras.DataDoc,103) AS DataDoc, LinhasCompras.Artigo,Abs(LinhasCompras.Quantidade) AS Quantidade,Abs(LinhasCompras.PrecUnit) AS PrecUnit,LinhasCompras.Descricao,Quantidade * PrecUnit AS Preco FROM CabecCompras INNER JOIN LinhasCompras ON CabecCompras.Id = LinhasCompras.IdCabecCompras WHERE Filial='" + filial +"' AND Serie='"+ serie +"' AND TipoDoc='"+ tipoDoc +"' AND NumDoc='"+ numDoc +"'");
         return axios({
             method: 'post',
             url: 'http://localhost:2018/WebApi/Administrador/Consulta',
@@ -67,12 +58,13 @@ class Purchase extends Component {
         if (res.status === 200 && res.data.DataSet.Table.length)
             this.setState({
                 info: res.data.DataSet.Table[0],
+                prod: res.data.DataSet.Table,
                 loadingPrimaveraDetails: false
             });
     };
 
     loading() {
-        return this.props.token === null || this.state.loadingPrimaveraDetails || this.state.loadingPrimaveraDocuments;
+        return this.props.token === null || this.state.loadingPrimaveraDetails;
     }
 
     render() {
@@ -82,12 +74,10 @@ class Purchase extends Component {
         const columns = [{
             dataField: 'Artigo',
             text: 'ID',
-            sort: true
         }, {
 
             dataField: 'Descricao',
             text: 'Product Name',
-            sort: true,
             filter: textFilter({
                 delay: 50,
                 style: {
@@ -101,7 +91,6 @@ class Purchase extends Component {
         }, {
             dataField: 'Quantidade',
             text: 'Units',
-            sort: true,
             filter: textFilter({
                 delay: 50,
                 style: {
@@ -111,7 +100,6 @@ class Purchase extends Component {
         }, {
             dataField: 'PrecUnit',
             text: 'Price per Unit',
-            sort: true,
             filter: textFilter({
                 delay: 50,
                 style: {
@@ -122,12 +110,11 @@ class Purchase extends Component {
         {
             dataField: 'Preco',
             text: 'Price',
-            sort: true
         }
         ];
 
         const defaultSorted = [{
-            dataField: 'Descricao',
+            dataField: 'PrecUnit',
             order: 'asc'
         }];
 
@@ -158,17 +145,17 @@ class Purchase extends Component {
                         <div className="d-flex flex-row justify-content-around product-infos">
                             <span className="card w-25">
                                 <div className="card-header">Supplier</div>
-                                <div className="card-body">{this.state.supplier}</div>
+                                <div className="card-body">{this.state.info.Nome}</div>
                             </span>
 
                             <span className="card w-25">
                                 <div className="card-header">Total</div>
-                                <div className="card-body">{this.state.value}</div>
+                                <div className="card-body">{this.state.info.TotalMerc}</div>
                             </span>
 
                             <span className="card w-25">
                                 <div className="card-header">Date</div>
-                                <div className="card-body">{this.state.date}</div>
+                                <div className="card-body">{this.state.info.DataDoc}</div>
                             </span>
                         </div>
 
@@ -176,7 +163,7 @@ class Purchase extends Component {
                             <h5 className="card-header text-center">List of Products</h5>
                             <div className="card-body">
                                 <input type="text" className="form-control" placeholder="Search product" onInput={handleSearchInput} />
-                                <BootstrapTable bootstrap4 striped hover keyField='PurchaseCode' data={this.state.purchases} columns={columns} defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()} />
+                                <BootstrapTable bootstrap4 striped hover keyField='PurchaseCode' data={this.state.prod} columns={columns} defaultSorted={defaultSorted} pagination={paginationFactory(tableOptions)} filter={filterFactory()} />
                             </div>
                         </div>
 
