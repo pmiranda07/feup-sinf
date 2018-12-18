@@ -152,7 +152,7 @@ class Purchase extends Component {
             <div id="purchasePage" className="container">
                 <div className="card">
                     <div className="card-header">
-                        <strong>Purchase</strong>{this.state.purchaseId}
+                        <strong>Purchase: </strong>{this.state.id}
                     </div>
                     <div className="card-body">
                         <div className="d-flex flex-row justify-content-around product-infos">
