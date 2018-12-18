@@ -166,18 +166,18 @@ class Product extends Component {
                 <div className="card-body">
                     <div className="d-flex flex-row justify-content-around product-infos">
                         <span className="card w-25">
-                            <div className="card-header">ID</div>
-                            <div className="card-body">{this.state.info.Artigo}</div>
+                            <div className="card-header text-center">ID</div>
+                            <div className="card-body text-center">{this.state.info.Artigo}</div>
                         </span>
 
                         <span className="card w-25">
-                            <div className="card-header">Stock</div>
-                            <div className="card-body">{this.state.info.STKActual} Units</div>
+                            <div className="card-header text-center">Stock</div>
+                            <div className="card-body text-center">{this.state.info.STKActual} Units</div>
                         </span>
 
                         <span className="card w-25">
-                            <div className="card-header">Price</div>
-                            <div className="card-body">{this.state.info.PCMedio} €</div>
+                            <div className="card-header text-center">Price</div>
+                            <div className="card-body text-center">{this.state.info.PCMedio} €</div>
                         </span>
                     </div>
 
