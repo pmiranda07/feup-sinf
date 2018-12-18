@@ -67,7 +67,7 @@ class Financial extends Component {
           <div className="card-header">
             <div className="d-flex flex-row justify-content-between align-items-center">
               <h4 className="m-0">Financial details</h4>
-              <Select className="w-50" options={this.months} onChange={this.onMonthChange.bind(this)}/>
+              <Select value={this.months[this.state.month]} className="w-50" options={this.months} onChange={this.onMonthChange.bind(this)}/>
             </div>
             </div>
           <div className="card-body d-flex flex-row justify-content-around ">
