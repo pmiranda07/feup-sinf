@@ -9,7 +9,8 @@ import Financial from './pages/Financial';
 import Products from './pages/Products';
 import Purchases from './pages/Purchases';
 import Sales from './pages/Sales';
-import Sale from './pages/Sale'
+import Sale from './pages/Sale';
+import Purchase from './pages/Purchase';
 
 import Product from './pages/Product';
 import LoginForm from './components/LoginForm';
@@ -158,6 +159,7 @@ class App extends Component {
           <Route path="/sales" exact render={(props)=><Sales token={this.state.token} {...props}/>} />
           <Route path='/sales/:id*' render={(props)=><Sale token={this.state.token} {...props}/>} />
           <Route path="/products/:id" render={(props)=><Product token={this.state.token} {...props}/>}/>
+          <Route path='/purchases/:id*' render={(props)=><Purchase token={this.state.token} {...props}/>} />
         </Switch>
       </Fragment>
     );

@@ -15,6 +15,8 @@ class Purchases extends Component {
 
     this.state = {
       purchases: [],
+      purchasesY: 0,
+      salesTotal: {},
       loadingPrimavera: true,
       loadingAPI: true
     };
@@ -51,7 +53,7 @@ class Purchases extends Component {
   };
 
   callPrimavera = async () => {
-    var query = JSON.stringify("SELECT NumDoc,Id,TipoDoc, Nome, Abs(TotalMerc) AS TotalMerc, CONVERT(Varchar(10),DataDoc,103) AS DataDoc FROM CabecCompras WHERE TipoDoc='VFA' OR TipoDoc='VNC'");
+    var query = JSON.stringify("SELECT CONCAT(Filial,'/',TipoDoc,'/',Serie,'/',NumDoc) AS Iden,Nome, Abs(TotalMerc) AS TotalMerc, CONVERT(Varchar(10),DataDoc,103) AS DataDoc FROM CabecCompras WHERE TipoDoc='VFA' OR TipoDoc='VNC'");
 
     return axios({
       method: 'post',
@@ -82,14 +84,15 @@ class Purchases extends Component {
       return <Loading/>
 
       const columns = [{
-        dataField: 'TipoDoc',
-        text: 'Document',
-        sort: true
-    },{
 
-          dataField: 'NumDoc',
-          text: 'IdDoc',
+          dataField: 'Iden',
+          text: 'ID',
           sort: true,
+          events: {
+            onClick: (e, column, columnIndex, row, rowIndex) => { 
+                this.props.history.push('/purchases/' + row.Iden);
+            }
+            },
           filter: textFilter({
             delay: 50,
             style: {
@@ -153,7 +156,6 @@ class Purchases extends Component {
       return (
         <div id="purchasesPage" className="container">
         <h1>Purchases</h1>
-
         <div className="card">
           <h5 className="card-header text-center">Purchases per year</h5>
           <div className="card-body" style={{height: 500}}>
