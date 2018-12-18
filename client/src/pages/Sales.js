@@ -173,6 +173,7 @@ class Sales extends Component {
       <div id="salesPage" className="container">
       <div className="card">
         <div className="d-flex">
+        <h6> Sales on year </h6>
           <Select
             className="w-25"
             value={this.state.selected_option}

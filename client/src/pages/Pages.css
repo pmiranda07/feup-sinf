@@ -113,6 +113,13 @@ h1 {
     margin: auto;
 }
 
+#salesPage .card:nth-child(1) h6{
+    color: white;
+    margin: auto;
+    padding-left: 20px;
+    width: 160px;
+}
+
 #salesPage .card:nth-child(2) > .card-header{
     background-color: var(--green-darker);
     color: white;
@@ -121,6 +128,15 @@ h1 {
 #salesPage .card:nth-child(3) > .card-header{
     background-color: var(--green-medium);
     color: white;
+}
+
+.select-drop > .css-vj8t7z{
+    background-color: black;
+    border: none;
+}
+
+.select-drop > .css-1hwfws3{
+    text-align: right;
 }
 
 
