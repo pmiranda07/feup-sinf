@@ -68,7 +68,7 @@ class Navbar extends Component {
         : null;
 
     let links = !this.props.invalidSAFT ? (
-        <ul className="navbar-nav">
+        <ul className="navbar-nav text-center">
             <li className="nav-item">
                 <NavLink activeClassName="active" className="nav-link logo" exact to="/">
                     <img src={"/logo.png"} alt="logo" />
