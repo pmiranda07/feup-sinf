@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 
 import Loading from '../components/Loading';
+import './Pages.css';
 
 class Purchase extends Component {
     constructor(props) {
@@ -74,10 +75,22 @@ class Purchase extends Component {
         const columns = [{
             dataField: 'Artigo',
             text: 'ID',
+            events: {
+                onClick: (e, column, columnIndex, row, rowIndex) => {
+                    if( row.Artigo )
+                        this.props.history.push('/products/' + row.Artigo);
+                }
+            },
         }, {
 
             dataField: 'Descricao',
             text: 'Product Name',
+            events: {
+                onClick: (e, column, columnIndex, row, rowIndex) => {
+                    if( row.Artigo )
+                        this.props.history.push('/products/' + row.Artigo);
+                }
+            },
             filter: textFilter({
                 delay: 50,
                 style: {
@@ -99,7 +112,7 @@ class Purchase extends Component {
             })
         }, {
             dataField: 'PrecUnit',
-            text: 'Price per Unit',
+            text: 'Price per Unit (€)',
             filter: textFilter({
                 delay: 50,
                 style: {
@@ -109,7 +122,7 @@ class Purchase extends Component {
         },
         {
             dataField: 'Preco',
-            text: 'Price',
+            text: 'Price (€)',
         }
         ];
 
@@ -139,7 +152,7 @@ class Purchase extends Component {
             <div id="purchasePage" className="container">
                 <div className="card">
                     <div className="card-header">
-                        <strong>Purchase: </strong>{this.state.purchaseId}
+                        <strong>Purchase</strong>{this.state.purchaseId}
                     </div>
                     <div className="card-body">
                         <div className="d-flex flex-row justify-content-around product-infos">
@@ -150,7 +163,7 @@ class Purchase extends Component {
 
                             <span className="card w-25">
                                 <div className="card-header">Total</div>
-                                <div className="card-body">{this.state.info.TotalMerc}</div>
+                                <div className="card-body">{this.state.info.TotalMerc}€</div>
                             </span>
 
                             <span className="card w-25">
