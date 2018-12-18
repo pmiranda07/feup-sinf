@@ -223,6 +223,10 @@ h1 {
     margin-bottom: 1em;
 }
 
+#purchasesPage input {
+    margin-bottom: 1em;
+}
+
 #purchasePage .react-bootstrap-table td:nth-child(1),
 #purchasePage .react-bootstrap-table td:nth-child(2) {
     cursor: pointer;

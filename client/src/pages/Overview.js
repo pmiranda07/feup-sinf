@@ -6,6 +6,7 @@ import FinancialChart from '../components/FinancialChart';
 import TopProducts from '../components/TopProducts';
 import Loading from '../components/Loading';
 import './Pages.css';
+import SalesGraph from '../components/SalesGraph';
 
 
 class Overview extends Component {
@@ -17,14 +18,17 @@ class Overview extends Component {
       sales: [],
       revenue: [],
       purchases: [],
+      sales_graph: [],
       loadingAPI: true,
-      loadingPurchases: true
+      loadingPurchases: true,
+      loadingSales: true
     };
   }
 
   componentDidMount() {
     this.callAPI();
     this.getPurchases();
+    this.getSales();
   }
 
   callAPI() {
@@ -62,8 +66,58 @@ class Overview extends Component {
     .catch(err => console.log(err));
   }
 
+  getSales() {
+    var query = JSON.stringify("SELECT Data, TotalMerc FROM CabecDoc WHERE TipoDoc = 'FA'");
+    axios({
+      method: 'post',
+      url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+      crossdomain: true,
+      headers: {
+        'content-type': 'application/json',
+        'authorization': "Bearer " + this.props.token
+      },
+      data: query
+    })
+    .then((res) => {
+      let sales_total = {};
+      for(let i = 0; i < res.data.DataSet.Table.length; i++){
+        let date = res.data.DataSet.Table[i].Data.split('-');
+        let year = date[0];
+        let month = date[1];
+        let totalMerc = res.data.DataSet.Table[i].TotalMerc
+        if(!(year in sales_total)){
+          sales_total[year] = {
+            [month]: totalMerc
+          };
+        }
+        else if(!(month in sales_total[year])){
+          sales_total[year][month] = totalMerc;
+        }
+        else{
+          sales_total[year][month] += totalMerc;
+        }
+      }
+
+      let sales = []
+      for (let index in sales_total) {
+        let obj = {};
+        obj["year"] = index;
+        for(let key in sales_total[index]){
+          obj[key] = sales_total[index][key];
+        }
+        sales.push(obj)
+      }
+
+      this.setState({
+        sales_graph: sales,
+        loadingSales: false
+      });
+    })
+    .catch((err) => console.log(err));
+  }
+
   loading() {
-    return this.state.loadingAPI || this.state.loadingPurchases;
+    return this.state.loadingAPI || this.state.loadingPurchases || this.state.loadingSales;
   }
 
   render() {
@@ -92,6 +146,13 @@ class Overview extends Component {
           <h5 className="card-header text-center">Purchases per year</h5>
           <div className="card-body" style={{height: 500}}>
             <PurchasesGraph purchases={this.state.purchases}/>
+          </div>
+        </div>
+
+        <div className="card">
+          <h5 className="card-header text-center">Sales per year</h5>
+          <div className="card-body" style={{height: 500}}>
+            <SalesGraph bar_vars={this.state.sales_graph}/>
           </div>
         </div>
 
