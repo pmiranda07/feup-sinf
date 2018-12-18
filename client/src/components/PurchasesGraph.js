@@ -38,7 +38,7 @@ export default class PurchasesGraph extends Component {
                         purchasesPerYear[year][month] += totalV;
                     }
                 }
-
+                purchasesPerYear[year][month] = parseFloat(purchasesPerYear[year][month].toFixed(2));
             }
         let ret = []
         for (let index in purchasesPerYear){
@@ -124,7 +124,7 @@ export default class PurchasesGraph extends Component {
                   "tickPadding": 5,
                   "tickRotation": 0,
                   "legend": "year",
-                  "legendPosition": "middle",
+                  "legendPosition": "center",
                   "legendOffset": 32
               }}
               axisLeft={{
@@ -132,7 +132,7 @@ export default class PurchasesGraph extends Component {
                   "tickPadding": 5,
                   "tickRotation": 0,
                   "legend": "Total",
-                  "legendPosition": "middle",
+                  "legendPosition": "center",
                   "legendOffset": -50
               }}
               labelSkipWidth={12}

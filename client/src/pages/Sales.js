@@ -164,7 +164,6 @@ class Sales extends Component {
   }
 
   render() {
-    console.log(this.state.bar_vars)
     if (this.loading())
       return <Loading/>
 
@@ -252,7 +251,7 @@ class Sales extends Component {
                   "tickPadding": 5,
                   "tickRotation": 0,
                   "legend": "year",
-                  "legendPosition": "middle",
+                  "legendPosition": "center",
                   "legendOffset": 32
               }}
               axisLeft={{
@@ -260,7 +259,7 @@ class Sales extends Component {
                   "tickPadding": 5,
                   "tickRotation": 0,
                   "legend": "Net Total",
-                  "legendPosition": "middle",
+                  "legendPosition": "center",
                   "legendOffset": -50
               }}
               labelSkipWidth={12}

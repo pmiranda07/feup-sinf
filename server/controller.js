@@ -17,7 +17,9 @@ module.exports = {
             ebitda: BalanceSheet.getEBITDA(month),
             bank: BalanceSheet.getBank(month),
             ap: BalanceSheet.getAP(month),
-            ar: BalanceSheet.getAR(month)
+            ar: BalanceSheet.getAR(month),
+            sales: BalanceSheet.getSales(Database.data),
+            revenue: BalanceSheet.getRevenue(Database.data)
         });
     },
 
