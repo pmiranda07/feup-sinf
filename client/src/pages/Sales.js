@@ -190,7 +190,7 @@ class Sales extends Component {
               <SalesGraph bar_vars={this.state.bar_vars}/>
           </div>
         </div>
-        <div className="card">
+        <div className="card listOfSales">
           <h5 className="card-header text-center">Sales List</h5>
           <div className="card-body">
             <SalesTable data={this.state.sales} history={this.props.history}/>

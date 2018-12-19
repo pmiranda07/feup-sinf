@@ -138,6 +138,18 @@ h1 {
     color: white;
 }
 
+.listOfSales td, .listOfSales th{
+    text-align: center;
+}
+
+.listOfSales td:nth-child(4){
+    text-align: right;
+}
+
+.listOfSales td:nth-child(4)::after{
+    content: " €";
+}
+
 
 /*
 ################################################################################
