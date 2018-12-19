@@ -165,10 +165,50 @@ h1 {
     cursor: pointer;
 }
 
-
-#financialPage .details {
-    width: 18%;
+#salePage > .card > .card-header {
+    background-color: black;
+    color: white;
 }
+
+#salePage > .card > .card-body .card:nth-child(1) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+}
+
+#salePage > .card > .card-body .card:nth-child(1) > .card-body{
+    margin: auto;
+}
+
+#salePage > .card > .card-body .card:nth-child(2) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#salePage > .card > .card-body .card:nth-child(3) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+.saleOverview > h5{
+    background-color: green !important;
+    color: white;
+}
+
+.saleOverview td, .saleOverview th{
+    text-align: center;
+}
+
+
+.saleOverview td:nth-child(5){
+    text-align: right;
+}
+
+.saleOverview td:nth-child(5)::after{
+    content: " €";
+}
+
+
+
 
 /*
 ################################################################################
@@ -301,4 +341,9 @@ h1 {
 #purchasePage .react-bootstrap-table td:nth-child(1),
 #purchasePage .react-bootstrap-table td:nth-child(2) {
     cursor: pointer;
+}
+
+
+#financialPage .details {
+    width: 18%;
 }

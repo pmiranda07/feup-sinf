@@ -29,7 +29,7 @@ class Sale extends Component {
             .then((res) => this.handleResponse(res))
             .catch(err => console.log(err));
       }
-    
+
     callAPI = async () => {
         const response = await fetch('/sales/' + this.state.id);
         const response_json = await response.json();
@@ -38,7 +38,7 @@ class Sale extends Component {
 
     handleResponse(res) {
         let s = this.parseResponse(res.info);
-        this.setState( { 
+        this.setState( {
             inf: JSON.stringify(res.info),
             info: res.info,
             ship_to_date: res.info.ShipTo.DeliveryDate,
@@ -79,46 +79,40 @@ class Sale extends Component {
 
     render() {
         return (
-            //TODO
             <div id="salePage" className="container">
-                <div className="d-flex flex-row justify-content-between">
-                    <span className="card small-gap">
-                        <div className="card-header">ID</div>
-                        <div className="card-body">{this.state.sale_id}</div>
-                    </span>
-
-                    <span className="card small-gap">
-                        <div className="card-header">Net total</div>
-                        <div className="card-body">{this.state.sale_totals.NetTotal + "€"}</div>
-                    </span>
-                </div>
-
                 <div className="card">
-                    <h5 className="card-header text-center">Products Sold</h5>
+                    <div className="card-header">
+                        <strong>Purchase: </strong>{this.state.sale_id}
+                    </div>
+
                     <div className="card-body">
-                        <SaleTable data={this.state.sale} history={this.props.history}> </SaleTable>  
+                        <div className="d-flex flex-row justify-content-around product-infos">
+                            <span className="card w-25">
+                                <div className="card-header text-center">Customer</div>
+                                <div className="card-body text-center">TODO</div>
+                            </span>
+
+                            <span className="card w-25">
+                                <div className="card-header text-center">Total</div>
+                                <div className="card-body text-center">{this.state.sale_totals.NetTotal + "€"}</div>
+                            </span>
+                            <span className="card w-25">
+                                <div className="card-header text-center">Date</div>
+                                <div className="card-body text-center">{this.state.ship_to_date}</div>
+                            </span>
+                        </div>
+
+                        <div className="card saleOverview">
+                            <h5 className="card-header text-center">Products Sold</h5>
+                            <div className="card-body">
+                                <SaleTable data={this.state.sale} history={this.props.history}> </SaleTable>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-
-                <div className="d-flex flex-row justify-content-between">
-                    <span className="card small-gap">
-                        <div className="card-body text-center">
-                            <p>From</p>
-                            <p>{this.getAddressText(this.state.ship_from_address.AddressDetail + ", " + this.state.ship_from_address.PostalCode + ", " + this.state.ship_from_address.City)}</p>
-                            <p>{this.state.ship_from_date}</p>
-                        </div>
-                    </span>
-
-                    <span className="card small-gap">
-                        <div className="card-body text-center">
-                            <p>To</p>
-                            <p>{this.getAddressText(this.state.ship_to_address.AddressDetail + ", " + this.state.ship_to_address.PostalCode + ", " + this.state.ship_to_address.City)}</p>
-                            <p>{this.state.ship_to_date}</p>
-                        </div>
-                    </span>
-                </div>
             </div>
+
         );
     }
 
