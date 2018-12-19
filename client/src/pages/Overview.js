@@ -35,7 +35,7 @@ class Overview extends Component {
   callAPI() {
     axios.get('/overview')
     .then((res) => {
-      this.setState( { 
+      this.setState( {
         topSelling: res.data.topSelling,
         sales: res.data.sales,
         revenue: res.data.revenue,
@@ -100,7 +100,7 @@ class Overview extends Component {
     return (
       <div id="overviewPage" className="container">
         <h1>Overview</h1>
-        
+
         <div className="card">
           <h5 className="card-header text-center">Most Sold Products</h5>
           <div className="card-body" style={{height: 500}}>

@@ -389,3 +389,28 @@ h1 {
     background-color: var(--green-medium);
     color: white;
 }
+
+/*
+################################################################################
+                              Overview Page
+################################################################################
+*/
+#overviewPage .card:nth-child(2) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+}
+
+#overviewPage .card:nth-child(3) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#overviewPage .card:nth-child(4) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+#overviewPage .card:nth-child(5) > .card-header{
+    background-color: black;
+    color: white;
+}
