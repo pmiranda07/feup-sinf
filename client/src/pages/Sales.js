@@ -58,7 +58,7 @@ class Sales extends Component {
   };
 
   callPrimavera = async () => {
-    var query = JSON.stringify("SELECT Data, TotalMerc FROM CabecDoc WHERE TipoDoc = 'FA'");
+    var query = JSON.stringify("SELECT Data, TotalMerc FROM CabecDoc WHERE TipoDoc = 'ECL'");
     return axios({
       method: 'post',
       url: 'http://localhost:2018/WebApi/Administrador/Consulta',
@@ -146,7 +146,7 @@ class Sales extends Component {
       sum+= this.state.salesTotal[this.state.selected_option['value']][i]
     }
     this.setState({
-      sales_ytd: sum
+      sales_ytd: Math.round(sum)
     })
   }
 

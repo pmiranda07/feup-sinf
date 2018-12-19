@@ -62,13 +62,11 @@ module.exports = {
                 return;
             }
 
-
-            exec('xmllint --noout --schema storage/saft.xsd storage/saft.xml', (err, stdout, stderr) => {
-                if( err ) {
+            //exec('xmllint --noout --schema storage/saft.xsd storage/saft.xml', (err, stdout, stderr) => {
+                /*if( err ) {
                     res.status(500).send( { message: "Failed to validate SAF-T" } );
                     return false;
-                }
-
+                }*/
 
                 read("storage/saft.xml", "utf8", (err, xmlBuffer) => {
                     if( err ) {
@@ -95,7 +93,6 @@ module.exports = {
                     });
                 });
             });
-        });
     },
 
     fixFile(json) {
