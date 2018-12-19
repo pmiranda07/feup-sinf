@@ -343,7 +343,49 @@ h1 {
     cursor: pointer;
 }
 
-
+/*
+################################################################################
+                              Financial Page
+################################################################################
+*/
 #financialPage .details {
     width: 18%;
+}
+
+#financialPage > .card:nth-child(2) > .card-header{
+    background-color: var(--green-darker);
+}
+
+#financialPage > .card:nth-child(2) > .card-header h4{
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(1) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(2) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(3) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(4) > .card-header{
+    background-color: black;
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(5) > .card-header{
+    background-color: grey;
+    color: white;
+}
+
+#financialPage > .card:nth-child(3) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
 }

@@ -72,28 +72,28 @@ class Financial extends Component {
             </div>
           <div className="card-body d-flex flex-row justify-content-around ">
             <span className="card details">
-                <div className="card-header">Cash</div>
-                <div className="card-body">{this.state.details.cash}€</div>
+                <div className="card-header text-center">Cash</div>
+                <div className="card-body text-center">{this.state.details.cash}€</div>
             </span>
 
             <span className="card details">
-                <div className="card-header">Bank</div>
-                <div className="card-body">{this.state.details.bank}€</div>
+                <div className="card-header text-center">Bank</div>
+                <div className="card-body text-center">{this.state.details.bank}€</div>
             </span>
 
             <span className="card details">
-                <div className="card-header">EBITDA</div>
-                <div className="card-body">{this.state.details.ebitda}€</div>
+                <div className="card-header text-center">EBITDA</div>
+                <div className="card-body text-center">{this.state.details.ebitda}€</div>
             </span>
 
             <span className="card details">
-                <div className="card-header">Accounts Payable</div>
-                <div className="card-body">{this.state.details.ap}€</div>
+                <div className="card-header text-center">Accounts Payable</div>
+                <div className="card-body text-center">{this.state.details.ap}€</div>
             </span>
 
             <span className="card details">
-                <div className="card-header">Accounts Receivable</div>
-                <div className="card-body">{this.state.details.ar}€</div>
+                <div className="card-header text-center">Accounts Receivable</div>
+                <div className="card-body text-center">{this.state.details.ar}€</div>
             </span>
           </div>
         </div>
