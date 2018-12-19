@@ -123,7 +123,7 @@ class Purchases extends Component {
       data: query
     });
   };
-  
+
   handlePrimaveraResponse(res) {
     this.setState({
       purchases: res.data.DataSet.Table,
@@ -149,7 +149,7 @@ class Purchases extends Component {
             sum+= this.state.purchasesPerYear[i][index]
         }
       }
-      
+
     }
     this.setState({
       purchases_ytd: sum
@@ -180,7 +180,7 @@ class Purchases extends Component {
           text: 'ID',
           sort: true,
           events: {
-            onClick: (e, column, columnIndex, row, rowIndex) => { 
+            onClick: (e, column, columnIndex, row, rowIndex) => {
                 this.props.history.push('/purchases/' + row.Iden);
             }
             },
@@ -248,15 +248,15 @@ class Purchases extends Component {
         <div id="purchasesPage" className="container">
         <h1>Purchases</h1>
         <div className="card">
-        <div className="card-header text-center">
-            <h6> Purchases on year  </h6>
-            <Select
-                className="purchasesSelect"
-                value={this.state.selected_option}
-                onChange={this.handleChange.bind(this)}
-                options={this.state.select_options}
-            />
-        </div>
+            <div className="card-header text-center">
+                <h6> Purchases on year  </h6>
+                <Select
+                    className="purchasesSelect"
+                    value={this.state.selected_option}
+                    onChange={this.handleChange.bind(this)}
+                    options={this.state.select_options}
+                />
+            </div>
         <div className="d-flex card-body text-center">
             <h5 className="w-75" style={{textAlign:'center', verticalAlign:'center', margin: "auto"}}>{this.state.purchases_ytd}€</h5>
         </div>
@@ -268,7 +268,7 @@ class Purchases extends Component {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card listOfPurchases">
           <h5 className="card-header text-center">List of Purchases</h5>
           <div className="card-body">
             <input type="text" className="form-control" placeholder="Search Supplier" onInput={ handleSearchInput }/>

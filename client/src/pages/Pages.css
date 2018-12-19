@@ -153,9 +153,6 @@ h1 {
     cursor: pointer;
 }
 
-#purchasesPage .react-bootstrap-table td:nth-child(1) {
-    cursor: pointer;
-}
 
 #financialPage .details {
     width: 18%;
@@ -164,6 +161,71 @@ h1 {
 /*
 ################################################################################
                               Purchases Page
+################################################################################
+*/
+#purchasesPage .react-bootstrap-table td:nth-child(1) {
+    cursor: pointer;
+}
+
+#purchasesPage .card:nth-child(2) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+    position: relative;
+    height: 56px;
+}
+
+#purchasesPage .card:nth-child(2) > .card-header h6{
+    position: absolute;
+    font-size: 22px;
+    left: 50%;
+    top: 13px;
+    transform: translateX(-50%);
+}
+
+
+#purchasesPage .card:nth-child(2) > .card-header .purchasesSelect{
+    width: 100px;
+    color: black;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    height: 38px !important;
+}
+
+#purchasesPage .card:nth-child(2) > .card-header .purchasesSelect .css-vj8t7z > *{
+    height: 38px;
+}
+
+#purchasesPage .card:nth-child(2) > .card-header .purchasesSelect .css-2o5izw > *{
+    height: 38px;
+}
+
+#purchasesPage .card:nth-child(3) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#purchasesPage .card:nth-child(4) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+.listOfPurchases td, .listOfPurchases th{
+    text-align: center;
+}
+
+.listOfPurchases td:nth-child(3){
+    text-align: right;
+}
+
+.listOfPurchases td:nth-child(3)::after{
+    content: " €";
+}
+
+
+/*
+################################################################################
+                              Purchase Page
 ################################################################################
 */
 #purchasePage > .card > .card-header {
@@ -199,9 +261,6 @@ h1 {
     text-align: center;
 }
 
-.purchaseOverview td:nth-child(3){
-    text-align: center;
-}
 
 .purchaseOverview td:nth-child(4){
     text-align: right;
