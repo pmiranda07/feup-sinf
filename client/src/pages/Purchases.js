@@ -110,7 +110,7 @@ class Purchases extends Component {
   };
 
   callPrimavera = async () => {
-    var query = JSON.stringify("SELECT CONCAT(Filial,'/',TipoDoc,'/',Serie,'/',NumDoc) AS Iden,Nome, Abs(TotalMerc) AS TotalMerc, CONVERT(Varchar(10),DataDoc,103) AS DataDoc FROM CabecCompras WHERE TipoDoc='VFA' OR TipoDoc='VNC'");
+    var query = JSON.stringify("SELECT CONCAT(Filial,'/',TipoDoc,'/',Serie,'/',NumDoc) AS Iden,Nome, abs(TotalMerc) AS TotalMerc, TipoDoc ,CONVERT(Varchar(10),DataDoc,103) AS DataDoc FROM CabecCompras WHERE TipoDoc='VFA' OR TipoDoc='VNC'");
 
     return axios({
       method: 'post',
