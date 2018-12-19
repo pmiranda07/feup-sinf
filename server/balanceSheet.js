@@ -219,6 +219,10 @@ function getSales(data) {
         salesVolume[invoiceMonth - 1] += parseFloat(salesInvoices[i].DocumentTotals.NetTotal);
     }
 
+    for(let i=0;i < salesVolume.length;i++){
+        salesVolume[i]= parseFloat(salesVolume[i].toFixed(2));
+    }
+
     return salesVolume;
 };
 
@@ -228,6 +232,10 @@ function getRevenue(data) {
     let rev = 0;
     for (let i = 0; i < journalEntries.length; i++) {
         rev += handleJournalEntry(journalEntries[i]);
+    }
+
+    for(let i=0;i < revenue.length;i++){
+        revenue[i]= parseFloat(revenue[i].toFixed(2));
     }
 
     return revenue;

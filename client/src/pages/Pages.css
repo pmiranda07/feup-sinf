@@ -138,6 +138,18 @@ h1 {
     color: white;
 }
 
+.listOfSales td, .listOfSales th{
+    text-align: center;
+}
+
+.listOfSales td:nth-child(4){
+    text-align: right;
+}
+
+.listOfSales td:nth-child(4)::after{
+    content: " €";
+}
+
 
 /*
 ################################################################################
@@ -153,17 +165,119 @@ h1 {
     cursor: pointer;
 }
 
-#purchasesPage .react-bootstrap-table td:nth-child(1) {
-    cursor: pointer;
+#salePage > .card > .card-header {
+    background-color: black;
+    color: white;
 }
 
-#financialPage .details {
-    width: 18%;
+#salePage > .card > .card-body .card:nth-child(1) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
 }
+
+#salePage > .card > .card-body .card:nth-child(1) > .card-body{
+    margin: auto;
+}
+
+#salePage > .card > .card-body .card:nth-child(2) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#salePage > .card > .card-body .card:nth-child(3) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+.saleOverview > h5{
+    background-color: green !important;
+    color: white;
+}
+
+.saleOverview td, .saleOverview th{
+    text-align: center;
+}
+
+
+.saleOverview td:nth-child(5){
+    text-align: right;
+}
+
+.saleOverview td:nth-child(5)::after{
+    content: " €";
+}
+
+
+
 
 /*
 ################################################################################
                               Purchases Page
+################################################################################
+*/
+#purchasesPage .react-bootstrap-table td:nth-child(1) {
+    cursor: pointer;
+}
+
+#purchasesPage .card:nth-child(2) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+    position: relative;
+    height: 56px;
+}
+
+#purchasesPage .card:nth-child(2) > .card-header h6{
+    position: absolute;
+    font-size: 22px;
+    left: 50%;
+    top: 13px;
+    transform: translateX(-50%);
+}
+
+
+#purchasesPage .card:nth-child(2) > .card-header .purchasesSelect{
+    width: 100px;
+    color: black;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    height: 38px !important;
+}
+
+#purchasesPage .card:nth-child(2) > .card-header .purchasesSelect .css-vj8t7z > *{
+    height: 38px;
+}
+
+#purchasesPage .card:nth-child(2) > .card-header .purchasesSelect .css-2o5izw > *{
+    height: 38px;
+}
+
+#purchasesPage .card:nth-child(3) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#purchasesPage .card:nth-child(4) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+.listOfPurchases td, .listOfPurchases th{
+    text-align: center;
+}
+
+.listOfPurchases td:nth-child(3){
+    text-align: right;
+}
+
+.listOfPurchases td:nth-child(3)::after{
+    content: " €";
+}
+
+
+/*
+################################################################################
+                              Purchase Page
 ################################################################################
 */
 #purchasePage > .card > .card-header {
@@ -199,9 +313,6 @@ h1 {
     text-align: center;
 }
 
-.purchaseOverview td:nth-child(3){
-    text-align: center;
-}
 
 .purchaseOverview td:nth-child(4){
     text-align: right;
@@ -230,4 +341,76 @@ h1 {
 #purchasePage .react-bootstrap-table td:nth-child(1),
 #purchasePage .react-bootstrap-table td:nth-child(2) {
     cursor: pointer;
+}
+
+/*
+################################################################################
+                              Financial Page
+################################################################################
+*/
+#financialPage .details {
+    width: 18%;
+}
+
+#financialPage > .card:nth-child(2) > .card-header{
+    background-color: var(--green-darker);
+}
+
+#financialPage > .card:nth-child(2) > .card-header h4{
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(1) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(2) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(3) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(4) > .card-header{
+    background-color: black;
+    color: white;
+}
+
+#financialPage > .card:nth-child(2) > .card-body .card:nth-child(5) > .card-header{
+    background-color: grey;
+    color: white;
+}
+
+#financialPage > .card:nth-child(3) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+/*
+################################################################################
+                              Overview Page
+################################################################################
+*/
+#overviewPage .card:nth-child(2) > .card-header{
+    background-color: var(--green-darker);
+    color: white;
+}
+
+#overviewPage .card:nth-child(3) > .card-header{
+    background-color: var(--green-medium);
+    color: white;
+}
+
+#overviewPage .card:nth-child(4) > .card-header{
+    background-color: var(--green-brighter);
+    color: white;
+}
+
+#overviewPage .card:nth-child(5) > .card-header{
+    background-color: black;
+    color: white;
 }

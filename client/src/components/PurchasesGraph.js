@@ -1,54 +1,13 @@
 import React, { Component } from 'react';
 import { ResponsiveBar } from 'nivo'
+import { example } from '../pages/Purchases';
+
 
 export default class PurchasesGraph extends Component {
     constructor(props) {
         super(props);
-        
-        let purchasesPerYear = {};
-        for (let i=0; i < this.props.purchases.length;i++) {
-                let date = this.props.purchases[i].DataDoc.split('/');
-                let year = date[2];
-                let month = date[1];
-                let totalV = this.props.purchases[i].TotalMerc;
-                let tipoDoc = this.props.purchases[i].TipoDoc;
-                if(tipoDoc === 'VNC'){
-                    if(!(year in purchasesPerYear)){
-                        purchasesPerYear[year] = {
-                         [month]: -totalV
-                        };
-                    }
-                    else if(!(month in purchasesPerYear[year])){
-                        purchasesPerYear[year][month] = -totalV;
-                    }
-                    else{
-                        purchasesPerYear[year][month] -= totalV;
-                    }
-                }
-                else{
-                    if(!(year in purchasesPerYear)){
-                        purchasesPerYear[year] = {
-                         [month]: totalV
-                        };
-                    }
-                    else if(!(month in purchasesPerYear[year])){
-                        purchasesPerYear[year][month] = totalV;
-                    }
-                    else{
-                        purchasesPerYear[year][month] += totalV;
-                    }
-                }
-                purchasesPerYear[year][month] = parseFloat(purchasesPerYear[year][month].toFixed(2));
-            }
-        let ret = []
-        for (let index in purchasesPerYear){
-          let obj = {};
-          obj["year"] = index;
-          for(let key in purchasesPerYear[index]){
-            obj[key] = purchasesPerYear[index][key];
-          }
-          ret.push(obj)
-        }
+        let ret = example(this.props.purchases)[0];
+
         this.state = {
             purchasespY: ret
         };
