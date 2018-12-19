@@ -152,7 +152,7 @@ class Purchases extends Component {
 
     }
     this.setState({
-      purchases_ytd: sum
+      purchases_ytd: sum.toFixed(2)
     })
   }
 
