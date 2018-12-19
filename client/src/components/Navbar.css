@@ -67,6 +67,15 @@
 #fiscal-year h5{
     color: white;
     position: fixed;
+    right: 200px;
+    top: 16px;
+    margin: 0;
+}
+
+.logout {
+    cursor: pointer;
+    color: white;
+    position: fixed;
     right: 170px;
     top: 16px;
     margin: 0;

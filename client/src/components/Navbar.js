@@ -96,6 +96,9 @@ class Navbar extends Component {
                 <NavLink activeClassName="active" className="nav-link" to="/purchases">Purchases</NavLink>
             </li>
             {fiscalYear}
+            <li className="nav-item logout" onClick={this.props.logout}>
+                <i className="fas fa-sign-out-alt"></i>
+            </li>
             <li className="nav-item">
                 <button className="btn" type="button" onClick={this.saftFunction}>Upload SAF-T</button>
             </li>
@@ -106,6 +109,9 @@ class Navbar extends Component {
                 <a className="nav-link logo active" href="/">
                     <img src={"/logo.png"} alt="logo" />
                 </a>
+            </li>
+            <li className="nav-item logout" onClick={this.props.logout}>
+                <i className="fas fa-sign-out-alt"></i>
             </li>
             <li className="nav-item">
                 <button className="btn" type="button" onClick={this.saftFunction}>Upload SAF-T</button>

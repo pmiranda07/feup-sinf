@@ -33,6 +33,7 @@ class App extends Component {
     };
 
     this.getToken = this.getToken.bind(this);
+    this.logout = this.logout.bind(this);
 
     this.props.history.listen((location, action) => {
       this.verifyToken();
@@ -42,6 +43,16 @@ class App extends Component {
   componentWillMount() {
     this.verifyToken();
     this.verifySAFT();
+  }
+
+  logout() {
+    localStorage.clear();
+    this.setState( { 
+      cachedCredentials: false,
+      token: null,
+      gettingToken: false,
+      loginError: null
+    }); 
   }
 
   verifySAFT() {
@@ -142,7 +153,7 @@ class App extends Component {
     if(!this.state.validSAFT) {
       return (
         <Fragment>
-          <Navbar invalidSAFT={true}/>
+          <Navbar invalidSAFT={true} logout={this.logout}/>
           <Route path='*' render={() => <InvalidSAFT />}/>
         </Fragment>
       )
@@ -150,7 +161,7 @@ class App extends Component {
 
     return (
       <Fragment>
-        <Navbar fiscalYear={this.state.fiscalYear}/>
+        <Navbar fiscalYear={this.state.fiscalYear} logout={this.logout}/>
         <Switch>
           <Route path="/" exact render={(props)=><Overview token={this.state.token} {...props}/>} />
           <Route path="/financial" exact render={(props)=><Financial token={this.state.token} {...props}/>} />
