@@ -75,23 +75,22 @@ module.exports = {
 
     getSale(req, res) {
         let sales = Database.data.SalesInvoices;
+        let customers = Database.data.Customer;
         let sale = null;
+        let customer = null;
         for (let i = 0; i < sales.length; i++) {
             if ( sales[i].InvoiceNo == req.params.id ) {
                 sale = sales[i]
-                res.status(200).send( { info: sale } );
-                return;
+                for(let l = 0; l < customers.length; l++){
+                    if(sale.CustomerID === customers[l].CustomerID){
+                        customer = customers[l];
+                        res.status(200).send( { info: sale, customerInfo: customer } );
+                        return;
+                    }
+                }
             }
         }
         res.status(404).send();
-        // let sales = Database.data.SalesInvoices;
-        // for (let i = 0; i < sales.length; i++) {
-        //     if ( sales[i].InvoiceNo == req.params.id ) {
-        //         res.status(200).send( { info: sales[i] } );
-        //         return;
-        //     }
-        // }
-        // res.status(404).send();
     },
 
     getListOfSales(){

@@ -6,6 +6,49 @@ import './Pages.css';
 import Select from 'react-select';
 import SalesGraph from '../components/SalesGraph';
 
+export function parseSalesTotal(res){
+  let salesTotal = [];
+  for(let i = 0; i < res.data.DataSet.Table.length; i++){
+    let tipoDoc = res.data.DataSet.Table[i].TipoDoc; 
+    let date = res.data.DataSet.Table[i].Data.split('-');
+    let year = date[0];
+    let month = date[1];
+    let totalMerc = res.data.DataSet.Table[i].TotalMerc
+    let signal = 1;
+    if(tipoDoc === 'NC'){
+      signal = -1;
+    }
+    if(!(year in salesTotal)){
+      salesTotal[year] = {
+        [month]: Math.round(totalMerc*signal)
+      };
+    }
+    else if(!(month in salesTotal[year])){
+      salesTotal[year][month] = Math.round(totalMerc*signal);
+    }
+    else{
+      salesTotal[year][month] += Math.round(totalMerc*signal);
+    }
+  }
+  return salesTotal;
+}
+
+export function parseSelectOptions(salesTotal){
+  let options = [];
+  for (let index in salesTotal){
+    let obj = {};
+    obj["year"] = index;
+    options.push({
+      value: index, label:index
+    });
+    for(let key in salesTotal[index]){
+      obj[key] = salesTotal[index][key];
+    }
+  }
+  let last = options.length -1;
+  return [options, options[last]];
+}
+
 
 class Sales extends Component {
   constructor(props) {
@@ -21,7 +64,6 @@ class Sales extends Component {
         date: null,
         customer: null,
       }],
-      bar_vars : [],
       loadingPrimavera: true
     };
   }
@@ -58,7 +100,7 @@ class Sales extends Component {
   };
 
   callPrimavera = async () => {
-    var query = JSON.stringify("SELECT Data, TotalMerc FROM CabecDoc WHERE TipoDoc = 'ECL'");
+    var query = JSON.stringify("SELECT Data, TotalMerc, TipoDoc FROM CabecDoc WHERE TipoDoc = 'FA' OR TipoDoc = 'NC' OR TipoDoc = 'VD'");
     return axios({
       method: 'post',
       url: 'http://localhost:2018/WebApi/Administrador/Consulta',
@@ -73,30 +115,20 @@ class Sales extends Component {
 
 
   handlePrimaveraResponse(res) {
-    let aux = this.state.salesTotal;
-    for(let i = 0; i < res.data.DataSet.Table.length; i++){
-      let date = res.data.DataSet.Table[i].Data.split('-');
-      let year = date[0];
-      let month = date[1];
-      let totalMerc = res.data.DataSet.Table[i].TotalMerc
-      if(!(year in aux)){
-        aux[year] = {
-          [month]: totalMerc
-        };
-      }
-      else if(!(month in aux[year])){
-        aux[year][month] = totalMerc;
-      }
-      else{
-        aux[year][month] += totalMerc;
-      }
-    }
+    let salesTotal = parseSalesTotal(res);
+    let select = parseSelectOptions(salesTotal)
     this.setState({
-      salesTotal: aux,
+      salesTotal: salesTotal,
+      select_options: select[0],
+      selected_option: select[1],
       loadingPrimavera: false
+    }, () => {
+      this.update_sum()
     });
-    this.parseSalesTotal();
   };
+
+ 
+
 
   parseSalesInvoices(salesInvoices){
     const types = ['FT', 'FR', 'FS', 'VD', 'NC'];
@@ -114,30 +146,6 @@ class Sales extends Component {
       }
     }
     return sales;
-  }
-
-  parseSalesTotal(){
-    let ret = []
-    let options = [];
-    for (let index in this.state.salesTotal){
-      let obj = {};
-      obj["year"] = index;
-      options.push({
-        value: index, label:index
-      });
-      for(let key in this.state.salesTotal[index]){
-        obj[key] = this.state.salesTotal[index][key];
-      }
-      ret.push(obj)
-    }
-    let last = options.length -1;
-    this.setState({
-      bar_vars: ret,
-      select_options: options,
-      selected_option: options[last]
-    }, () => {
-      this.update_sum()
-    })
   }
 
   update_sum(){
@@ -187,7 +195,7 @@ class Sales extends Component {
         <div className="card">
           <h5 className="card-header text-center"> Net earnings per year</h5>
             <div className="card-body" style={{ height: 400 }}>
-              <SalesGraph bar_vars={this.state.bar_vars}/>
+              <SalesGraph salesTotal = {this.state.salesTotal}/>
           </div>
         </div>
         <div className="card listOfSales">

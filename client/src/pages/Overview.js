@@ -7,6 +7,7 @@ import TopProducts from '../components/TopProducts';
 import Loading from '../components/Loading';
 import './Pages.css';
 import SalesGraph from '../components/SalesGraph';
+import {parseSalesTotal} from '../pages/Sales'
 
 
 class Overview extends Component {
@@ -18,7 +19,7 @@ class Overview extends Component {
       sales: [],
       revenue: [],
       purchases: [],
-      sales_graph: [],
+      sales_graph: {},
       loadingAPI: true,
       loadingPurchases: true,
       loadingSales: true
@@ -67,7 +68,7 @@ class Overview extends Component {
   }
 
   getSales() {
-    var query = JSON.stringify("SELECT Data, TotalMerc FROM CabecDoc WHERE TipoDoc = 'FA'");
+    var query = JSON.stringify("SELECT Data, TotalMerc, TipoDoc FROM CabecDoc WHERE TipoDoc = 'FA' OR TipoDoc = 'NC' OR TipoDoc = 'VD'");
     axios({
       method: 'post',
       url: 'http://localhost:2018/WebApi/Administrador/Consulta',
@@ -79,37 +80,9 @@ class Overview extends Component {
       data: query
     })
     .then((res) => {
-      let sales_total = {};
-      for(let i = 0; i < res.data.DataSet.Table.length; i++){
-        let date = res.data.DataSet.Table[i].Data.split('-');
-        let year = date[0];
-        let month = date[1];
-        let totalMerc = res.data.DataSet.Table[i].TotalMerc
-        if(!(year in sales_total)){
-          sales_total[year] = {
-            [month]: totalMerc
-          };
-        }
-        else if(!(month in sales_total[year])){
-          sales_total[year][month] = totalMerc;
-        }
-        else{
-          sales_total[year][month] += totalMerc;
-        }
-      }
-
-      let sales = []
-      for (let index in sales_total) {
-        let obj = {};
-        obj["year"] = index;
-        for(let key in sales_total[index]){
-          obj[key] = sales_total[index][key];
-        }
-        sales.push(obj)
-      }
-
+      let salesTotals = parseSalesTotal(res);
       this.setState({
-        sales_graph: sales,
+        sales_graph: salesTotals,
         loadingSales: false
       });
     })
@@ -152,7 +125,7 @@ class Overview extends Component {
         <div className="card">
           <h5 className="card-header text-center">Sales per year</h5>
           <div className="card-body" style={{height: 500}}>
-            <SalesGraph bar_vars={this.state.sales_graph}/>
+            <SalesGraph salesTotal={this.state.sales_graph}/>
           </div>
         </div>
 

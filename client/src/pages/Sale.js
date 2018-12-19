@@ -6,6 +6,7 @@ class Sale extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: "",
             id: props.match.params.id,
             ship_to_date: "",
             ship_to_address: {},
@@ -38,6 +39,7 @@ class Sale extends Component {
 
     handleResponse(res) {
         let s = this.parseResponse(res.info);
+        let n = res.customerInfo.CompanyName;
         this.setState( {
             inf: JSON.stringify(res.info),
             info: res.info,
@@ -47,7 +49,8 @@ class Sale extends Component {
             ship_from_address: res.info.ShipFrom.Address,
             sale_id: res.info.InvoiceNo,
             sale_totals: res.info.DocumentTotals,
-            sale: s
+            sale: s,
+            name: n
         } );
     };
 
@@ -89,7 +92,7 @@ class Sale extends Component {
                         <div className="d-flex flex-row justify-content-around product-infos">
                             <span className="card w-25">
                                 <div className="card-header text-center">Customer</div>
-                                <div className="card-body text-center">TODO</div>
+                                <div className="card-body text-center">{this.state.name}</div>
                             </span>
 
                             <span className="card w-25">
