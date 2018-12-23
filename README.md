@@ -10,6 +10,5 @@ This project consists of a Company Dashboard, meant to visualize the situation o
 ### Run
 * Run `npm start` inside the `client` and `server` folders
 
-
 ### Navigate
-* Navigate to localhost:3000
+* Navigate to **localhost:3000**
